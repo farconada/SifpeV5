@@ -72,3 +72,19 @@ fos_elastica:
   indexes:
     website:
       client: default
+
+bc_bootstrap:
+  less_filter: lessphp
+  jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-%jquery_version%.js
+
+assetic:
+  filters:
+    lessphp:
+      file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
+      apply_to:   "\.less$"
+    cssrewrite: ~
+  assets:
+    jquery:
+      inputs:
+        - %kernel.root_dir%/../vendor/jquery/jquery/jquery-%jquery_version%.js
+      output: js/jquery.js

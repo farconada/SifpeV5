@@ -6,6 +6,19 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "2.0.3",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-2.0.3.js",
+                    "type": "file"
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
@@ -20,7 +33,11 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
 
-	"friendsofsymfony/elastica-bundle": "3.0.*@dev"
+	"friendsofsymfony/elastica-bundle": "3.0.*@dev",
+	"leafo/lessphp": "0.3.9",
+	"braincrafted/bootstrap-bundle": "dev-master@dev",
+	"twbs/bootstrap": "2.3.*",
+	"jquery/jquery": "2.0.*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -41,7 +58,7 @@
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
