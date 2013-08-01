@@ -19,6 +19,7 @@ class AppKernel extends Kernel
 
 	    new FOS\ElasticaBundle\FOSElasticaBundle(),
 	    new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
+            new Fer\SifpeBundle\FerSifpeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

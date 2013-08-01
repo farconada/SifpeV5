@@ -1,0 +1,4 @@
+fer_sifpe:
+    resource: "@FerSifpeBundle/Resources/config/routing.yml"
+    prefix:   /
+
