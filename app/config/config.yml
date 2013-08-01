@@ -64,3 +64,11 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+## elastic search
+fos_elastica:
+  clients:
+    default: { host: localhost, port: 9200 }
+  indexes:
+    website:
+      client: default
