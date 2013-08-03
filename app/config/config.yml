@@ -88,3 +88,25 @@ assetic:
       inputs:
         - %kernel.root_dir%/../vendor/jquery/jquery/jquery-%jquery_version%.js
       output: js/jquery.js
+
+fos_rest:
+    param_fetcher_listener: true
+    routing_loader:
+        default_format: json
+        include_format: false
+    view:
+        view_response_listener: false
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: php
+        formats:
+            json: true
+            rss: false
+            xml: false
+            html: false
+    format_listener: false
+    body_converter:
+      enabled: true
+      validate: true
+    body_listener:
+       decoders:
+           json: fos_rest.decoder.json
