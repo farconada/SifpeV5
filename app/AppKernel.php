@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Fer\SifpeBundle\FerSifpeBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new Kyoki\UtilBundle\KyokiUtilBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -10,4 +10,9 @@ class GastoController extends Controller
     {
         return $this->render('FerSifpeBundle:Gasto:index.html.twig', array('name' => 'test'));
     }
+
+    public function listAction()
+    {
+
+    }
 }
