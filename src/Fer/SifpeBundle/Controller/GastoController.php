@@ -3,16 +3,19 @@
 namespace Fer\SifpeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use JMS\DiExtraBundle\Annotation as DI;
 
-class GastoController extends Controller
+class GastoController extends ApunteController
 {
-    public function indexAction()
+
+    /** @DI\InjectParams({
+    *     "gastoRepository" = @DI\Inject("fer_sifpe.gasto_repository"),
+    * })
+    */
+    public function __construct($gastoRepository)
     {
-        return $this->render('FerSifpeBundle:Gasto:index.html.twig', array('name' => 'test'));
+        $this->entityRepository = $gastoRepository;
     }
 
-    public function listAction()
-    {
 
-    }
 }
