@@ -9,16 +9,13 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
-abstract class ApunteController extends Controller {
+abstract class ApunteController extends AbstractController {
 
-    /**
-     * @var \Doctrine\ORM\EntityRepository
-     */
-    public $entityRepository;
+
 
     /**
      * @Template
@@ -29,9 +26,4 @@ abstract class ApunteController extends Controller {
         return array();
     }
 
-    public function listAction()
-    {
-        $apuntes = $this->entityRepository->findAll();
-        return array('apuntes' => $apuntes);
-    }
 }
