@@ -21,6 +21,12 @@ framework:
     fragments:       ~
     http_method_override: true
 
+jms_di_extra:
+    locations:
+        all_bundles: false
+        bundles: [FerSifpeBundle]
+        directories: ["%kernel.root_dir%/../src"]
+
 # Twig Configuration
 twig:
     debug:            %kernel.debug%
