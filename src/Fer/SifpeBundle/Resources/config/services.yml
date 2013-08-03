@@ -1,7 +1,20 @@
 parameters:
-#    fer_sifpe.example.class: Fer\SifpeBundle\Example
+  fer_sifpe.gasto_repository.class: Fer\SifpeBundle\Entity\GastoRepository
+  fer_sifpe.gasto_repository.factory_argument: 'FerSifpeBundle:Gasto'
+  fer_sifpe.ingreso_repository.class: Fer\SifpeBundle\Entity\IngresoRepository
+  fer_sifpe.ingreso_repository.factory_argument: 'FerSifpeBundle:Ingreso'
 
 services:
-#    fer_sifpe.example:
-#        class: %fer_sifpe.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+  fer_sifpe.gasto_repository:
+    class:           %fer_sifpe.gasto_repository.class%
+    factory_service: doctrine.orm.default_entity_manager
+    factory_method:  getRepository
+    arguments:
+        - %fer_sifpe.gasto_repository.factory_argument%
+
+  fer_sifpe.ingreso_repository:
+    class:           %fer_sifpe.ingreso_repository.class%
+    factory_service: doctrine.orm.default_entity_manager
+    factory_method:  getRepository
+    arguments:
+        - %fer_sifpe.ingreso_repository.factory_argument%
