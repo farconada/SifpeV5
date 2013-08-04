@@ -1,3 +1,13 @@
-fer_sifpe_homepage:
+fer_sifpe_gasto_index:
     pattern:  /
     defaults: { _controller: FerSifpeBundle:Gasto:index }
+
+fer_sifpe_gasto_list:
+    pattern:  /gasto/list/{desdeMeses}
+    defaults: { _controller: FerSifpeBundle:Gasto:listDesdeMes, _format: json, desdeMeses: 0 }
+    methods: [GET]
+
+fer_sifpe_ingreso_list:
+    pattern:  /ingreso/list/{desdeMeses}
+    defaults: { _controller: FerSifpeBundle:Ingreso:listDesdeMes, _format: json, desdeMeses: 0 }
+    methods: [GET]
