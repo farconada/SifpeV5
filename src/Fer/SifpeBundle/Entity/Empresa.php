@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as JMS;
  * Empresa
  *
  * @ORM\Table(name="empresa")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="EmpresaRepository")
  */
 class Empresa
 {

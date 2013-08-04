@@ -54,3 +54,8 @@ fer_sifpe_resumen_xcuenta:
     pattern:  /resumen/pormes/{desdeMeses}
     defaults: { _controller: FerSifpeBundle:Ingreso:listResumenMes, _format: json, desdeMeses: 0 }
     methods: [GET]
+
+fer_sifpe_empresas_list:
+    pattern:  /empresas
+    defaults: { _controller: FerSifpeBundle:Empresa:listAll, _format: json }
+    methods: [GET]

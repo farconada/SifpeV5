@@ -45,7 +45,7 @@ class AbstractController extends FOSRestController {
 
     public function listAllAction() {
         $entities = $this->entityRepository->findAll();
-        $view = $this->view(array('entities' => $entities));
+        $view = $this->view(array($entities));
         return $this->handleView($view);
     }
 

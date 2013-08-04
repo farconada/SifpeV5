@@ -3,6 +3,8 @@ parameters:
   fer_sifpe.gasto_repository.factory_argument: 'FerSifpeBundle:Gasto'
   fer_sifpe.ingreso_repository.class: Fer\SifpeBundle\Entity\IngresoRepository
   fer_sifpe.ingreso_repository.factory_argument: 'FerSifpeBundle:Ingreso'
+  fer_sifpe.empresa_repository.class: Fer\SifpeBundle\Entity\EmpresaRepository
+  fer_sifpe.empresa_repository.factory_argument: 'FerSifpeBundle:Empresa'
 
 services:
   fer_sifpe.gasto_repository:
@@ -18,3 +20,10 @@ services:
     factory_method:  getRepository
     arguments:
         - %fer_sifpe.ingreso_repository.factory_argument%
+
+  fer_sifpe.empresa_repository:
+    class:           %fer_sifpe.empresa_repository.class%
+    factory_service: doctrine.orm.entity_manager
+    factory_method:  getRepository
+    arguments:
+        - %fer_sifpe.empresa_repository.factory_argument%
