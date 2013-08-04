@@ -3,6 +3,7 @@
 namespace Fer\SifpeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class Apunte
@@ -24,6 +25,7 @@ abstract class Apunte
      * @var \DateTime
      *
      * @ORM\Column(name="fecha", type="date")
+     * @JMS\Type("DateTime<'Y-m-d'>")
      */
     private $fecha;
 

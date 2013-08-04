@@ -3,6 +3,7 @@
 namespace Fer\SifpeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Empresa
@@ -29,11 +30,13 @@ class Empresa
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Gasto>
 	 * @ORM\OneToMany(mappedBy="empresa", targetEntity="Gasto", cascade={"all"})
+     * @JMS\Exclude
 	 */
 	private  $gastos;
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Ingreso>
 	 * @ORM\OneToMany(mappedBy="empresa", targetEntity="Ingreso", cascade={"all"})
+     * @JMS\Exclude
 	 */
 	private  $ingresos;
 

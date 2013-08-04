@@ -3,6 +3,8 @@
 namespace Fer\SifpeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
+
 
 /**
  * GrupoCuenta
@@ -29,6 +31,7 @@ class GrupoCuenta
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Cuenta>
 	 * @ORM\OneToMany(mappedBy="grupo", targetEntity="Cuenta", cascade={"all"})
+     * @JMS\Exclude
 	 */
 	private $cuentas;
 

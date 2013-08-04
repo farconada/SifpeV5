@@ -4,6 +4,7 @@ namespace Fer\SifpeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Cuenta
@@ -36,11 +37,13 @@ class Cuenta
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Gasto>
 	 * @ORM\OneToMany(mappedBy="cuenta", targetEntity="Gasto", cascade={"all"})
+     * @JMS\Exclude
 	 */
 	private  $gastos;
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Ingreso>
 	 * @ORM\OneToMany(mappedBy="cuenta", targetEntity="Ingreso", cascade={"all"})
+     * @JMS\Exclude
 	 */
 	private  $ingresos;
 
