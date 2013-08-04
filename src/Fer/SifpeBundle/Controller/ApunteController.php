@@ -41,4 +41,28 @@ abstract class ApunteController extends AbstractController {
         return $this->handleView($view);
     }
 
+    public function listResumenPorCuentaAction($desdeMeses = 0) {
+        $cuentasMes = $this->entityRepository->getTotalCuentasMensual($desdeMeses);
+        $cuentasMesAnterior = $this->entityRepository->getTotalCuentasMensual($desdeMeses + 1);
+        $resultado = array();
+        foreach ($cuentasMes as $cuenta) {
+            $resultado[$cuenta['cuenta']]['cantidad'] = $cuenta['cantidad'];
+        }
+        foreach ($cuentasMesAnterior as $cuenta) {
+            $resultado[$cuenta['cuenta']]['cantidad_anterior'] = $cuenta['cantidad'];
+        }
+
+        $i=0;
+        $resultadoPlain = array();
+        foreach ($resultado as $cuenta => $resultadoItem) {
+            $resultadoPlain[$i]['cuenta'] = $cuenta;
+            $resultadoPlain[$i]['cantidad'] = isset($resultadoItem['cantidad']) ? $resultadoItem['cantidad']+0 : 0;
+            $resultadoPlain[$i]['cantidad_anterior'] = isset($resultadoItem['cantidad_anterior']) ? $resultadoItem['cantidad_anterior']+0 : 0;
+            $i++;
+        }
+
+        $view = $this->view($resultadoPlain, 200);
+        return $this->handleView($view);
+    }
+
 }

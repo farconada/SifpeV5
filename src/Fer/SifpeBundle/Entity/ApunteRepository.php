@@ -65,7 +65,20 @@ class ApunteRepository extends EntityRepository {
      * @return array
      */
     public function getTotalCuentasMensual($mesesAtras = 0) {
-
+        $mesesAtras = $mesesAtras + 0;
+        $fechaInicial = new \DateTime("first day of $mesesAtras month ago");
+        $fechaFinal = new \DateTime("last day of $mesesAtras month ago");
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT sum(g.cantidad) AS cantidad, c.name AS cuenta FROM ' .
+            $this->getEntityName() .
+            ' g JOIN g.cuenta c WHERE g.fecha <=:fechaFinal AND g.fecha >=:fechaInicial GROUP BY c.id'
+        );
+        return $query->execute(
+            array(
+                'fechaInicial' => $fechaInicial->format('Y-m-d'),
+                'fechaFinal' => $fechaFinal->format('Y-m-d')
+            )
+        );
     }
 
     /**
