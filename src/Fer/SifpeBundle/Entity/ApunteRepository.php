@@ -120,8 +120,45 @@ class ApunteRepository extends EntityRepository {
         return $result;
     }
 
+    /**
+     * resumen de gastos e ingresos de un mes
+     * @param $mesesAtras
+     * @return array
+     */
     public function getResumenMes($mesesAtras) {
+        $fechaInicial = new \DateTime("first day of $mesesAtras month ago");
+        $fechaFinal = new \DateTime("last day of $mesesAtras month ago");
+        $result = array();
 
+        // Gastos de ese mes
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT sum(g.cantidad) AS cantidad
+            FROM FerSifpeBundle:Gasto g
+            WHERE g.fecha <:fechaFinal AND g.fecha >=:fechaInicial'
+        );
+        $res = $query->execute(
+            array(
+                'fechaInicial' => $fechaInicial->format('Y-m-d'),
+                'fechaFinal' => $fechaFinal->format('Y-m-d')
+            )
+        );
+        $result['gastos'] = $res[0]['cantidad'] ? $res[0]['cantidad']+0 : 0;
+
+        // Ingresos de ese mes
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT sum(i.cantidad) AS cantidad
+            FROM FerSifpeBundle:Ingreso i
+            WHERE i.fecha <:fechaFinal AND i.fecha >=:fechaInicial'
+        );
+        $res = $query->execute(
+            array(
+                'fechaInicial' => $fechaInicial->format('Y-m-d'),
+                'fechaFinal' => $fechaFinal->format('Y-m-d')
+            )
+        );
+        $result['ingresos'] = $res[0]['cantidad'] ? $res[0]['cantidad']+0  : 0;
+
+        return $result;
     }
 
 

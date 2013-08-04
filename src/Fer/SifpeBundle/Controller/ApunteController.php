@@ -73,9 +73,9 @@ abstract class ApunteController extends AbstractController {
      * @param int $start numero de años atras desde la fecha actual
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listResumenAnualAction($start = 0) {
-        $items = $this->entityRepository->getResumenAnual($start);
-        $itemsAnterior = $this->entityRepository->getResumenAnual($start+1);
+    public function listResumenAnualAction($desdeMeses = 0) {
+        $items = $this->entityRepository->getResumenAnual($desdeMeses);
+        $itemsAnterior = $this->entityRepository->getResumenAnual($desdeMeses+1);
         $i = 0;
         $resultado = array();
         foreach ($items as $mes) {
@@ -88,6 +88,20 @@ abstract class ApunteController extends AbstractController {
         $view = $this->view($resultado, 200);
         return $this->handleView($view);
 
+    }
+
+    /**
+     * Lista para un mes el total de gastos e ingresos
+     *
+     * El mes cero es el mes actual y se le puede indicar cuantos meses atras para ver el listado, pero solo de un mes
+     *
+     * @param int $start numero de meses atras desde la fecha actual
+     * @return mixed
+     */
+    public function listResumenMesAction($desdeMeses = 0){
+        $items = $this->entityRepository->getResumenMes($desdeMeses);
+        $view = $this->view($items, 200);
+        return $this->handleView($view);
     }
 
 }
