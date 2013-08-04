@@ -1,13 +1,31 @@
-fer_sifpe_gasto_index:
+fer_sifpe_default:
     pattern:  /
     defaults: { _controller: FerSifpeBundle:Gasto:index }
 
+fer_sifpe_gasto_index:
+    pattern:  /gastos/gestion
+    defaults: { _controller: FerSifpeBundle:Gasto:index }
+
+fer_sifpe_ingreso_index:
+    pattern:  /ingresos/gestion
+    defaults: { _controller: FerSifpeBundle:Ingreso:index }
+
 fer_sifpe_gasto_list:
-    pattern:  /gasto/list/{desdeMeses}
+    pattern:  /gastos/{desdeMeses}
     defaults: { _controller: FerSifpeBundle:Gasto:listDesdeMes, _format: json, desdeMeses: 0 }
     methods: [GET]
 
 fer_sifpe_ingreso_list:
-    pattern:  /ingreso/list/{desdeMeses}
+    pattern:  /ingresos/{desdeMeses}
     defaults: { _controller: FerSifpeBundle:Ingreso:listDesdeMes, _format: json, desdeMeses: 0 }
+    methods: [GET]
+
+fer_sifpe_gasto_delete:
+    pattern:  /gasto/{id}/borrar/
+    defaults: { _controller: FerSifpeBundle:Gasto:delete, _format: json }
+    methods: [GET]
+
+fer_sifpe_ingreso_delete:
+    pattern:  /ingreso/{id}/borrar/
+    defaults: { _controller: FerSifpeBundle:Ingreso:delete, _format: json }
     methods: [GET]
