@@ -17,19 +17,45 @@ class ApunteRepository extends EntityRepository {
      * Si hoy es 14-06-2011 1 mes atras devolveria los apuntes de 1 al 31 de Mayo
      *
      * @param int $mesesAtras Numero de meses atras para los que devolver el listado
-     * @return \Doctrine_Collection
+     * @return mixed
      */
     public function findPorMes($mesesAtras = 0) {
+        $mesesAtras = $mesesAtras + 0;
+        $fechaInicial = new \DateTime("first day of $mesesAtras month ago");
+        $fechaFinal = new \DateTime("last day of $mesesAtras month ago");
 
+        $qb = $this->createQueryBuilder('findPorMes');
+        // se resetea el FROM porque por defecto ya incluye referencia a la tabla
+        $qb->resetDQLPart('from');
+        $qb->select('a')
+            ->from($this->getEntityName(), 'a')
+            ->where( 'a.fecha >= :fechaInicial AND a.fecha <= :fechaFinal')
+            ->setParameter('fechaInicial', $fechaInicial->format('Y-m-d'))
+            ->setParameter('fechaFinal', $fechaFinal->format('Y-m-d'));
+        return $qb->getQuery()->execute();
     }
 
     /**
      * Devuelve un entero que representa el numero de meses que hay registrados en la base de datos desde hoy
-     *
+     * Los meses corresponden a las paginas de las tablas
      * @return int
      */
     public function getTotalMesesRegistrados() {
+        $qb = $this->createQueryBuilder('getTotalMesesRegistrados');
+        // se resetea el FROM porque por defecto ya incluye referencia a la tabla
+        $qb->resetDQLPart('from');
+        $primerApunte = $qb->select('a')
+            ->from($this->getEntityName(), 'a')
+            ->orderBy('a.fecha', 'ASC')
+            ->getQuery()->setMaxResults(1)->getSingleResult();
 
+        $ultimoApunte = $qb->orderBy('a.fecha', 'DESC')
+            ->getQuery()->setMaxResults(1)->getSingleResult();
+
+        $dateInterval = $primerApunte->getFecha()->diff($ultimoApunte->getFecha());
+        $mesesRegistrados = ($dateInterval->y * 12) + $dateInterval->m;
+
+        return $mesesRegistrados;
     }
 
     /**
