@@ -88,7 +88,36 @@ class ApunteRepository extends EntityRepository {
      * @return array
      */
     public function getResumenAnual($aniosAtras) {
+        // 1 de enero del año que sea
+        $fechaInicial = new \DateTime('-' . $aniosAtras . ' year');
+        $fechaInicial->setDate($fechaInicial->format('Y'), 1, 1);
+        $fechaFinal = new \DateTime('-' . $aniosAtras . ' year');
+        $fechaFinal->setDate($fechaInicial->format('Y'), 1, 1);
+        $result = array();
+        // para cada mes de ese año
+        for ($i = 0; $i < 12; $i++) {
+            $result[$i]['mes'] = $fechaInicial->format('M');
+            // avanzamos 1 mes
+            $fechaFinal->add(new \DateInterval('P0Y1M'));
 
+            $query = $this->getEntityManager()->createQuery(
+                'SELECT sum(a.cantidad) AS cantidad FROM ' .
+                $this->getEntityName() .
+                ' a WHERE a.fecha <:fechaFinal AND a.fecha >=:fechaInicial'
+            );
+
+            $res = $query->execute(
+                array(
+                    'fechaInicial' => $fechaInicial->format('Y-m-d'),
+                    'fechaFinal' => $fechaFinal->format('Y-m-d')
+                )
+            );
+            $result[$i]['cantidad'] = $res[0]['cantidad']+0;
+
+            // avanzamos 1 mes
+            $fechaInicial->add(new \DateInterval('P0Y1M'));
+        }
+        return $result;
     }
 
     public function getResumenMes($mesesAtras) {

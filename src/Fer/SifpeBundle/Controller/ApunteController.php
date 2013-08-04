@@ -65,4 +65,29 @@ abstract class ApunteController extends AbstractController {
         return $this->handleView($view);
     }
 
+    /**
+     * Lista un resumen de los apuntes agrupados por mes en un año y el año anterior
+     *
+     * El año cero es el año año actual y se le puede indicar para cuantos años atras calcularlo
+     *
+     * @param int $start numero de años atras desde la fecha actual
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listResumenAnualAction($start = 0) {
+        $items = $this->entityRepository->getResumenAnual($start);
+        $itemsAnterior = $this->entityRepository->getResumenAnual($start+1);
+        $i = 0;
+        $resultado = array();
+        foreach ($items as $mes) {
+            $resultado[$i]['mes'] = $mes['mes'];
+            $resultado[$i]['cantidad'] = $mes['cantidad'] ? $mes['cantidad'] : 0 ;
+            $resultado[$i]['cantidad_anterior'] = $itemsAnterior[$i]['cantidad'] ?  $itemsAnterior[$i]['cantidad']: 0;
+            $i++;
+        }
+
+        $view = $this->view($resultado, 200);
+        return $this->handleView($view);
+
+    }
+
 }
