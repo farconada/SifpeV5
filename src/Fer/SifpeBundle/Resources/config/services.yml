@@ -7,14 +7,14 @@ parameters:
 services:
   fer_sifpe.gasto_repository:
     class:           %fer_sifpe.gasto_repository.class%
-    factory_service: doctrine.orm.default_entity_manager
+    factory_service: doctrine.orm.entity_manager
     factory_method:  getRepository
     arguments:
         - %fer_sifpe.gasto_repository.factory_argument%
 
   fer_sifpe.ingreso_repository:
     class:           %fer_sifpe.ingreso_repository.class%
-    factory_service: doctrine.orm.default_entity_manager
+    factory_service: doctrine.orm.entity_manager
     factory_method:  getRepository
     arguments:
         - %fer_sifpe.ingreso_repository.factory_argument%
