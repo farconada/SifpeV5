@@ -1,0 +1,22 @@
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Fecha</th>
+            <th>Cuenta</th>
+            <th>Empresa</th>
+            <th>Cantidad</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="apunte in apuntes">
+            <td>[[apunte.id]]</td>
+            <td>[[apunte.fecha]]</td>
+            <td>[[apunte.cuenta.name]]</td>
+            <td>[[apunte.empresa.name]]</td>
+            <td>[[apunte.cantidad]]</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
