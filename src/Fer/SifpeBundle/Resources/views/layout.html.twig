@@ -6,13 +6,7 @@
         <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}"/>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-
-        {% stylesheets '@FerSifpeBundle/Resources/public/fuelux/css/fuelux.min.css' %}
-            <link href="{{ asset_url }}">rel="stylesheet" />
-        {% endstylesheets %}
-        {% stylesheets '@FerSifpeBundle/Resources/public/fuelux/css/fuelux-responsive.min.css' %}
-            <link href="{{ asset_url }}">rel="stylesheet" />
-        {% endstylesheets %}
+        <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
     {% endblock %}
 </head>
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -62,10 +56,8 @@
 {% endblock %}
 
 
-<script>window.jQuery || document.write('<script src="{{ asset('js/jquery.js') }}"><\/script>')</script>
-<script src="{{ asset('js/bootstrap.js') }}"></script>
-{% javascripts '@FerSifpeBundle/Resources/public/fuelux/loader.min.js' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
+<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/fersifpe/js/angular.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/fersifpe/js/angular-resource.min.js') }}"></script>
 </body>
 </html>

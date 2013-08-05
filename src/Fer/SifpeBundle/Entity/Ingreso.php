@@ -14,8 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Apunte
  *
+ * @ORM\Entity(repositoryClass="IngresoRepository")
  * @ORM\Table(name="ingreso")
- * @ORM\Entity
  */
 class Ingreso extends Apunte {
 
