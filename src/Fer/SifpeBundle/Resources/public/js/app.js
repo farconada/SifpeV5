@@ -9,12 +9,11 @@ var sifpeApp = angular.module('sifpeApp', []).config(function($routeProvider, $i
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
     $routeProvider.
         when("/list", {controller: 'GastoCtrl', templateUrl: "/bundles/fersifpe/templates/apunte_list.html"}).
-        when("/edit", {controller: 'GastoCtrl', templateUrl: "/bundles/fersifpe/templates/edit.html"}).
         otherwise({redirectTo: "/list"});
 });
 
 sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http){
-    $scope.predicate = '-date';
+    $scope.apunteAEditar = null;
 
     $http.get('gastos/1').success(function(data){
         $scope.apuntes = data['data'];
@@ -22,7 +21,8 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
 
     $scope.edit = function(apunteIndex) {
         var apunteAEditar = $scope.apuntes[apunteIndex];
-        alert(apunteAEditar.id);
+        $scope.apunteAEditar = apunteAEditar;
+        $('#modalEdit').modal();
     };
 
     $scope.delete = function(apunteIndex) {

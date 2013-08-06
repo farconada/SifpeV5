@@ -1,4 +1,28 @@
 <div class="container">
+
+    <div id="modalEdit" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Editar apunte</h3>
+        </div>
+        <div class="modal-body">
+            <p>[[apunteAEditar.id]] [[apunteAEditar.notas]]</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn">Close</a>
+            <a href="#" class="btn btn-primary">Guardar cambios</a>
+        </div>
+    </div>
+
+    <form class="form-inline">
+        <input type="date" class="input" placeholder="Fecha">
+        <div class="input-append">
+            <input class="span2" id="appendedPrependedInput" type="text">
+            <span class="add-on">€</span>
+        </div>
+        <button type="submit" class="btn">Guardar</button>
+    </form>
+
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -19,7 +43,7 @@
             <td>[[apunte.cantidad]]</td>
             <td>
                 <a ng-click="delete($index)" class="icon-remove"></a>
-                <a ng-click="edit($index)" class="icon-edit" href="#/edit"></a>
+                <a ng-click="edit($index)" class="icon-edit"></a>
             </td>
         </tr>
         </tbody>
