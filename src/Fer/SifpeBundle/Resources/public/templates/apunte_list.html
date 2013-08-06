@@ -7,15 +7,20 @@
             <th>Cuenta</th>
             <th>Empresa</th>
             <th>Cantidad</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="apunte in apuntes">
+        <tr ng-repeat="apunte in apuntes" ng-dblclick="edit($index)">
             <td>[[apunte.id]]</td>
             <td>[[apunte.fecha]]</td>
             <td>[[apunte.cuenta.name]]</td>
             <td>[[apunte.empresa.name]]</td>
             <td>[[apunte.cantidad]]</td>
+            <td>
+                <a ng-click="delete($index)" class="icon-remove"></a>
+                <a ng-click="edit($index)" class="icon-edit" href="#/edit"></a>
+            </td>
         </tr>
         </tbody>
     </table>
