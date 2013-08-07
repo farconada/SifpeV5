@@ -6,10 +6,45 @@
             <h3>Editar apunte</h3>
         </div>
         <div class="modal-body">
-            <p>[[apunteAEditar.id]] [[apunteAEditar.notas]]</p>
+            <form class="form-horizontal">
+                <input type="hidden" id="id" value="[[apunteEditar.id]]">
+                <div class="control-group">
+                    <label class="control-label" for="fecha">Fecha</label>
+                    <div class="controls">
+                        <input type="date" id="fecha" placeholder="fecha" value="[[apunteEditar.fecha]]">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="cuenta">Cuenta</label>
+                    <div class="controls">
+                        <input type="text" id="cuenta" placeholder="cuenta" >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="empresa">Empresa</label>
+                    <div class="controls">
+                        <select name="empresa" id="empresa">
+                            <option value="[[empresa.id]]" ng-repeat="empresa in empresas" [[empresa.id == apunteEditar.empresa.id]]>[[empresa.name]]</option>
+                        </select>
+                        <select ng-model="apunteEditar.empresa" ng-options="e.name for e in empresas"></select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="cantidad">Cantidad</label>
+                    <div class="controls">
+                        <input type="text" id="cantidad" placeholder="cantidad"  value="[[apunteEditar.cantidad]]">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="notas">Notas</label>
+                    <div class="controls">
+                        <textarea rows="3" id="notas" placeholder="notas">[[apunteEditar.notas]]</textarea>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="modal-footer">
-            <a href="#" class="btn">Close</a>
+            <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
             <a href="#" class="btn btn-primary">Guardar cambios</a>
         </div>
     </div>

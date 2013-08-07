@@ -13,15 +13,26 @@ var sifpeApp = angular.module('sifpeApp', []).config(function($routeProvider, $i
 });
 
 sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http){
-    $scope.apunteAEditar = null;
+    $scope.apunteEditar = null;
+    $scope.apunteNuevo = null;
+    $scope.cuentas = null;
+    $scope.empresas = null;
 
-    $http.get('gastos/1').success(function(data){
+    $http.get('app_dev.php/gastos/1').success(function(data){
         $scope.apuntes = data['data'];
     });
 
+    $http.get('app_dev.php/empresas').success(function(data){
+        $scope.empresas = data;
+    });
+
+    $http.get('app_dev.php/cuentas').success(function(data){
+        $scope.cuentas = data;
+    });
+
     $scope.edit = function(apunteIndex) {
-        var apunteAEditar = $scope.apuntes[apunteIndex];
-        $scope.apunteAEditar = apunteAEditar;
+        var apunteEditar = $scope.apuntes[apunteIndex];
+        $scope.apunteEditar = apunteEditar;
         $('#modalEdit').modal();
     };
 
@@ -31,6 +42,10 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
             $scope.apuntes.splice(apunteIndex, 1);
         });
     }
+
+    $scope.add = function() {
+
+    };
 
 }]);
 
