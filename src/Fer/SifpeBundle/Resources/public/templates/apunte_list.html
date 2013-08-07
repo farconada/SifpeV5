@@ -58,7 +58,7 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>#</th>
+            <th class="hidden">#</th>
             <th>Fecha</th>
             <th>Cuenta</th>
             <th>Empresa</th>
@@ -68,7 +68,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="apunte in apuntes" ng-dblclick="edit($index)">
-            <td>[[apunte.id]]</td>
+            <td class="hidden">[[apunte.id]]</td>
             <td>[[apunte.fecha]]</td>
             <td>[[apunte.cuenta.name]]</td>
             <td>[[apunte.empresa.name]]</td>
