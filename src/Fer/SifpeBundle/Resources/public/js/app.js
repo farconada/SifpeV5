@@ -31,10 +31,14 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
     });
 
     $scope.edit = function(apunteIndex) {
-        var apunteEditar = $scope.apuntes[apunteIndex];
-        $scope.apunteEditar = apunteEditar;
+        $scope.apunteEditar = $scope.apuntes[apunteIndex];
         $('#modalEdit').modal();
     };
+
+    $scope.save = function (apunte) {
+        console.log(apunte);
+    }
+
 
     $scope.delete = function(apunteIndex) {
         var apunteABorrar = $scope.apuntes[apunteIndex];

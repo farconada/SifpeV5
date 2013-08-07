@@ -17,16 +17,13 @@
                 <div class="control-group">
                     <label class="control-label" for="cuenta">Cuenta</label>
                     <div class="controls">
-                        <input type="text" id="cuenta" placeholder="cuenta" >
+                        <select id="apunteEditar.cuanta" ng-model="cuenta" ng-options="c.id as c.name for c in cuentas"></select>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="empresa">Empresa</label>
                     <div class="controls">
-                        <select name="empresa" id="empresa">
-                            <option value="[[empresa.id]]" ng-repeat="empresa in empresas" [[empresa.id == apunteEditar.empresa.id]]>[[empresa.name]]</option>
-                        </select>
-                        <select ng-model="apunteEditar.empresa" ng-options="e.name for e in empresas"></select>
+                        <select id="apunteEditar.empresa" ng-model="empresa" ng-options="e.id as e.name for e in empresas"></select>
                     </div>
                 </div>
                 <div class="control-group">
@@ -45,7 +42,7 @@
         </div>
         <div class="modal-footer">
             <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-            <a href="#" class="btn btn-primary">Guardar cambios</a>
+            <a href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="save(apunteEditar)">Guardar cambios</a>
         </div>
     </div>
 
