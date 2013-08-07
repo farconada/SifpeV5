@@ -59,3 +59,8 @@ fer_sifpe_empresas_list:
     pattern:  /empresas
     defaults: { _controller: FerSifpeBundle:Empresa:listAll, _format: json }
     methods: [GET]
+
+fer_sifpe_cuentas_list:
+    pattern:  /cuentas
+    defaults: { _controller: FerSifpeBundle:Cuenta:listAll, _format: json }
+    methods: [GET]

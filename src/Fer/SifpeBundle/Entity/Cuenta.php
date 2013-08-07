@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation as JMS;
  * Cuenta
  *
  * @ORM\Table(name="cuenta")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="CuentaRepository")
  */
 class Cuenta
 {
