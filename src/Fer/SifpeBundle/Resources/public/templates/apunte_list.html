@@ -17,13 +17,13 @@
                 <div class="control-group">
                     <label class="control-label" for="cuenta">Cuenta</label>
                     <div class="controls">
-                        <select id="apunteEditar.cuanta" ng-model="cuenta" ng-options="c.id as c.name for c in cuentas"></select>
+                        <select options-proxy id="cuenta" ng-model="apunteEditar.cuenta" ng-options="c.id as c.name for c in cuentas"></select>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="empresa">Empresa</label>
                     <div class="controls">
-                        <select id="apunteEditar.empresa" ng-model="empresa" ng-options="e.id as e.name for e in empresas"></select>
+                        <select options-proxy id="empresa" ng-model="apunteEditar.empresa" ng-options="e.id as e.name for e in empresas"></select>
                     </div>
                 </div>
                 <div class="control-group">
@@ -58,7 +58,7 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>#</th>
+            <th class="hidden">#</th>
             <th>Fecha</th>
             <th>Cuenta</th>
             <th>Empresa</th>
@@ -68,7 +68,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="apunte in apuntes" ng-dblclick="edit($index)">
-            <td>[[apunte.id]]</td>
+            <td class="hidden">[[apunte.id]]</td>
             <td>[[apunte.fecha]]</td>
             <td>[[apunte.cuenta.name]]</td>
             <td>[[apunte.empresa.name]]</td>

@@ -5,7 +5,7 @@
  * Time: 8:28
  * To change this template use File | Settings | File Templates.
  */
-var sifpeApp = angular.module('sifpeApp', []).config(function($routeProvider, $interpolateProvider){
+var sifpeApp = angular.module('sifpeApp', ['options-proxy']).config(function($routeProvider, $interpolateProvider){
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
     $routeProvider.
         when("/list", {controller: 'GastoCtrl', templateUrl: "/bundles/fersifpe/templates/apunte_list.html"}).
@@ -18,15 +18,16 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
     $scope.cuentas = null;
     $scope.empresas = null;
 
-    $http.get('app_dev.php/gastos/1').success(function(data){
+    $http.get('gastos/1').success(function(data){
         $scope.apuntes = data['data'];
     });
 
-    $http.get('app_dev.php/empresas').success(function(data){
+
+    $http.get('empresas').success(function(data){
         $scope.empresas = data;
     });
 
-    $http.get('app_dev.php/cuentas').success(function(data){
+    $http.get('cuentas').success(function(data){
         $scope.cuentas = data;
     });
 
@@ -47,8 +48,8 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
         });
     }
 
-    $scope.add = function() {
-
+    $scope.save = function(apunte) {
+        console.log(apunte);
     };
 
 }]);
