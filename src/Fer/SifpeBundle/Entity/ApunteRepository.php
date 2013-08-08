@@ -30,6 +30,7 @@ class ApunteRepository extends EntityRepository {
         $qb->select('a')
             ->from($this->getEntityName(), 'a')
             ->where( 'a.fecha >= :fechaInicial AND a.fecha <= :fechaFinal')
+            ->orderBy('a.fecha', 'DESC')
             ->setParameter('fechaInicial', $fechaInicial->format('Y-m-d'))
             ->setParameter('fechaFinal', $fechaFinal->format('Y-m-d'));
         return $qb->getQuery()->execute();
