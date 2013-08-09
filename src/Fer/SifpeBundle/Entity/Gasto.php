@@ -10,6 +10,8 @@
 namespace Fer\SifpeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
+
 
 /**
  * Apunte
@@ -22,6 +24,7 @@ class Gasto extends Apunte {
 	 * @var \Fer\SifpeBundle\Entity\Empresa
 	 * @ORM\ManyToOne(inversedBy="gastos", targetEntity="Empresa")
 	 * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id")
+	 * @JMS\Type("Fer\SifpeBundle\Entity\Empresa")
 	 */
 	protected $empresa;
 
@@ -29,6 +32,7 @@ class Gasto extends Apunte {
 	 * @var \Fer\SifpeBundle\Entity\Cuenta
 	 * @ORM\ManyToOne(inversedBy="gastos",  targetEntity="Cuenta")
 	 * @ORM\JoinColumn(name="cuenta_id", referencedColumnName="id")
+	 * @JMS\Type("Fer\SifpeBundle\Entity\Cuenta")
 	 */
 	protected $cuenta;
 

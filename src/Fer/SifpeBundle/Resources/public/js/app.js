@@ -49,7 +49,9 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
     }
 
     $scope.save = function(apunte) {
-        console.log(apunte);
+        $http.post('gasto', apunte).success(function(data){
+            $scope.apuntes = data['data'];
+        });
     };
 
 }]);

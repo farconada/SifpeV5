@@ -18,6 +18,7 @@ abstract class Apunte
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @JMS\Type("integer")
      */
     private $id;
 
@@ -25,7 +26,7 @@ abstract class Apunte
      * @var \DateTime
      *
      * @ORM\Column(name="fecha", type="date")
-     * @JMS\Type("DateTime<'Y-m-d'>")
+     * @JMS\Type("DateTime<'d-m-Y'>")
      */
     private $fecha;
 
@@ -33,6 +34,7 @@ abstract class Apunte
      * @var string
      *
      * @ORM\Column(name="notas", type="text")
+     * @JMS\Type("string")
      */
     private $notas;
 
@@ -40,6 +42,7 @@ abstract class Apunte
      * @var float
      *
      * @ORM\Column(name="cantidad", type="decimal", precision=10, scale=2)
+     * @JMS\Type("double")
      */
     private $cantidad;
 

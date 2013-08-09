@@ -28,5 +28,13 @@ class EmpresaController extends AbstractController
         return parent::deleteAction($empresa);
     }
 
+	/**
+	 * @ParamConverter("empresa", converter="fos_rest.request_body", class="Fer\SifpeBundle\Entity\Empresa")
+	 * @param $empresa
+	 * @return \Symfony\Component\HttpFoundation\Response|void
+	 */
+	public function saveAction($empresa) {
+		return parent::saveAction($empresa);
+	}
 
 }

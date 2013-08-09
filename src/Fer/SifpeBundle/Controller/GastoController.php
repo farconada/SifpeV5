@@ -29,5 +29,13 @@ class GastoController extends ApunteController
         return parent::deleteAction($gasto);
     }
 
+	/**
+	 * @ParamConverter("gasto", converter="fos_rest.request_body", class="FerSifpeBundle:Gasto")
+	 * @param $gasto
+	 * @return \Symfony\Component\HttpFoundation\Response|void
+	 */
+	public function saveAction($gasto) {
+		return parent::saveAction($gasto);
+	}
 
 }
