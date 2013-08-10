@@ -12,6 +12,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Doctrine\ORM\EntityManager;
 use FOS\RestBundle\View\View;
 use JMS\DiExtraBundle\Annotation as DI;
+use Fer\SifpeBundle\Entity\IEntidad;
 
 class AbstractController extends FOSRestController {
     /**
@@ -25,15 +26,30 @@ class AbstractController extends FOSRestController {
      */
     public $entityRepository;
 
-    public function deleteAction($entity) {
+    /**
+     * @param IEntidad $entity
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteAction(IEntidad $entity) {
         $this->entityManager->remove($entity);
         $this->entityManager->flush();
         $view = $this->view(array('msg' => 'deleted'), 200);
         return $this->handleView($view);
     }
 
-    public function saveAction($entity) {
-        $this->entityManager->persist($entity);
+    /**
+     * @param IEntidad $entity
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function saveAction(IEntidad $entity) {
+        if ($entity->getId() != null) {
+            // actualiza
+            $this->entityManager->merge($entity);
+        } else {
+            // añade nuevo
+            $this->entityManager->persist($entity);
+        }
+
         $this->entityManager->flush();
         $view = $this->view(array('msg' => 'saved'), 200);
         return $this->handleView($view);

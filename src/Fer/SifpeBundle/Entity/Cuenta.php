@@ -12,7 +12,7 @@ use JMS\Serializer\Annotation as JMS;
  * @ORM\Table(name="cuenta")
  * @ORM\Entity(repositoryClass="CuentaRepository")
  */
-class Cuenta
+class Cuenta implements IEntidad
 {
     /**
      * @var integer

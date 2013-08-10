@@ -2,6 +2,7 @@
 
 namespace Fer\SifpeBundle\Controller;
 
+use Fer\SifpeBundle\Entity\IEntidad;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
@@ -19,21 +20,21 @@ class EmpresaController extends AbstractController
     }
 
     /**
-     * @param $empresa
+     * @param IEntidad $empresa
      * @ParamConverter("empresa", class="Fer\SifpeBundle\Entity\Empresa")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction($empresa)
+    public function deleteAction(IEntidad $empresa)
     {
         return parent::deleteAction($empresa);
     }
 
 	/**
 	 * @ParamConverter("empresa", converter="fos_rest.request_body", class="Fer\SifpeBundle\Entity\Empresa")
-	 * @param $empresa
+	 * @param IEntidad $empresa
 	 * @return \Symfony\Component\HttpFoundation\Response|void
 	 */
-	public function saveAction($empresa) {
+	public function saveAction(IEntidad $empresa) {
 		return parent::saveAction($empresa);
 	}
 

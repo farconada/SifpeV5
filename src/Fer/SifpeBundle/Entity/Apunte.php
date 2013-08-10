@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation as JMS;
  * @package Fer\SifpeBundle\Entity
  * @ORM\MappedSuperclass
  */
-abstract class Apunte
+abstract class Apunte implements IEntidad
 {
     /**
      * @var integer

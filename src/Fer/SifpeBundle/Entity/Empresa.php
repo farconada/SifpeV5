@@ -11,7 +11,7 @@ use JMS\Serializer\Annotation as JMS;
  * @ORM\Table(name="empresa")
  * @ORM\Entity(repositoryClass="EmpresaRepository")
  */
-class Empresa
+class Empresa implements IEntidad
 {
     /**
      * @var integer

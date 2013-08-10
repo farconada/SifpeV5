@@ -2,6 +2,7 @@
 
 namespace Fer\SifpeBundle\Controller;
 
+use Fer\SifpeBundle\Entity\IEntidad;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
 use Fer\SifpeBundle\Entity\Gasto;
@@ -20,21 +21,21 @@ class GastoController extends ApunteController
     }
 
     /**
-     * @param $gasto
+     * @param IEntidad $gasto
      * @ParamConverter("gasto", class="Fer\SifpeBundle\Entity\Gasto")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction($gasto)
+    public function deleteAction(IEntidad $gasto)
     {
         return parent::deleteAction($gasto);
     }
 
 	/**
 	 * @ParamConverter("gasto", converter="fos_rest.request_body", class="Fer\SifpeBundle\Entity\Gasto")
-	 * @param $gasto
+	 * @param IEntidad $gasto
 	 * @return \Symfony\Component\HttpFoundation\Response|void
 	 */
-	public function saveAction($gasto) {
+	public function saveAction(IEntidad $gasto) {
 		return parent::saveAction($gasto);
 	}
 
