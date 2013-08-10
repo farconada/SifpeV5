@@ -31,13 +31,13 @@ class Empresa implements IEntidad
     private $name;
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Gasto>
-	 * @ORM\OneToMany(mappedBy="empresa", targetEntity="Gasto", cascade={"all"})
+	 * @ORM\OneToMany(mappedBy="empresa", targetEntity="Gasto")
      * @JMS\Exclude
 	 */
 	private  $gastos;
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Ingreso>
-	 * @ORM\OneToMany(mappedBy="empresa", targetEntity="Ingreso", cascade={"all"})
+	 * @ORM\OneToMany(mappedBy="empresa", targetEntity="Ingreso")
      * @JMS\Exclude
 	 */
 	private  $ingresos;

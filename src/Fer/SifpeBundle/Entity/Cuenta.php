@@ -36,13 +36,13 @@ class Cuenta implements IEntidad
 	private $grupo;
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Gasto>
-	 * @ORM\OneToMany(mappedBy="cuenta", targetEntity="Gasto", cascade={"all"})
+	 * @ORM\OneToMany(mappedBy="cuenta", targetEntity="Gasto")
      * @JMS\Exclude
 	 */
 	private  $gastos;
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Ingreso>
-	 * @ORM\OneToMany(mappedBy="cuenta", targetEntity="Ingreso", cascade={"all"})
+	 * @ORM\OneToMany(mappedBy="cuenta", targetEntity="Ingreso")
      * @JMS\Exclude
 	 */
 	private  $ingresos;

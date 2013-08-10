@@ -30,7 +30,7 @@ class GrupoCuenta implements IEntidad
     private $name;
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Cuenta>
-	 * @ORM\OneToMany(mappedBy="grupo", targetEntity="Cuenta", cascade={"all"})
+	 * @ORM\OneToMany(mappedBy="grupo", targetEntity="Cuenta")
      * @JMS\Exclude
 	 */
 	private $cuentas;
