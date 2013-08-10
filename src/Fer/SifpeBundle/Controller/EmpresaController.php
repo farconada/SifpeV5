@@ -20,7 +20,7 @@ class EmpresaController extends AbstractController
 
     /**
      * @param $empresa
-     * @ParamConverter("empresa", class="FerSifpeBundle:Empresa")
+     * @ParamConverter("empresa", class="Fer\SifpeBundle\Entity\Empresa")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction($empresa)

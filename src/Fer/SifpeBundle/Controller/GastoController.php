@@ -21,7 +21,7 @@ class GastoController extends ApunteController
 
     /**
      * @param $gasto
-     * @ParamConverter("gasto", class="FerSifpeBundle:Gasto")
+     * @ParamConverter("gasto", class="Fer\SifpeBundle\Entity\Gasto")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction($gasto)
@@ -30,7 +30,7 @@ class GastoController extends ApunteController
     }
 
 	/**
-	 * @ParamConverter("gasto", converter="fos_rest.request_body", class="FerSifpeBundle:Gasto")
+	 * @ParamConverter("gasto", converter="fos_rest.request_body", class="Fer\SifpeBundle\Entity\Gasto")
 	 * @param $gasto
 	 * @return \Symfony\Component\HttpFoundation\Response|void
 	 */
