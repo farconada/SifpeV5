@@ -10,7 +10,7 @@
 namespace Fer\SifpeBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
-class ApunteRepository extends EntityRepository {
+class ApunteRepository extends AbstractRepository {
     /**
      * Devuelve los Apuntes de un mes ya sea el mes actual (por defecto) o X meses atras desde este mes
      * Se tienen en cuenta los meses enteros de mes a mes y no de dia a dia,
@@ -160,6 +160,15 @@ class ApunteRepository extends EntityRepository {
         $result['ingresos'] = $res[0]['cantidad'] ? $res[0]['cantidad']+0  : 0;
 
         return $result;
+    }
+
+    public function save(IEntidad $apunte)
+    {
+        $empresa = $this->getEntityManager()->find('FerSifpeBundle:Empresa', $apunte->getEmpresa()->getId());
+        $cuenta = $this->getEntityManager()->find('FerSifpeBundle:Cuenta', $apunte->getCuenta()->getId());
+        $apunte->setEmpresa($empresa);
+        $apunte->setCuenta($cuenta);
+        parent::save($apunte);
     }
 
 
