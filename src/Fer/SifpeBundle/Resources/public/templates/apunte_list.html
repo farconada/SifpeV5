@@ -47,12 +47,16 @@
     </div>
 
     <form class="form-inline">
-        <input type="date" class="input" placeholder="Fecha">
+        <input ng-model="apunteNuevo.fecha" type="date" class="input" placeholder="Fecha">
+        <select options-proxy ng-model="apunteNuevo.cuenta" ng-options="c.id as c.name for c in cuentas"></select>
+        <select options-proxy ng-model="apunteNuevo.empresa" ng-options="e.id as e.name for e in empresas"></select>
+        <br />
         <div class="input-append">
-            <input class="span2" id="appendedPrependedInput" type="text">
+            <input ng-model="apunteNuevo.cantidad" class="span2" id="appendedPrependedInput" type="text">
             <span class="add-on">€</span>
         </div>
-        <button type="submit" class="btn">Guardar</button>
+        <input ng-model="apunteNuevo.notas" type="text" class="input" placeholder="Notas">
+        <button type="submit" class="btn" ng-click="add(apunteNuevo)">Guardar</button>
     </form>
 
     <p>

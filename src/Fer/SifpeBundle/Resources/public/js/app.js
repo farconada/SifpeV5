@@ -14,7 +14,7 @@ var sifpeApp = angular.module('sifpeApp', ['options-proxy']).config(function($ro
 
 sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http){
     $scope.apunteEditar = null;
-    $scope.apunteNuevo = null;
+    $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
     $scope.cuentas = null;
     $scope.empresas = null;
     // TODO: poner mes inicial el actual, ahora esta asi para que haya datos
@@ -72,6 +72,12 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
             $scope.list($scope.mesDesde);
         });
     };
+
+    // guarda e inicializa un apunte nuevo
+    $scope.add = function(apunte) {
+        $scope.save(apunte);
+        $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
+    }
 
 }]);
 
