@@ -68,6 +68,7 @@
         <tr>
             <th class="hidden">#</th>
             <th>Fecha</th>
+            <th>Notas</th>
             <th>Cuenta</th>
             <th>Empresa</th>
             <th>Cantidad</th>
@@ -78,6 +79,7 @@
         <tr ng-repeat="apunte in apuntes" ng-dblclick="edit($index)">
             <td class="hidden">[[apunte.id]]</td>
             <td>[[apunte.fecha]]</td>
+            <td>[[apunte.notas]]</td>
             <td>[[apunte.cuenta.name]]</td>
             <td>[[apunte.empresa.name]]</td>
             <td>[[apunte.cantidad]]</td>
