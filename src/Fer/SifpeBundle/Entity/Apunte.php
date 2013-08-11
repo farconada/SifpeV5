@@ -26,9 +26,9 @@ abstract class Apunte implements IEntidad
      * @var \DateTime
      *
      * @ORM\Column(name="fecha", type="date")
-     * @JMS\Type("DateTime<'d-m-Y'>")
+     * @JMS\Type("DateTime<'Y-m-d'>")
      */
-    private $fecha;
+    protected  $fecha;
 
     /**
      * @var string
@@ -36,7 +36,7 @@ abstract class Apunte implements IEntidad
      * @ORM\Column(name="notas", type="text")
      * @JMS\Type("string")
      */
-    private $notas;
+    protected  $notas;
 
     /**
      * @var float
@@ -44,7 +44,7 @@ abstract class Apunte implements IEntidad
      * @ORM\Column(name="cantidad", type="decimal", precision=10, scale=2)
      * @JMS\Type("double")
      */
-    private $cantidad;
+    protected  $cantidad;
 
 
     /**
