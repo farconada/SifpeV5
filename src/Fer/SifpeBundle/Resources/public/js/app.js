@@ -82,7 +82,9 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
     // guarda e inicializa un apunte nuevo
     $scope.add = function(apunte) {
         $scope.save(apunte);
-        $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
+        if ($scope.apunte_form_new.$valid) {
+            $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
+        }
     }
 
 }]);
