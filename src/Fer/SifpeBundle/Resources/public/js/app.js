@@ -5,26 +5,34 @@
  * Time: 8:28
  * To change this template use File | Settings | File Templates.
  */
-var sifpeApp = angular.module('sifpeApp', ['options-proxy']).config(function($routeProvider, $interpolateProvider){
+var config_data = {
+    'GENERAL_CONFIG': {
+        'APUNTE_TIPO': 'gasto'
+    }
+};
+var config_module = angular.module('sifpeApp.config', []);
+angular.forEach(config_data,function(key,value) {
+    config_module.constant(value,key);
+});
+
+var sifpeApp = angular.module('sifpeApp', ['sifpeApp.config','options-proxy']).config(function($routeProvider, $interpolateProvider){
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
     $routeProvider.
-        when("/list", {controller: 'GastoCtrl', templateUrl: "/bundles/fersifpe/templates/apunte_list.html"}).
+        when("/list", {controller: 'ApunteCtrl', templateUrl: "/bundles/fersifpe/templates/apunte_list.html"}).
         otherwise({redirectTo: "/list"});
 });
 
-sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http){
+sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CONFIG', function($scope, $rootScope, $http, GENERAL_CONFIG){
     $scope.apunteEditar = null;
     $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
     $scope.cuentas = null;
     $scope.empresas = null;
-    // TODO: poner mes inicial el actual, ahora esta asi para que haya datos
-    $scope.mesDesde = 1;
+    $scope.mesDesde = 0;
     $scope.ultimoMes = 0;
 
-    // TODO: quitar referencia a "gasto" y parametrizar para que valga para todo tipo de apunte
     //Carga los apuntes de un mes desde el mes actiual - mesDesde meses
     $scope.list = function(mesDesde) {
-        $http.get('gastos/' + mesDesde).success(function(data){
+        $http.get(GENERAL_CONFIG.APUNTE_TIPO + 's/' + mesDesde).success(function(data){
             $scope.apuntes = data['data'];
             $scope.ultimoMes = data['totalPaginas'];
         });
@@ -55,19 +63,17 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
         $('#modalEdit').modal();
     };
 
-    // TODO: quitar referencia a "gasto" y parametrizar para que valga para todo tipo de apunte
     // borrar un apunte
     $scope.delete = function(apunteIndex) {
         var apunteABorrar = $scope.apuntes[apunteIndex];
-        $http.get('gasto/' + apunteABorrar.id + '/borrar').success(function(data){
+        $http.get(GENERAL_CONFIG.APUNTE_TIPO + '/' + apunteABorrar.id + '/borrar').success(function(data){
             $scope.apuntes.splice(apunteIndex, 1);
         });
     }
 
-    // TODO: quitar referencia a "gasto" y parametrizar para que valga para todo tipo de apunte
     // guardar un apunte
     $scope.save = function(apunte) {
-        $http.post('gasto', apunte).success(function(data){
+        $http.post(GENERAL_CONFIG.APUNTE_TIPO, apunte).success(function(data){
             // recargamos desde el servidor para estar seguros de que esta bien guardado
             $scope.list($scope.mesDesde);
         });

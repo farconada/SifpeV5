@@ -33,7 +33,7 @@ abstract class Apunte implements IEntidad
     /**
      * @var string
      *
-     * @ORM\Column(name="notas", type="text")
+     * @ORM\Column(name="notas", type="text", nullable=true)
      * @JMS\Type("string")
      */
     protected  $notas;
