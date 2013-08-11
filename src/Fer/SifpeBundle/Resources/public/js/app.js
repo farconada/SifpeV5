@@ -17,13 +17,20 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
     $scope.apunteNuevo = null;
     $scope.cuentas = null;
     $scope.empresas = null;
+    // TODO: poner mes inicial el actual, ahora esta asi para que haya datos
+    $scope.mesDesde = 1;
 
     // TODO: quitar referencia a "gasto" y parametrizar para que valga para todo tipo de apunte
-    // TODO: poner mes inicial el actual, ahora esta asi para que haya datos
+    //Carga los apuntes de un mes desde el mes actiual - mesDesde meses
+    $scope.list = function(mesDesde) {
+        $http.get('gastos/' + mesDesde).success(function(data){
+            $scope.apuntes = data['data'];
+        });
+    }
+
     // carga inicial, lista de gastos
-    $http.get('gastos/1').success(function(data){
-        $scope.apuntes = data['data'];
-    });
+    $scope.list($scope.mesDesde);
+
 
     // carga inicial, lista de empresas
     $http.get('empresas').success(function(data){
@@ -54,7 +61,8 @@ sifpeApp.controller('GastoCtrl', ['$scope', '$rootScope', '$http', function($sco
     // guardar un apunte
     $scope.save = function(apunte) {
         $http.post('gasto', apunte).success(function(data){
-            $scope.apuntes = data['data'];
+            // recargamos desde el servidor para estar seguros de que esta bien guardado
+            $scope.list($scope.mesDesde);
         });
     };
 

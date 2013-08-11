@@ -11,7 +11,7 @@
                 <div class="control-group">
                     <label class="control-label" for="fecha">Fecha</label>
                     <div class="controls">
-                        <input type="date" id="fecha" placeholder="fecha" value="[[apunteEditar.fecha]]">
+                        <input ng-model="apunteEditar.fecha" type="date" id="fecha" placeholder="fecha"">
                     </div>
                 </div>
                 <div class="control-group">
@@ -29,13 +29,13 @@
                 <div class="control-group">
                     <label class="control-label" for="cantidad">Cantidad</label>
                     <div class="controls">
-                        <input type="text" id="cantidad" placeholder="cantidad"  value="[[apunteEditar.cantidad]]">
+                        <input type="text" id="cantidad" placeholder="cantidad"  ng-model="apunteEditar.cantidad">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="notas">Notas</label>
                     <div class="controls">
-                        <textarea rows="3" id="notas" placeholder="notas">[[apunteEditar.notas]]</textarea>
+                        <textarea rows="3" id="notas" placeholder="notas" ng-model="apunteEditar.notas" />
                     </div>
                 </div>
             </form>
