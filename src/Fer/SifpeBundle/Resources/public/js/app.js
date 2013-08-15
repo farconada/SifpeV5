@@ -75,7 +75,7 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         },
         series: [],
         title: {
-            text: 'Gastos'
+            text: 'Apuntes'
         },
 
         loading: false
@@ -111,6 +111,7 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
     // actualiza el grafico del año
     $scope.chartAnio = function(aniosAtras) {
         $scope.chartAnioConfig.series = [];
+        $scope.chartAnioConfig.title.text = GENERAL_CONFIG.APUNTE_TIPO;
         $http.get(GENERAL_CONFIG.APUNTE_TIPO + 's/pormes/' + aniosAtras).success(function(data){
             var cantidad_este_mes = [];
             var cantidad_mes_anterior = [];
