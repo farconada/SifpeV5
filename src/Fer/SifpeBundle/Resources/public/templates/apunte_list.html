@@ -95,3 +95,15 @@
         </tbody>
     </table>
 </div>
+<p>
+    <a ng-click="list(ultimoMes)" class="icon-fast-backward"></a>
+    <a ng-click="list(mesDesde + 1 )" class="icon-step-backward"></a>
+    <span>Viendo los datos de [[mesDesde]] meses atras</span>
+    <a ng-click="list(mesDesde -  1 )" class="icon-step-forward"></a>
+    <a ng-click="list(0)" class="icon-fast-forward"></a>
+</p>
+<div class="container">
+    <div id="chart-mes">
+        <highchart id="chart1" config="chartAnioConfig" class="span10" ></highchart>
+    </div>
+</div>

@@ -15,7 +15,7 @@ angular.forEach(config_data,function(key,value) {
     config_module.constant(value,key);
 });
 
-var sifpeApp = angular.module('sifpeApp', ['sifpeApp.config','options-proxy']).config(function($routeProvider, $interpolateProvider){
+var sifpeApp = angular.module('sifpeApp', ['sifpeApp.config','options-proxy', 'highcharts-ng']).config(function($routeProvider, $interpolateProvider){
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
     $routeProvider.
         when("/list", {controller: 'ApunteCtrl', templateUrl: "/bundles/fersifpe/templates/apunte_list.html"}).
@@ -25,10 +25,61 @@ var sifpeApp = angular.module('sifpeApp', ['sifpeApp.config','options-proxy']).c
 sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CONFIG', function($scope, $rootScope, $http, GENERAL_CONFIG){
     $scope.apunteEditar = null;
     $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
-    $scope.cuentas = null;
-    $scope.empresas = null;
+    $scope.cuentas = [];
+    $scope.empresas = [];
     $scope.mesDesde = 0;
     $scope.ultimoMes = 0;
+    $scope.apuntes = [];
+    var aniosAtras = 0;
+
+    $scope.chartAnioConfig = {
+        options: {
+            chart: {
+                type: 'area'
+            },
+            pane: {
+                startAngle: -150,
+                endAngle: 150,
+                background: [{
+                    backgroundColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                        stops: [
+                            [0, '#FFF'],
+                            [1, '#333']
+                        ]
+                    },
+                    borderWidth: 0,
+                    outerRadius: '109%'
+                }, {
+                    backgroundColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                        stops: [
+                            [0, '#333'],
+                            [1, '#FFF']
+                        ]
+                    },
+                    borderWidth: 1,
+                    outerRadius: '107%'
+                }, {
+                    // default background
+                }, {
+                    backgroundColor: '#DDD',
+                    borderWidth: 0,
+                    outerRadius: '105%',
+                    innerRadius: '103%'
+                }]
+            }
+        },
+        xAxis: {
+            categories: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']
+        },
+        series: [],
+        title: {
+            text: 'Gastos'
+        },
+
+        loading: false
+    };
 
     //Carga los apuntes de un mes desde el mes actiual - mesDesde meses
     $scope.list = function(mesDesde) {
@@ -56,6 +107,23 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
     $http.get('cuentas').success(function(data){
         $scope.cuentas = data;
     });
+
+    // actualiza el grafico del año
+    $scope.chartAnio = function(aniosAtras) {
+        $scope.chartAnioConfig.series = [];
+        $http.get(GENERAL_CONFIG.APUNTE_TIPO + 's/pormes/' + aniosAtras).success(function(data){
+            var cantidad_este_mes = [];
+            var cantidad_mes_anterior = [];
+            $.each(data, function(index, value) {
+                cantidad_este_mes.push(value.cantidad);
+                cantidad_mes_anterior.push(value.cantidad_anterior);
+            });
+            d = new Date();
+            d.setMonth(d.getMonth() - $scope.mesDesde);
+            $scope.chartAnioConfig.series.push({'name': 'Año ' + (d.getFullYear()-1) , data: cantidad_mes_anterior});
+            $scope.chartAnioConfig.series.push({'name': 'Año ' + d.getFullYear(), data: cantidad_este_mes});
+        });
+    };
 
     // ventana modal para editar un apunte
     $scope.edit = function(apunteIndex) {
@@ -85,7 +153,16 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         if ($scope.apunte_form_new.$valid) {
             $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
         }
-    }
+    };
+
+    $scope.$watch('mesDesde', function(mesDesde) {
+        var dActual = new Date();
+        var dFinal = new Date();
+        dFinal.setMonth(dFinal.getMonth() - mesDesde);
+        aniosAtras = dActual.getFullYear() - dFinal.getFullYear();
+        $scope.chartAnio(aniosAtras);
+    }, true);
+
 
 }]);
 
