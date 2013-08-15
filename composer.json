@@ -36,7 +36,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
 
         "friendsofsymfony/elastica-bundle": "3.0.*@dev",
-        "leafo/lessphp": "0.3.9",
+        "leafo/lessphp": "0.4.*",
         "braincrafted/bootstrap-bundle": "dev-master@dev",
         "twbs/bootstrap": "2.3.*",
         "jquery/jquery": "2.0.*",
