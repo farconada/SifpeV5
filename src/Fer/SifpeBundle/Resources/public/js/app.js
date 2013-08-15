@@ -27,57 +27,32 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
     $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
     $scope.cuentas = [];
     $scope.empresas = [];
-    $scope.mesDesde = 0;
-    $scope.ultimoMes = 0;
+    $scope.mesDesde = 0;  // meses de el mes actual o numero página (para paginacion)
+    $scope.ultimoMes = 0; //numero maximo de meses o total de paginas almacenadas (para paginacion)
     $scope.apuntes = [];
-    var aniosAtras = 0;
+    $scope.anios = [];
+    d = new Date();
+    for (i=2006; i<= d.getFullYear(); i++) {
+        $scope.anios.push(i);
+    }
+
+    $scope.chart_anio = {'anio1': d.getFullYear()-1, 'anio2': d.getFullYear()};
 
     $scope.chartAnioConfig = {
         options: {
             chart: {
                 type: 'area'
-            },
-            pane: {
-                startAngle: -150,
-                endAngle: 150,
-                background: [{
-                    backgroundColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                        stops: [
-                            [0, '#FFF'],
-                            [1, '#333']
-                        ]
-                    },
-                    borderWidth: 0,
-                    outerRadius: '109%'
-                }, {
-                    backgroundColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                        stops: [
-                            [0, '#333'],
-                            [1, '#FFF']
-                        ]
-                    },
-                    borderWidth: 1,
-                    outerRadius: '107%'
-                }, {
-                    // default background
-                }, {
-                    backgroundColor: '#DDD',
-                    borderWidth: 0,
-                    outerRadius: '105%',
-                    innerRadius: '103%'
-                }]
             }
         },
         xAxis: {
             categories: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']
         },
-        series: [],
+        series: [
+            {'data': [0,0,0,0,0,0,0,0,0,0,0,0]}
+        ],
         title: {
             text: 'Apuntes'
         },
-
         loading: false
     };
 
@@ -108,21 +83,15 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         $scope.cuentas = data;
     });
 
-    // actualiza el grafico del año
-    $scope.chartAnio = function(aniosAtras) {
-        $scope.chartAnioConfig.series = [];
-        $scope.chartAnioConfig.title.text = GENERAL_CONFIG.APUNTE_TIPO;
-        $http.get(GENERAL_CONFIG.APUNTE_TIPO + 's/pormes/' + aniosAtras).success(function(data){
-            var cantidad_este_mes = [];
-            var cantidad_mes_anterior = [];
-            $.each(data, function(index, value) {
-                cantidad_este_mes.push(value.cantidad);
-                cantidad_mes_anterior.push(value.cantidad_anterior);
+    // actualiza el grafico de resumen anual
+    // añade la serie de un año
+    $scope.chartAnio = function(anio) {
+        $http.get(anio + '/' +GENERAL_CONFIG.APUNTE_TIPO + 's/resumen').success(function(data){
+            var cantidades = [];
+            $.each(data['data'], function(index, value) {
+                cantidades.push(parseFloat(value.cantidad));
             });
-            d = new Date();
-            d.setMonth(d.getMonth() - $scope.mesDesde);
-            $scope.chartAnioConfig.series.push({'name': 'Año ' + (d.getFullYear()-1) , data: cantidad_mes_anterior});
-            $scope.chartAnioConfig.series.push({'name': 'Año ' + d.getFullYear(), data: cantidad_este_mes});
+            $scope.chartAnioConfig.series.push({'name': 'Año ' + anio , data: cantidades});
         });
     };
 
@@ -156,12 +125,12 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         }
     };
 
-    $scope.$watch('mesDesde', function(mesDesde) {
-        var dActual = new Date();
-        var dFinal = new Date();
-        dFinal.setMonth(dFinal.getMonth() - mesDesde);
-        aniosAtras = dActual.getFullYear() - dFinal.getFullYear();
-        $scope.chartAnio(aniosAtras);
+    // mira cada vez que se cambia un año para actualizar el grafico
+    $scope.$watch('chart_anio', function(chart_anio) {
+        $scope.chartAnioConfig.series = [];
+        $scope.chartAnioConfig.title.text = GENERAL_CONFIG.APUNTE_TIPO;
+        $scope.chartAnio(chart_anio.anio1);
+        $scope.chartAnio(chart_anio.anio2);
     }, true);
 
 
