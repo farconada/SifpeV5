@@ -85,50 +85,30 @@ class ApunteRepository extends AbstractRepository {
     /**
      * Devuelve el total de los apuntes de un mes para los doces meses del año de enero a dicimbre
      *
-     * @param  $aniosAtras Mumero de años atras para los que devolver el listado
+     * @param $anio 2013, 2012, 2011....
      * @return array
      */
-    public function getResumenAnual($aniosAtras) {
-        // 1 de enero del año que sea
-        $fechaInicial = new \DateTime('-' . $aniosAtras . ' year');
-        $fechaInicial->setDate($fechaInicial->format('Y'), 1, 1);
-        $fechaFinal = new \DateTime('-' . $aniosAtras . ' year');
-        $fechaFinal->setDate($fechaInicial->format('Y'), 1, 1);
-        $result = array();
-        // para cada mes de ese año
-        for ($i = 0; $i < 12; $i++) {
-            $result[$i]['mes'] = $fechaInicial->format('M');
-            // avanzamos 1 mes
-            $fechaFinal->add(new \DateInterval('P0Y1M'));
-
-            $query = $this->getEntityManager()->createQuery(
-                'SELECT sum(a.cantidad) AS cantidad FROM ' .
-                $this->getEntityName() .
-                ' a WHERE a.fecha <:fechaFinal AND a.fecha >=:fechaInicial'
-            );
-
-            $res = $query->execute(
-                array(
-                    'fechaInicial' => $fechaInicial->format('Y-m-d'),
-                    'fechaFinal' => $fechaFinal->format('Y-m-d')
-                )
-            );
-            $result[$i]['cantidad'] = $res[0]['cantidad']+0;
-
-            // avanzamos 1 mes
-            $fechaInicial->add(new \DateInterval('P0Y1M'));
-        }
-        return $result;
+    public function getResumenAnual($anio) {
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT sum(a.cantidad) AS cantidad, SUBSTRING(a.fecha, 6, 2) as mes FROM ' .
+            $this->getEntityName() .
+            ' a WHERE SUBSTRING(a.fecha, 1, 4)=:anio  GROUP BY mes'
+        );
+        return $query->execute(array('anio' => $anio));
     }
 
     /**
      * resumen de gastos e ingresos de un mes
-     * @param $mesesAtras
+     * @param $anio 2013, 2012, 2011.......
+     * @param $mes 01 ó 1 02 03 04
      * @return array
      */
-    public function getResumenMes($mesesAtras) {
-        $fechaInicial = new \DateTime("first day of $mesesAtras month ago");
-        $fechaFinal = new \DateTime("last day of $mesesAtras month ago");
+    public function getResumenMes($anio, $mes) {
+        $fechaInicial = new \DateTime();
+        $fechaInicial->setDate($anio, $mes, 01);
+        $fechaFinal = new \DateTime();
+        $fechaFinal->setDate($anio, $mes, 01);
+        $fechaFinal->modify('last day of this month');
         $result = array();
 
         // Gastos de ese mes

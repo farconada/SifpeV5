@@ -31,13 +31,13 @@ fer_sifpe_ingreso_xcuenta:
     methods: [GET]
 
 fer_sifpe_gasto_xcuenta:
-    pattern:  /gastos/pormes/{desdeMeses}
-    defaults: { _controller: FerSifpeBundle:Gasto:listResumenAnual, _format: json, desdeMeses: 0 }
+    pattern:  /{anio}/gastos/resumen
+    defaults: { _controller: FerSifpeBundle:Gasto:listResumenAnual, _format: json }
     methods: [GET]
 
 fer_sifpe_ingreso_xcuenta:
-    pattern:  /ingresos/pormes/{desdeMeses}
-    defaults: { _controller: FerSifpeBundle:Ingreso:listResumenAnual, _format: json, desdeMeses: 0 }
+    pattern:  /{anio}/ingresos/resumen
+    defaults: { _controller: FerSifpeBundle:Ingreso:listResumenAnual, _format: json }
     methods: [GET]
 
 fer_sifpe_gasto_list:
@@ -61,8 +61,8 @@ fer_sifpe_ingreso_list:
     methods: [GET]
 
 fer_sifpe_resumen_xcuenta:
-    pattern:  /resumen/pormes/{desdeMeses}
-    defaults: { _controller: FerSifpeBundle:Ingreso:listResumenMes, _format: json, desdeMeses: 0 }
+    pattern:  /{anio}/{mes}/resumen
+    defaults: { _controller: FerSifpeBundle:Ingreso:listResumenMes, _format: json }
     methods: [GET]
 
 fer_sifpe_empresas_list:
