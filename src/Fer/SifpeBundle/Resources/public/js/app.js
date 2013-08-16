@@ -48,7 +48,7 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
             }
         },
         xAxis: {
-            categories: ['c1', 'c2','c3','c4','c5']
+            categories: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']
         },
         series: [
             {'data': [0,0,0,0,0,0,0,0,0,0,0,0]}
