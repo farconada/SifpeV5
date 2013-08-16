@@ -66,7 +66,9 @@
         <a ng-click="list(mesDesde -  1 )" class="icon-step-forward"></a>
         <a ng-click="list(0)" class="icon-fast-forward"></a>
     </p>
-
+    <p>
+        Total de este mes <strong>[[totalMes]]</strong>.
+    </p>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -98,7 +100,15 @@
 <div class="container">
     <select ng-model="chart_anio.anio1" ng-options="a for a in anios"></select>
     <select ng-model="chart_anio.anio2" ng-options="a for a in anios"></select>
-    <div id="chart-mes">
-        <highchart id="chart1" config="chartAnioConfig" class="span10" ></highchart>
+    <div id="chart-mensual">
+        <highchart id="chart1" config="chartAnioConfig" class="span12" ></highchart>
+    </div>
+    <div id="chart-cuentas">
+        <select ng-model="chart_mes.anio1" ng-options="a for a in anios"></select>
+        <select ng-model="chart_mes.mes1" ng-options="m for m in [1,2,3,4,5,6,7,8,9,10,11,12]"></select>
+        <select ng-model="chart_mes.anio2" ng-options="a for a in anios"></select>
+        <select ng-model="chart_mes.mes2" ng-options="m for m in [1,2,3,4,5,6,7,8,9,10,11,12]"></select>
+
+        <highchart id="chart2" config="chartMesConfig" class="span12" ></highchart>
     </div>
 </div>

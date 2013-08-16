@@ -31,17 +31,38 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
     $scope.ultimoMes = 0; //numero maximo de meses o total de paginas almacenadas (para paginacion)
     $scope.apuntes = [];
     $scope.anios = [];
+    $scope.totalMes = 0;
+
     d = new Date();
     for (i=2006; i<= d.getFullYear(); i++) {
         $scope.anios.push(i);
     }
 
     $scope.chart_anio = {'anio1': d.getFullYear()-1, 'anio2': d.getFullYear()};
+    $scope.chart_mes = {'anio1': d.getFullYear(), 'mes1': d.getMonth()+1, 'anio2': d.getFullYear()-1, 'mes2': d.getMonth()+1};
 
     $scope.chartAnioConfig = {
         options: {
             chart: {
                 type: 'area'
+            }
+        },
+        xAxis: {
+            categories: ['c1', 'c2','c3','c4','c5']
+        },
+        series: [
+            {'data': [0,0,0,0,0,0,0,0,0,0,0,0]}
+        ],
+        title: {
+            text: 'Apuntes'
+        },
+        loading: false
+    };
+
+    $scope.chartMesConfig = {
+        options: {
+            chart: {
+                type: 'column'
             }
         },
         xAxis: {
@@ -131,6 +152,56 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         $scope.chartAnioConfig.title.text = GENERAL_CONFIG.APUNTE_TIPO;
         $scope.chartAnio(chart_anio.anio1);
         $scope.chartAnio(chart_anio.anio2);
+    }, true);
+
+    // total de este mes
+    $scope.$watch('apuntes', function(apuntes){
+        $scope.totalMes = 0;
+        $.each($scope.apuntes, function(index, value){
+            $scope.totalMes += value.cantidad;
+        });
+        $scope.totalMes = parseFloat($scope.totalMes);
+    }, true);
+
+    $scope.$watch('chart_mes', function(chart_mes){
+        var res = {};
+        $http.get('cuentas/' + GENERAL_CONFIG.APUNTE_TIPO + 's/' + chart_mes.anio1 + '/' +chart_mes.mes1).success(function(data){
+            $.each(data['data'], function(index, cuenta){
+                if (res[cuenta['cuenta']] == undefined) {
+                    res[cuenta['cuenta']] = {};
+                }
+                res[cuenta['cuenta']]['mes1'] = parseFloat(cuenta['cantidad']);
+            });
+            $http.get('cuentas/' + GENERAL_CONFIG.APUNTE_TIPO + 's/' + chart_mes.anio2 + '/' +chart_mes.mes2).success(function(data){
+                $.each(data['data'], function(index, cuenta){
+                    if (res[cuenta['cuenta']] == undefined) {
+                        res[cuenta['cuenta']] = {};
+                    }
+                    res[cuenta['cuenta']]['mes2'] = parseFloat(cuenta['cantidad']);
+                });
+                $scope.chartMesConfig.xAxis.categories = [];
+                $scope.chartMesConfig.series = [];
+                var valoresMes1 = [];
+                var valoresMes2 = [];
+                $.each(res, function(index, cuenta){
+                    $scope.chartMesConfig.xAxis.categories.push(index);
+                    if (cuenta['mes1'] == undefined) {
+                        cuenta['mes1'] = 0;
+                    }
+                    if (cuenta['mes2'] == undefined) {
+                        cuenta['mes2'] = 0;
+                    }
+
+                    valoresMes1.push(cuenta['mes1']);
+                    valoresMes2.push(cuenta['mes2']);
+                });
+                $scope.chartMesConfig.series.push({'name': chart_mes.anio1 +'-'+chart_mes.mes1, 'data': valoresMes1});
+                $scope.chartMesConfig.series.push({'name': chart_mes.anio2 +'-'+chart_mes.mes2, 'data': valoresMes2});
+            });
+        });
+
+
+
     }, true);
 
 

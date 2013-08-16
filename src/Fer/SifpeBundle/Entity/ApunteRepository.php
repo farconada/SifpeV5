@@ -62,13 +62,16 @@ class ApunteRepository extends AbstractRepository {
     /**
      * Devuelve una lista de cuentas con el total por cuenta de cada mes
      *
-     * @param int $mesesAtras Numero de meses atras para los que devolver el listado
+     * @param $anio
+     * @param $mes
      * @return array
      */
-    public function getTotalCuentasMensual($mesesAtras = 0) {
-        $mesesAtras = $mesesAtras + 0;
-        $fechaInicial = new \DateTime("first day of $mesesAtras month ago");
-        $fechaFinal = new \DateTime("last day of $mesesAtras month ago");
+    public function getTotalCuentasMensual($anio, $mes) {
+        $fechaInicial = new \DateTime();
+        $fechaInicial->setDate($anio, $mes, 01);
+        $fechaFinal = new \DateTime();
+        $fechaFinal->setDate($anio, $mes, 01);
+        $fechaFinal->modify('last day of this month');
         $query = $this->getEntityManager()->createQuery(
             'SELECT sum(g.cantidad) AS cantidad, c.name AS cuenta FROM ' .
             $this->getEntityName() .

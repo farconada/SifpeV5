@@ -21,21 +21,21 @@ fer_sifpe_ingreso_delete:
     methods: [GET]
 
 fer_sifpe_gasto_xcuenta:
-    pattern:  /gastos/porcuenta/{desdeMeses}
-    defaults: { _controller: FerSifpeBundle:Gasto:listResumenPorCuenta, _format: json, desdeMeses: 0 }
+    pattern:  /cuentas/gastos/{anio}/{mes}
+    defaults: { _controller: FerSifpeBundle:Gasto:listResumenPorCuenta, _format: json}
     methods: [GET]
 
 fer_sifpe_ingreso_xcuenta:
-    pattern:  /ingresos/porcuenta/{desdeMeses}
-    defaults: { _controller: FerSifpeBundle:Ingreso:listResumenPorCuenta, _format: json, desdeMeses: 0 }
+    pattern:  /cuentas/ingresos/{anio}/{mes}
+    defaults: { _controller: FerSifpeBundle:Ingreso:listResumenPorCuenta, _format: json}
     methods: [GET]
 
-fer_sifpe_gasto_xcuenta:
+fer_sifpe_gasto_xanio:
     pattern:  /{anio}/gastos/resumen
     defaults: { _controller: FerSifpeBundle:Gasto:listResumenAnual, _format: json }
     methods: [GET]
 
-fer_sifpe_ingreso_xcuenta:
+fer_sifpe_ingreso_xanio:
     pattern:  /{anio}/ingresos/resumen
     defaults: { _controller: FerSifpeBundle:Ingreso:listResumenAnual, _format: json }
     methods: [GET]
