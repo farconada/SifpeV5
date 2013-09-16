@@ -13,7 +13,7 @@ class GastoController extends ApunteController
 
     /** @DI\InjectParams({
     *     "gastoRepository" = @DI\Inject("fer_sifpe.gasto_repository"),
-     *    "gastoFinder" = @DI\Inject("fos_elastica.index.website.gasto")
+     *    "gastoFinder" = @DI\Inject("fos_elastica.finder.website.gasto")
     * })
     */
     public function __construct($gastoRepository, $gastoFinder)

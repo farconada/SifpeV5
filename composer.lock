@@ -1509,12 +1509,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/lessphp.git",
-                "reference": "51f3f06f0fe78a722dabfd14578444bdd078d9de"
+                "reference": "v0.4.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/lessphp/zipball/51f3f06f0fe78a722dabfd14578444bdd078d9de",
-                "reference": "51f3f06f0fe78a722dabfd14578444bdd078d9de",
+                "url": "https://api.github.com/repos/leafo/lessphp/zipball/v0.4.0",
+                "reference": "v0.4.0",
                 "shasum": ""
             },
             "type": "library",
@@ -2219,12 +2219,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "e6d983c22f5e07e627459c25dfe21ac8908ef55a"
+                "reference": "8efd5cadc8f1c05e4221e2977526ccb54737e6bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/e6d983c22f5e07e627459c25dfe21ac8908ef55a",
-                "reference": "e6d983c22f5e07e627459c25dfe21ac8908ef55a",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/8efd5cadc8f1c05e4221e2977526ccb54737e6bc",
+                "reference": "8efd5cadc8f1c05e4221e2977526ccb54737e6bc",
                 "shasum": ""
             },
             "require": {
@@ -2319,7 +2319,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-09-13 15:06:33"
+            "time": "2013-09-16 11:54:08"
         },
         {
             "name": "twbs/bootstrap",
