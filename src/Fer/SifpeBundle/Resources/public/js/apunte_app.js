@@ -5,11 +5,6 @@
  * Time: 8:28
  * To change this template use File | Settings | File Templates.
  */
-var config_data = {
-    'GENERAL_CONFIG': {
-        'APUNTE_TIPO': 'gasto'
-    }
-};
 var config_module = angular.module('sifpeApp.config', []);
 angular.forEach(config_data,function(key,value) {
     config_module.constant(value,key);
