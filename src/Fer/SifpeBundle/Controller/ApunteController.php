@@ -15,7 +15,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 abstract class ApunteController extends AbstractController {
 
-
+	/**
+	 * @var \FOS\ElasticaBundle\Finder\TransformedFinder
+	 */
+	public $apunteFinder;
 
     /**
      * @Template
@@ -79,5 +82,15 @@ abstract class ApunteController extends AbstractController {
         $view = $this->view($items, 200);
         return $this->handleView($view);
     }
+
+	/**
+	 * @param $query Query para elastic search
+	 * @return mixed
+	 */
+	public function searchAction($query) {
+		$items = $this->apunteFinder->find($query);
+		$view = $this->view($items, 200);
+		return $this->handleView($view);
+	}
 
 }

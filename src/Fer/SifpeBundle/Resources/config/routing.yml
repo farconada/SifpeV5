@@ -100,3 +100,10 @@ fer_sifpe_cuentas_list:
     methods: [GET]
     options:
       expose: true
+
+fer_sifpe_gasto_search:
+    pattern:  /gastos/buscar/{query}
+    defaults: { _controller: FerSifpeBundle:Gasto:search, _format: json}
+    methods: [GET]
+    options:
+      expose: true
