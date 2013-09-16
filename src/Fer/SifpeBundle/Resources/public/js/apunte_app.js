@@ -175,6 +175,15 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         }
     };
 
+    // busqueda de apuntes
+    $scope.search = function(queryString) {
+        var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_search', { query: queryString });
+        $http.get(url).success(function(data){
+            $scope.apuntes = data;
+            $scope.ultimoMes = 0;
+        });
+    }
+
     // mira cada vez que se cambia un año para actualizar el grafico anual
     $scope.$watch('chart_anio', function(chart_anio) {
         $scope.chartAnioConfig.series = [];
@@ -231,11 +240,7 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
                 $scope.chartMesConfig.series.push({'name': chart_mes.anio2 +'-'+chart_mes.mes2, 'data': valoresMes2});
             });
         });
-
-
-
     }, true);
-
 
 }]);
 

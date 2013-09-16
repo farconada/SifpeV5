@@ -45,7 +45,7 @@
             <a href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="save(apunteEditar)">Guardar cambios</a>
         </div>
     </div>
-
+    <a ng-click="search('gasolina')" class="icon-query">query</a>
     <form class="form-inline" name="apunte_form_new" ng-submit="add(apunteNuevo)">
         <input ng-model="apunteNuevo.fecha" type="date" class="input" placeholder="Fecha" required="required">
         <select options-proxy ng-model="apunteNuevo.cuenta" ng-options="c.id as c.name for c in cuentas" required="required"></select>
