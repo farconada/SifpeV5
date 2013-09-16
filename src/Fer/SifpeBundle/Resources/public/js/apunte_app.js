@@ -10,6 +10,11 @@ angular.forEach(config_data,function(key,value) {
     config_module.constant(value,key);
 });
 
+/**
+ * Modulo de AngularJS
+ * Se define la ruts /list por defecto
+ * @type {*}
+ */
 var sifpeApp = angular.module('sifpeApp', ['sifpeApp.config','options-proxy', 'highcharts-ng']).config(function($routeProvider, $interpolateProvider){
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
     $routeProvider.
@@ -17,6 +22,9 @@ var sifpeApp = angular.module('sifpeApp', ['sifpeApp.config','options-proxy', 'h
         otherwise({redirectTo: "/list"});
 });
 
+/**
+ * controlador principal
+ */
 sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CONFIG', function($scope, $rootScope, $http, GENERAL_CONFIG){
     $scope.apunteEditar = null;
     $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
@@ -28,14 +36,32 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
     $scope.anios = [];
     $scope.totalMes = 0;
 
+    /**
+     * listado de años posibles, para los combos
+     * Empieza en 2006 que es cuando comienzan los datos
+     * @type {Date}
+     */
     d = new Date();
     for (i=2006; i<= d.getFullYear(); i++) {
         $scope.anios.push(i);
     }
 
+    /**
+     * Grafico del anual, por defecto este año vs año pasado
+     * @type {{anio1: number, anio2: number}}
+     */
     $scope.chart_anio = {'anio1': d.getFullYear()-1, 'anio2': d.getFullYear()};
+
+    /**
+     * Grafico de mes desglosado, por defecto este mes vs el mes anterior
+     * @type {{anio1: number, mes1: number, anio2: number, mes2: number}}
+     */
     $scope.chart_mes = {'anio1': d.getFullYear(), 'mes1': d.getMonth()+1, 'anio2': d.getFullYear()-1, 'mes2': d.getMonth()+1};
 
+    /**
+     * config del grafico anual
+     * @type {{options: {chart: {type: string}}, xAxis: {categories: Array}, series: Array, title: {text: string}, loading: boolean}}
+     */
     $scope.chartAnioConfig = {
         options: {
             chart: {
@@ -54,6 +80,10 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         loading: false
     };
 
+    /**
+     * config del grafico mensual
+     * @type {{options: {chart: {type: string}}, xAxis: {categories: Array}, series: Array, title: {text: string}, loading: boolean}}
+     */
     $scope.chartMesConfig = {
         options: {
             chart: {
@@ -145,7 +175,7 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         }
     };
 
-    // mira cada vez que se cambia un año para actualizar el grafico
+    // mira cada vez que se cambia un año para actualizar el grafico anual
     $scope.$watch('chart_anio', function(chart_anio) {
         $scope.chartAnioConfig.series = [];
         $scope.chartAnioConfig.title.text = GENERAL_CONFIG.APUNTE_TIPO;
@@ -162,6 +192,7 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         $scope.totalMes = parseFloat($scope.totalMes);
     }, true);
 
+    // mira cada vez que se cambia un año o un mes para actualizar el mensual desglosado
     $scope.$watch('chart_mes', function(chart_mes){
         var res = {};
         var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_xcuenta', { anio: chart_mes.anio1, mes: chart_mes.mes1 });
