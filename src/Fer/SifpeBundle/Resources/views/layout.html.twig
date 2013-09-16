@@ -22,8 +22,8 @@
             <div class="navbar-inner">
                 <a class="brand" href="#">Sifpe v5</a>
                 <ul class="nav">
-                    <li><a href="#">Gastos</a></li>
-                    <li><a href="#">Ingresos</a></li>
+                    <li><a href="{{ path('fer_sifpe_gasto_index') }}">Gastos</a></li>
+                    <li><a href="{{ path('fer_sifpe_ingreso_index') }}">Ingresos</a></li>
                     <li><a href="#">Cuentas</a></li>
                     <li><a href="#">Grupos de cuentas</a></li>
                     <li><a href="#">Empresas</a></li>
@@ -63,7 +63,7 @@
 <script type="text/javascript" src="{{ asset('bundles/fersifpe/js/angular.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bundles/fersifpe/js/angular-resource.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bundles/fersifpe/js/options-proxy.js') }}"></script>
-<script type="text/javascript" src="{{ asset('bundles/fersifpe/js/highcharts-ng.js') }}"></script>
-<script type="text/javascript" src="{{ asset('bundles/fersifpe/js/app.js') }}"> </script>
+{% block content_bodyclose %}
+{% endblock %}
 </body>
 </html>
