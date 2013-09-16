@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Kyoki\UtilBundle\KyokiUtilBundle(),
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+	        new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
