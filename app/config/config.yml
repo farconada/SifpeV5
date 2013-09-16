@@ -75,9 +75,28 @@ swiftmailer:
 fos_elastica:
   clients:
     default: { host: localhost, port: 9200 }
+  serializer:
+    callback_class: FOS\ElasticaBundle\Serializer\Callback
+    serializer: serializer
   indexes:
     website:
       client: default
+      types:
+        gasto:
+          mappings:
+              notas: { boost: 5 }
+              cuenta:
+                type: "nested"
+                properties:
+                  name: ~
+              empresa:
+                type: "nested"
+                properties:
+                  name: ~
+          persistence:
+              driver: orm # orm, mongodb, propel are available
+              model: Fer\SifpeBundle\Entity\Gasto
+              provider: ~
 
 bc_bootstrap:
   less_filter: lessphp
