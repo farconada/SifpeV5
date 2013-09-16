@@ -1,0 +1,23 @@
+{% extends "FerSifpeBundle::layout.html.twig" %}
+
+{% block title "Ingresos" %}
+
+{% block content_header '' %}
+
+{% block content %}
+<div class="container" ng-app="sifpeApp">
+    <div ng-view=""></div>
+</div>
+{% endblock %}
+
+{% block content_bodyclose %}
+    <script type="text/javascript">
+        var config_data = {
+            'GENERAL_CONFIG': {
+                'APUNTE_TIPO': 'ingreso'
+            }
+        };
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/fersifpe/js/highcharts-ng.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fersifpe/js/apunte_app.js') }}"> </script>
+{% endblock %}
