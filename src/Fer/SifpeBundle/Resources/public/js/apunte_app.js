@@ -72,9 +72,10 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         loading: false
     };
 
-    //Carga los apuntes de un mes desde el mes actiual - mesDesde meses
+    //Carga los apuntes de un mes desde el mes actual - mesDesde meses
     $scope.list = function(mesDesde) {
-        $http.get(GENERAL_CONFIG.APUNTE_TIPO + 's/' + mesDesde).success(function(data){
+        var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_list', { desdeMeses: mesDesde });
+        $http.get(url).success(function(data){
             $scope.apuntes = data['data'];
             $scope.ultimoMes = data['totalPaginas'];
         });
@@ -90,19 +91,20 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
 
 
     // carga inicial, lista de empresas
-    $http.get('empresas').success(function(data){
+    $http.get(Routing.generate('fer_sifpe_empresas_list')).success(function(data){
         $scope.empresas = data;
     });
 
     // carga inicial, lista de cuentas
-    $http.get('cuentas').success(function(data){
+    $http.get(Routing.generate('fer_sifpe_cuentas_list')).success(function(data){
         $scope.cuentas = data;
     });
 
     // actualiza el grafico de resumen anual
     // añade la serie de un año
     $scope.chartAnio = function(anio) {
-        $http.get(anio + '/' +GENERAL_CONFIG.APUNTE_TIPO + 's/resumen').success(function(data){
+        var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_xanio', { anio: anio });
+        $http.get(url).success(function(data){
             var cantidades = [];
             $.each(data['data'], function(index, value) {
                 cantidades.push(parseFloat(value.cantidad));
@@ -120,14 +122,16 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
     // borrar un apunte
     $scope.delete = function(apunteIndex) {
         var apunteABorrar = $scope.apuntes[apunteIndex];
-        $http.get(GENERAL_CONFIG.APUNTE_TIPO + '/' + apunteABorrar.id + '/borrar').success(function(data){
+        var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_delete', { id: apunteABorrar.id });
+        $http.get(url).success(function(data){
             $scope.apuntes.splice(apunteIndex, 1);
         });
     }
 
     // guardar un apunte
     $scope.save = function(apunte) {
-        $http.post(GENERAL_CONFIG.APUNTE_TIPO, apunte).success(function(data){
+        var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_save');
+        $http.post(url, apunte).success(function(data){
             // recargamos desde el servidor para estar seguros de que esta bien guardado
             $scope.list($scope.mesDesde);
         });
@@ -160,14 +164,16 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
 
     $scope.$watch('chart_mes', function(chart_mes){
         var res = {};
-        $http.get('cuentas/' + GENERAL_CONFIG.APUNTE_TIPO + 's/' + chart_mes.anio1 + '/' +chart_mes.mes1).success(function(data){
+        var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_xcuenta', { anio: chart_mes.anio1, mes: chart_mes.mes1 });
+        $http.get(url).success(function(data){
             $.each(data['data'], function(index, cuenta){
                 if (res[cuenta['cuenta']] == undefined) {
                     res[cuenta['cuenta']] = {};
                 }
                 res[cuenta['cuenta']]['mes1'] = parseFloat(cuenta['cantidad']);
             });
-            $http.get('cuentas/' + GENERAL_CONFIG.APUNTE_TIPO + 's/' + chart_mes.anio2 + '/' +chart_mes.mes2).success(function(data){
+            var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_xcuenta', { anio: chart_mes.anio2, mes: chart_mes.mes2 });
+            $http.get(url).success(function(data){
                 $.each(data['data'], function(index, cuenta){
                     if (res[cuenta['cuenta']] == undefined) {
                         res[cuenta['cuenta']] = {};
