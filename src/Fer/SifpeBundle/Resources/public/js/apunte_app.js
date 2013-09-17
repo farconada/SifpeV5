@@ -26,6 +26,7 @@ var sifpeApp = angular.module('sifpeApp', ['sifpeApp.config','options-proxy', 'h
  * controlador principal
  */
 sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CONFIG', function($scope, $rootScope, $http, GENERAL_CONFIG){
+    $scope.apunteSearch = {'query': '', 'dateIni': '2006-01-01', 'dateEnd': moment().endOf('month').format('YYYY-MM-DD')};
     $scope.apunteEditar = null;
     $scope.apunteNuevo = {'cuenta': {'id': 0, 'name': ''}, 'empresa': {'id': 0, 'name': ''}};
     $scope.cuentas = [];
@@ -35,6 +36,24 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
     $scope.apuntes = [];
     $scope.anios = [];
     $scope.totalMes = 0;
+
+    moment.lang('es');
+    $('#searchrange').daterangepicker(
+        {
+            ranges: {
+                'Este mes': [moment().startOf('month'), moment().endOf('month')],
+                'Desde hace 3 meses': [moment().subtract('month', 3).startOf('month'), moment().endOf('month')],
+                'Desde hace 6 meses': [moment().subtract('month', 6).startOf('month'), moment().endOf('month')]
+            },
+            startDate: moment().subtract('days', 29),
+            endDate: moment()
+        },
+        function(start, end) {
+            $('#searchrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            $scope.apunteSearch.dateIni = start.format('YYYY-MM-DD');
+            $scope.apunteSearch.dateEnd = end.format('YYYY-MM-DD');
+        }
+    );
 
     /**
      * listado de años posibles, para los combos
@@ -177,7 +196,7 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
 
     // busqueda de apuntes
     $scope.search = function(queryString) {
-        var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_search', { query: queryString });
+        var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_search', { query: queryString, dateIni: $scope.apunteSearch.dateIni, dateEnd: $scope.apunteSearch.dateEnd });
         $http.get(url).success(function(data){
             $scope.apuntes = data;
             $scope.ultimoMes = 0;

@@ -10,6 +10,14 @@
     </div>
 {% endblock %}
 
+
+{% block content_headclose %}
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<link rel="stylesheet" href="{{ asset('bundles/fersifpe/css/daterangepicker-bs2.css') }}">
+{% endblock %}
+
 {% block content_bodyclose %}
 <script type="text/javascript">
     var config_data = {
@@ -19,5 +27,7 @@
     };
 </script>
 <script type="text/javascript" src="{{ asset('bundles/fersifpe/js/highcharts-ng.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/fersifpe/js/momentlangs.min.js') }}"> </script>
+<script type="text/javascript" src="{{ asset('bundles/fersifpe/js/daterangepicker.js') }}"> </script>
 <script type="text/javascript" src="{{ asset('bundles/fersifpe/js/apunte_app.js') }}"> </script>
 {% endblock %}

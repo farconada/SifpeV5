@@ -45,20 +45,27 @@
             <a href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="save(apunteEditar)">Guardar cambios</a>
         </div>
     </div>
-    <a ng-click="search('gasolina')" class="icon-query">query</a>
-    <form class="form-inline" name="apunte_form_new" ng-submit="add(apunteNuevo)">
-        <input ng-model="apunteNuevo.fecha" type="date" class="input" placeholder="Fecha" required="required">
-        <select options-proxy ng-model="apunteNuevo.cuenta" ng-options="c.id as c.name for c in cuentas" required="required"></select>
-        <select options-proxy ng-model="apunteNuevo.empresa" ng-options="e.id as e.name for e in empresas" required="required"></select>
-        <br />
-        <div class="input-append">
+    <div class="well well-small">
+        <form class="form-inline" name="apunte_form_new" ng-submit="add(apunteNuevo)">
+            <input ng-model="apunteNuevo.fecha" type="date" class="input" placeholder="Fecha" required="required">
+            <select options-proxy ng-model="apunteNuevo.cuenta" ng-options="c.id as c.name for c in cuentas" required="required"></select>
+            <select options-proxy ng-model="apunteNuevo.empresa" ng-options="e.id as e.name for e in empresas" required="required"></select>
             <input ng-model="apunteNuevo.cantidad" class="span2" id="appendedPrependedInput" type="text" required="required">
             <span class="add-on">€</span>
-        </div>
-        <input ng-model="apunteNuevo.notas" type="text" class="input" placeholder="Notas">
-        <button type="submit" class="btn">Guardar</button>
-    </form>
-
+            <input ng-model="apunteNuevo.notas" type="text" class="input" placeholder="Notas">
+            <button type="submit" class="btn">Guardar</button>
+        </form>
+    </div>
+    <div class="well well-small">
+        <form class="form-search" ng-submit="search(apunteSearch.query)">
+            <input ng-model="apunteSearch.query" type="text" required="required" class="input-medium search-query">
+            <span id="searchrange">
+                <i class="icon-calendar icon-large"></i>
+                <span>Fecha Desde - Fecha Hasta</span> <b class="caret"></b>
+            </span>
+            <button type="submit" class="btn">Buscar</button>
+        </form>
+    </div>
     <p>
         <a ng-click="list(ultimoMes)" class="icon-fast-backward"></a>
         <a ng-click="list(mesDesde + 1 )" class="icon-step-backward"></a>
@@ -67,7 +74,7 @@
         <a ng-click="list(0)" class="icon-fast-forward"></a>
     </p>
     <p>
-        Total de este mes <strong>[[totalMes]]</strong>.
+        Total de este mes <strong>[[totalMes.toFixed(2)]]</strong>.
     </p>
     <table class="table table-bordered">
         <thead>

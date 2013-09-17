@@ -100,8 +100,8 @@ abstract class ApunteController extends AbstractController {
 			)
 		);
 		$queryObj->setFilter($queryFilter);
-		$items = $this->apunteFinder->find($queryObj, 200);
-		$view = $this->view($items, 500);
+		$items = $this->apunteFinder->find($queryObj, 500);
+		$view = $this->view($items, 200);
 		return $this->handleView($view);
 	}
 
