@@ -20,11 +20,20 @@ class IngresoController extends ApunteController
 
     /**
      * @param IEntidad $ingreso
-     * @ParamConverter("ingreso", class="FerSifpeBundle:Ingreso")
+     * @ParamConverter("ingreso", class="Fer\SifpeBundle\Entity\Ingreso")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(IEntidad $ingreso)
     {
         return parent::deleteAction($ingreso);
+    }
+
+    /**
+     * @ParamConverter("ingreso", converter="fos_rest.request_body", class="Fer\SifpeBundle\Entity\Ingreso")
+     * @param IEntidad $ingreso
+     * @return \Symfony\Component\HttpFoundation\Response|void
+     */
+    public function saveAction(IEntidad $ingreso) {
+        return parent::saveAction($ingreso);
     }
 }
