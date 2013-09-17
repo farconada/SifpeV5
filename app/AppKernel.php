@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new Fer\SifpeBundle\FerSifpeBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
-            new Kyoki\UtilBundle\KyokiUtilBundle(),
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
 	        new FOS\JsRoutingBundle\FOSJsRoutingBundle(),

@@ -1,7 +1,0 @@
-parameters:
-#    kyoki_util.example.class: Kyoki\UtilBundle\Example
-
-services:
-#    kyoki_util.example:
-#        class: %kyoki_util.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

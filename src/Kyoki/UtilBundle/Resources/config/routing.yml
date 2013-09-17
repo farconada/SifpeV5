@@ -1,3 +1,0 @@
-kyoki_util_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: KyokiUtilBundle:Default:index }
