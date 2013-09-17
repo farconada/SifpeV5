@@ -85,11 +85,23 @@ abstract class ApunteController extends AbstractController {
 
 	/**
 	 * @param $query Query para elastic search
+	 * @param \DateTime $dateIni
+	 * @param \DateTime $dateEnd
 	 * @return mixed
 	 */
-	public function searchAction($query) {
-		$items = $this->apunteFinder->find($query, 200);
-		$view = $this->view($items, 200);
+	public function searchAction($query, \DateTime $dateIni, \DateTime $dateEnd) {
+		$queryString = new \Elastica\Query\QueryString($query);
+		$queryObj = new \Elastica\Query($queryString);
+		$queryFilter = new \Elastica\Filter\Range(
+			'fecha',
+			array(
+				'from' => $dateIni->format('Y-m-d'),
+				'to' => $dateEnd->format('Y-m-d')
+			)
+		);
+		$queryObj->setFilter($queryFilter);
+		$items = $this->apunteFinder->find($queryObj, 200);
+		$view = $this->view($items, 500);
 		return $this->handleView($view);
 	}
 

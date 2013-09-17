@@ -102,7 +102,7 @@ fer_sifpe_cuentas_list:
       expose: true
 
 fer_sifpe_gasto_search:
-    pattern:  /gastos/buscar/{query}
+    pattern:  /gastos/buscar/{dateIni}/{dateEnd}/{query}
     defaults: { _controller: FerSifpeBundle:Gasto:search, _format: json}
     methods: [GET]
     options:
