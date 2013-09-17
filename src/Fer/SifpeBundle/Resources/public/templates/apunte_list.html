@@ -1,0 +1,121 @@
+<div class="container">
+
+    <div id="modalEdit" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Editar apunte</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <input type="hidden" id="id" value="[[apunteEditar.id]]">
+                <div class="control-group">
+                    <label class="control-label" for="fecha">Fecha</label>
+                    <div class="controls">
+                        <input ng-model="apunteEditar.fecha" type="date" id="fecha" placeholder="fecha"">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="cuenta">Cuenta</label>
+                    <div class="controls">
+                        <select options-proxy id="cuenta" ng-model="apunteEditar.cuenta" ng-options="c.id as c.name for c in cuentas"></select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="empresa">Empresa</label>
+                    <div class="controls">
+                        <select options-proxy id="empresa" ng-model="apunteEditar.empresa" ng-options="e.id as e.name for e in empresas"></select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="cantidad">Cantidad</label>
+                    <div class="controls">
+                        <input type="text" id="cantidad" placeholder="cantidad"  ng-model="apunteEditar.cantidad">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="notas">Notas</label>
+                    <div class="controls">
+                        <textarea rows="3" id="notas" placeholder="notas" ng-model="apunteEditar.notas" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            <a href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="save(apunteEditar)">Guardar cambios</a>
+        </div>
+    </div>
+    <div class="well well-small">
+        <form class="form-inline" name="apunte_form_new" ng-submit="add(apunteNuevo)">
+            <input ng-model="apunteNuevo.fecha" type="date" class="input" placeholder="Fecha" required="required">
+            <select options-proxy ng-model="apunteNuevo.cuenta" ng-options="c.id as c.name for c in cuentas" required="required"></select>
+            <select options-proxy ng-model="apunteNuevo.empresa" ng-options="e.id as e.name for e in empresas" required="required"></select>
+            <input ng-model="apunteNuevo.cantidad" class="span2" id="appendedPrependedInput" type="text" required="required">
+            <span class="add-on">€</span>
+            <input ng-model="apunteNuevo.notas" type="text" class="input" placeholder="Notas">
+            <button type="submit" class="btn">Guardar</button>
+        </form>
+    </div>
+    <div class="well well-small">
+        <form class="form-search" ng-submit="search(apunteSearch.query)">
+            <input ng-model="apunteSearch.query" type="text" required="required" class="input-medium search-query">
+            <span id="searchrange">
+                <i class="icon-calendar icon-large"></i>
+                <span>Fecha Desde - Fecha Hasta</span> <b class="caret"></b>
+            </span>
+            <button type="submit" class="btn">Buscar</button>
+        </form>
+    </div>
+    <p>
+        <a ng-click="list(ultimoMes)" class="icon-fast-backward"></a>
+        <a ng-click="list(mesDesde + 1 )" class="icon-step-backward"></a>
+        <span>Viendo los datos de [[mesDesde]] meses atras</span>
+        <a ng-click="list(mesDesde -  1 )" class="icon-step-forward"></a>
+        <a ng-click="list(0)" class="icon-fast-forward"></a>
+    </p>
+    <p>
+        Total de este mes <strong>[[totalMes.toFixed(2)]]</strong>.
+    </p>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="hidden">#</th>
+            <th>Fecha</th>
+            <th>Notas</th>
+            <th>Cuenta</th>
+            <th>Empresa</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="apunte in apuntes" ng-dblclick="edit($index)">
+            <td class="hidden">[[apunte.id]]</td>
+            <td>[[apunte.fecha]]</td>
+            <td>[[apunte.notas]]</td>
+            <td>[[apunte.cuenta.name]]</td>
+            <td>[[apunte.empresa.name]]</td>
+            <td>[[apunte.cantidad]]</td>
+            <td>
+                <a ng-click="delete($index)" class="icon-remove"></a>
+                <a ng-click="edit($index)" class="icon-edit"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <select ng-model="chart_anio.anio1" ng-options="a for a in anios"></select>
+    <select ng-model="chart_anio.anio2" ng-options="a for a in anios"></select>
+    <div id="chart-mensual">
+        <highchart id="chart1" config="chartAnioConfig" class="span12" ></highchart>
+    </div>
+    <div id="chart-cuentas">
+        <select ng-model="chart_mes.anio1" ng-options="a for a in anios"></select>
+        <select ng-model="chart_mes.mes1" ng-options="m for m in [1,2,3,4,5,6,7,8,9,10,11,12]"></select>
+        <select ng-model="chart_mes.anio2" ng-options="a for a in anios"></select>
+        <select ng-model="chart_mes.mes2" ng-options="m for m in [1,2,3,4,5,6,7,8,9,10,11,12]"></select>
+
+        <highchart id="chart2" config="chartMesConfig" class="span12" ></highchart>
+    </div>
+</div>

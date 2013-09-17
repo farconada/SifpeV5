@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block head %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}"/>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    {% endblock %}
+    {% block content_headclose %}
+    {% endblock %}
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+
+    <div class="container">
+        <!-- Navbar
+        ================================================== -->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" href="#">Sifpe v5</a>
+                <ul class="nav">
+                    <li><a href="{{ path('fer_sifpe_gasto_index') }}">Gastos</a></li>
+                    <li><a href="{{ path('fer_sifpe_ingreso_index') }}">Ingresos</a></li>
+                    <li><a href="#">Cuentas</a></li>
+                    <li><a href="#">Grupos de cuentas</a></li>
+                    <li><a href="#">Empresas</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% block body %}
+<div class="container">
+    <h1>{% block title 'SIFPE v5' %}</h1>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message">
+            <em>Notice</em>: {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% block content_header %}
+        <ul id="menu">
+            {% block content_header_more %}
+                <li><a href="{{ path('_demo') }}">Demo Home</a></li>
+            {% endblock %}
+        </ul>
+
+        <div style="clear: both"></div>
+    {% endblock %}
+
+    <div class="block">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/fersifpe/js/angular.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/fersifpe/js/angular-resource.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/fersifpe/js/options-proxy.js') }}"></script>
+{% block content_bodyclose %}
+{% endblock %}
+</body>
+</html>
