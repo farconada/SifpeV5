@@ -66,6 +66,13 @@ fer_sifpe_gasto_save:
     options:
       expose: true
 
+fer_sifpe_ingreso_save:
+    pattern:  /ingreso
+    defaults: { _controller: FerSifpeBundle:Ingreso:save, _format: json }
+    methods: [POST]
+    options:
+      expose: true
+
 fer_sifpe_empresa_save:
     pattern:  /empresa
     defaults: { _controller: FerSifpeBundle:Empresa:save, _format: json }
