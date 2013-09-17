@@ -83,7 +83,7 @@ fos_elastica:
         gasto:
           mappings:
             notas: { boost: 5 }
-            fecha:
+            fecha: {type: "date"}
             cuenta:
               type: "nested"
               properties:
