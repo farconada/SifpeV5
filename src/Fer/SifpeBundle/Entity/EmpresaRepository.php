@@ -8,8 +8,8 @@
  */
 
 namespace Fer\SifpeBundle\Entity;
-use Doctrine\ORM\EntityRepository;
+use Fer\SifpeBundle\Entity\AbstractRepository;
 
-class EmpresaRepository extends EntityRepository {
+class EmpresaRepository extends AbstractRepository {
 
 }
