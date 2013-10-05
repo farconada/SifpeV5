@@ -26,10 +26,14 @@ class EmpresaControllerSpec extends ObjectBehavior {
          */
         $container->get('fos_rest.view_handler')->willReturn($viewHandler);
         $this->setContainer($container);
-
     }
 
-    public function it_should_call_delete_action(
+    public function it_should_extend_some_classes() {
+        $this->shouldHaveType('Fer\SifpeBundle\Controller\AbstractController');
+        $this->shouldHaveType('FOS\RestBundle\Controller\FOSRestController');
+    }
+
+    public function it_should_have_delete_action(
         Empresa $empresa,
         EmpresaRepository $repository
     )
@@ -38,7 +42,7 @@ class EmpresaControllerSpec extends ObjectBehavior {
         $this->deleteAction($empresa);
     }
 
-    public function it_should_call_save_action(
+    public function it_should_have_save_action(
         Empresa $empresa,
         EmpresaRepository $repository
     ){
