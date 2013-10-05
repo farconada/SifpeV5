@@ -37,4 +37,12 @@ class EmpresaControllerSpec extends ObjectBehavior {
         $repository->remove($empresa)->shouldBeCalled();
         $this->deleteAction($empresa);
     }
+
+    public function it_should_call_save_action(
+        Empresa $empresa,
+        EmpresaRepository $repository
+    ){
+        $repository->save($empresa)->shouldBeCalled();
+        $this->saveAction($empresa);
+    }
 }
