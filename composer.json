@@ -45,7 +45,8 @@
         "jms/di-extra-bundle": "1.4.*",
         "friendsofsymfony/jsrouting-bundle": "1.3.*",
         "phpspec/phpspec": "2.0.*@dev",
-        "behat/behat": "2.5.*@stable"
+        "behat/behat": "2.5.*@stable",
+        "behat/symfony2-extension": "*"
     },
     "scripts": {
         "post-install-cmd": [
