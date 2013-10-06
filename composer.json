@@ -43,7 +43,8 @@
         "jms/serializer-bundle": "dev-master",
         "friendsofsymfony/rest-bundle": "dev-master",
         "jms/di-extra-bundle": "dev-master",
-        "friendsofsymfony/jsrouting-bundle": "dev-master"
+        "friendsofsymfony/jsrouting-bundle": "dev-master",
+        "phpspec/phpspec": "2.0.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

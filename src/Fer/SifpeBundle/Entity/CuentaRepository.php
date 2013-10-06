@@ -9,8 +9,8 @@
 
 namespace Fer\SifpeBundle\Entity;
 
-use Doctrine\ORM\EntityRepository;
+use Fer\SifpeBundle\Entity\AbstractRepository;
 
-class CuentaRepository extends EntityRepository {
+class CuentaRepository extends AbstractRepository {
 
 }

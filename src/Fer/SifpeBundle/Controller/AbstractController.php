@@ -13,12 +13,12 @@ use Doctrine\ORM\EntityManager;
 use FOS\RestBundle\View\View;
 use JMS\DiExtraBundle\Annotation as DI;
 use Fer\SifpeBundle\Entity\IEntidad;
-use Fer\SifpeBundle\Entity\AbstractRepository;
+use Fer\SifpeBundle\Entity\IRepository;
 
 class AbstractController extends FOSRestController {
 
     /**
-     * @var AbstractRepository
+     * @var IRepository
      */
     public $entityRepository;
 

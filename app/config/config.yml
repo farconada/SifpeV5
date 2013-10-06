@@ -101,6 +101,27 @@ fos_elastica:
               insert: true
               update: true
               delete: true
+        ingreso:
+          mappings:
+            notas: { boost: 5 }
+            fecha: {type: "date"}
+            cuenta:
+              type: "nested"
+              properties:
+                name: ~
+            empresa:
+              type: "nested"
+              properties:
+                name: ~
+          persistence:
+            driver: orm # orm, mongodb, propel are available
+            model: Fer\SifpeBundle\Entity\Ingreso
+            provider: ~
+            finder: ~
+            listener:
+              insert: true
+              update: true
+              delete: true
 
 bc_bootstrap:
   less_filter: lessphp

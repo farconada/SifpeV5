@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
 use Fer\SifpeBundle\Entity\Gasto;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Fer\SifpeBundle\Entity\IApunteRepository;
 
 class GastoController extends ApunteController
 {
@@ -16,7 +17,7 @@ class GastoController extends ApunteController
      *    "gastoFinder" = @DI\Inject("fos_elastica.finder.website.gasto")
     * })
     */
-    public function __construct($gastoRepository, $gastoFinder)
+    public function __construct(IApunteRepository $gastoRepository, $gastoFinder)
     {
         $this->entityRepository = $gastoRepository;
 	    $this->apunteFinder = $gastoFinder;

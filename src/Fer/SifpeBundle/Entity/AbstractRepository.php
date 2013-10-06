@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
 use Fer\SifpeBundle\Entity\IEntidad;
 
 
-class AbstractRepository extends EntityRepository {
+class AbstractRepository extends EntityRepository implements IRepository {
 
     /**
      * Guarda actualizando o creado una nueva entidad dependiendo de si tiene ID

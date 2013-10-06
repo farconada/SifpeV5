@@ -2,6 +2,7 @@
 
 namespace Fer\SifpeBundle\Controller;
 
+use Fer\SifpeBundle\Entity\IApunteRepository;
 use Fer\SifpeBundle\Entity\IEntidad;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
@@ -11,11 +12,13 @@ class IngresoController extends ApunteController
 {
     /** @DI\InjectParams({
      *     "ingresoRepository" = @DI\Inject("fer_sifpe.ingreso_repository"),
+     *     "ingresoFinder" = @DI\Inject("fos_elastica.finder.website.ingreso")
      * })
      */
-    public function __construct($ingresoRepository)
+    public function __construct(IApunteRepository $ingresoRepository, $ingresoFinder)
     {
         $this->entityRepository = $ingresoRepository;
+        $this->apunteFinder = $ingresoFinder;
     }
 
     /**
