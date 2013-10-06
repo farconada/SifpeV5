@@ -38,7 +38,7 @@ class GastoControllerSpec extends ObjectBehavior {
         $this->shouldHaveType('FOS\RestBundle\Controller\FOSRestController');
     }
 
-    public function it_should_be_an_apunte() {
+    public function it_should_be_an_apunte_controller() {
         $this->shouldHaveType('Fer\SifpeBundle\Controller\ApunteController');
     }
 
@@ -63,7 +63,7 @@ class GastoControllerSpec extends ObjectBehavior {
     ) {
         $fromTime = new \DateTime();
         $toTime = new \DateTime();
-        $this->searchAction('query string', $fromTime, $toTime);
         $finder->find(Argument::cetera())->shouldBeCalled();
+        $this->searchAction('query string', $fromTime, $toTime);
     }
 }
