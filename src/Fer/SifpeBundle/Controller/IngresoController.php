@@ -11,11 +11,13 @@ class IngresoController extends ApunteController
 {
     /** @DI\InjectParams({
      *     "ingresoRepository" = @DI\Inject("fer_sifpe.ingreso_repository"),
+     *     "ingresoFinder" = @DI\Inject("fos_elastica.finder.website.ingreso")
      * })
      */
-    public function __construct($ingresoRepository)
+    public function __construct($ingresoRepository, $ingresoFinder)
     {
         $this->entityRepository = $ingresoRepository;
+        $this->apunteFinder = $ingresoFinder;
     }
 
     /**
