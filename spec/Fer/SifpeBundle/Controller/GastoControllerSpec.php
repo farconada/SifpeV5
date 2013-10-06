@@ -15,6 +15,7 @@ use FOS\ElasticaBundle\Finder\FinderInterface;
 use Fer\SifpeBundle\Entity\Gasto;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use FOS\RestBundle\View\ViewHandler;
+use Prophecy\Argument;
 
 class GastoControllerSpec extends ObjectBehavior {
 
@@ -55,5 +56,14 @@ class GastoControllerSpec extends ObjectBehavior {
     ) {
         $repository->save($gasto)->shouldBeCalled();
         $this->saveAction($gasto);
+    }
+
+    public function it_should_have_search_action(
+        FinderInterface $finder
+    ) {
+        $fromTime = new \DateTime();
+        $toTime = new \DateTime();
+        $this->searchAction('query string', $fromTime, $toTime);
+        $finder->find(Argument::cetera())->shouldBeCalled();
     }
 }
