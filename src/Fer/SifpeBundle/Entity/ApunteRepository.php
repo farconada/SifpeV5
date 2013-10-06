@@ -10,7 +10,7 @@
 namespace Fer\SifpeBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
-class ApunteRepository extends AbstractRepository {
+class ApunteRepository extends AbstractRepository implements IApunteRepository {
     /**
      * Devuelve los Apuntes de un mes ya sea el mes actual (por defecto) o X meses atras desde este mes
      * Se tienen en cuenta los meses enteros de mes a mes y no de dia a dia,
@@ -145,6 +145,12 @@ class ApunteRepository extends AbstractRepository {
         return $result;
     }
 
+    /**
+     * Guarda un apunte
+     * Sobreescribe save() para reconstruir la relacion de objetos y que la tenga encuenta el
+     * entity manager
+     * @param IEntidad $apunte
+     */
     public function save(IEntidad $apunte)
     {
         $empresa = $this->getEntityManager()->find('FerSifpeBundle:Empresa', $apunte->getEmpresa()->getId());

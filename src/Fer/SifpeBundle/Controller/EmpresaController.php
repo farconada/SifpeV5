@@ -5,6 +5,7 @@ namespace Fer\SifpeBundle\Controller;
 use Fer\SifpeBundle\Entity\IEntidad;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Fer\SifpeBundle\Entity\IRepository;
 
 class EmpresaController extends AbstractController
 {
@@ -14,7 +15,7 @@ class EmpresaController extends AbstractController
     *     "empresaRepository" = @DI\Inject("fer_sifpe.empresa_repository"),
     * })
     */
-    public function __construct($empresaRepository)
+    public function __construct(IRepository $empresaRepository)
     {
         $this->entityRepository = $empresaRepository;
     }

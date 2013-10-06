@@ -23,9 +23,14 @@ class AbstractRepositorySpec extends ObjectBehavior {
         $this->beConstructedWith($em, $classMetadata);
     }
 
-    public function it_inherits_from_base_repository() {
+    public function it_inherits_from_doctrine_base_repository() {
         $this->shouldHaveType('Doctrine\ORM\EntityRepository');
     }
+
+    public function it_implements_my_base_repository_interface() {
+        $this->shouldHaveType('Fer\SifpeBundle\Entity\IRepository');
+    }
+
     public function it_could_save_entities(
         IEntidad $entity,
         EntityManager $em

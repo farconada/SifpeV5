@@ -21,7 +21,7 @@ class IngresoRepositorySpec extends ObjectBehavior {
         $this->beConstructedWith($em, $classMetadata);
     }
 
-    public function it_inherits_from_my_base_repository() {
-        $this->shouldHaveType('Fer\SifpeBundle\Entity\AbstractRepository');
+    public function it_implements_my_base_repository_interface() {
+        $this->shouldHaveType('Fer\SifpeBundle\Entity\IRepository');
     }
 }
