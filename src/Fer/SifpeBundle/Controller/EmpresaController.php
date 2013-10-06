@@ -38,4 +38,14 @@ class EmpresaController extends AbstractController
 		return parent::saveAction($empresa);
 	}
 
+
+    public function indexAction()
+    {
+        // TODO: write logic here
+    }
+
+    public function listAction()
+    {
+        // TODO: write logic here
+    }
 }

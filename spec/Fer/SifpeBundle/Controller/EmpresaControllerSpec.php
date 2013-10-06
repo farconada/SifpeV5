@@ -49,4 +49,12 @@ class EmpresaControllerSpec extends ObjectBehavior {
         $repository->save($empresa)->shouldBeCalled();
         $this->saveAction($empresa);
     }
+
+    public function it_should_have_index_action() {
+        $this->indexAction();
+    }
+
+    public function it_should_have_list_action() {
+        $this->listAction();
+    }
 }

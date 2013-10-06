@@ -31,4 +31,14 @@ class CuentaController extends AbstractController
     }
 
 
+
+    public function indexAction()
+    {
+        // TODO: write logic here
+    }
+
+    public function listAction()
+    {
+        // TODO: write logic here
+    }
 }

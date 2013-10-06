@@ -50,4 +50,12 @@ class CuentaControllerSpec  extends ObjectBehavior {
         $repository->save($cuenta)->shouldBeCalled();
         $this->saveAction($cuenta);
     }
+
+    public function it_should_have_index_action() {
+        $this->indexAction();
+    }
+
+    public function it_should_have_list_action() {
+        $this->listAction();
+    }
 }
