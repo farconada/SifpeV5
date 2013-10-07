@@ -1,3 +1,11 @@
 default:
     extensions:
-        Behat\Symfony2Extension\Extension: ~
+        Behat\Symfony2Extension\Extension:
+          mink_driver: true
+        Behat\MinkExtension\Extension:
+          goutte: ~
+        VIPSoft\DoctrineDataFixturesExtension\Extension:
+          lifetime:    feature
+          autoload:    true
+          directories: ~
+          fixtures:    ~
