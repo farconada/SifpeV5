@@ -14,3 +14,12 @@ default:
           autoload:    true
           directories: ~
           fixtures:    ~
+        Sanpi\Behatch\Extension:
+          contexts:
+              browser: ~
+              debug: ~
+              system: ~
+              json: ~
+              table: ~
+              rest: ~
+              xml: ~

@@ -10,6 +10,7 @@ use Behat\Behat\Context\BehatContext,
     Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
+use Sanpi\Behatch\Context\BehatchContext;
 
 //
 // Require 3rd-party libraries here:
@@ -35,6 +36,7 @@ class FeatureContext extends MinkContext //MinkContext if you want to test web
     public function __construct(array $parameters)
     {
         $this->parameters = $parameters;
+	    $this->useContext('behatch', new BehatchContext($parameters));
     }
 
     /**
