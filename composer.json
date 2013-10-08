@@ -54,6 +54,7 @@
         "behat/mink-extension": "*",
         "behat/mink-browserkit-driver":  "*",
         "behat/mink-goutte-driver": "*",
+        "behat/mink-sahi-driver": "*",
         "vipsoft/doctrine-data-fixtures-extension": "*"
     },
     "scripts": {
