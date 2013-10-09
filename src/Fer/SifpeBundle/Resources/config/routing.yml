@@ -114,3 +114,24 @@ fer_sifpe_gasto_search:
     methods: [GET]
     options:
       expose: true
+
+fer_sifpe_empresa_delete:
+    pattern:  /empresa/{id}/borrar/
+    defaults: { _controller: FerSifpeBundle:Empresa:delete, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_empresa_delete_rest:
+    pattern:  /empresa/{id}
+    defaults: { _controller: FerSifpeBundle:Empresa:delete, _format: json }
+    methods: [DELETE]
+    options:
+      expose: true
+
+fer_sifpe_empresa_save:
+    pattern:  /empresa
+    defaults: { _controller: FerSifpeBundle:Empresa:save, _format: json }
+    methods: [POST]
+    options:
+      expose: true

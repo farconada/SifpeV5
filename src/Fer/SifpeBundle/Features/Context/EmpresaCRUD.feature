@@ -11,3 +11,48 @@ Feature: Ser capaz de gestionar la entidad Empresa
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
     And the JSON node "root" should have 3 elements
+
+  Scenario: se puede borrar una empresa
+    Given I am on "/empresas"
+    And the JSON node "root" should have 3 elements
+    When I go to "/empresa/1/borrar"
+    Then the response status code should be 200
+    And the header "Content-Type" should be equal to "application/json"
+    And the response should be in JSON
+    And I go to "/empresas"
+    And the JSON node "root" should have 2 elements
+
+  Scenario: se puede borrar una empresa via HTTP DELETE
+    Given I am on "/empresas"
+    And the JSON node "root" should have 2 elements
+    When I send a DELETE request on "/empresa/2"
+    Then the response status code should be 200
+    And the header "Content-Type" should be equal to "application/json"
+    And the response should be in JSON
+    And I go to "/empresas"
+    And the JSON node "root" should have 1 elements
+
+
+  Scenario: puedo visualizar una empresa en JSON
+    When I go to "/empresa/3"
+    Then the response status code should be 200
+    And the response should be in JSON
+
+  Scenario: puedo crear una nueva empresa
+    When I send a POST request on "/empresa" with body:
+      """
+      {"name": "mi empresa"}
+      """
+    Then the response status code should be 200
+    And I go to "/empresas"
+    And the JSON node "root" should have 2 elements
+
+  Scenario: puedo actualizar una empresa
+    When I send a POST request on "/empresa" with body:
+      """
+      {"id": "3", "name": "nuevo nombre"}
+      """
+    Then the response status code should be 200
+    And I go to "/empresa/3"
+    And And the JSON node "root.name" should be equal to "nuevo nombre"
+
