@@ -9,11 +9,11 @@ default:
           base_url:   http://127.0.0.1/app_test.php
           default_session: symfony2
           goutte: ~
-        #VIPSoft\DoctrineDataFixturesExtension\Extension:
-        #  lifetime:    feature
-        #  autoload:    true
-        #  directories: ~
-        #  fixtures:    ~
+        VIPSoft\DoctrineDataFixturesExtension\Extension:
+          lifetime:    feature
+          autoload:    true
+          directories: ~
+          fixtures:    ~
         Sanpi\Behatch\Extension:
           contexts:
               browser: ~

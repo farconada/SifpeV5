@@ -56,7 +56,9 @@
         "behat/mink-goutte-driver": "*",
         "behat/mink-sahi-driver": "*",
         "vipsoft/doctrine-data-fixtures-extension": "*",
-        "sanpi/behatch-contexts": "*"
+        "sanpi/behatch-contexts": "*",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "hautelook/alice-bundle": "0.1.*"
     },
     "scripts": {
         "post-install-cmd": [

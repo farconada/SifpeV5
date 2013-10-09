@@ -1,0 +1,10 @@
+Fer\SifpeBundle\Entity\Empresa:
+  empresa1:
+    id: 1
+    name: fernando
+  empresa2:
+    id: 2
+    name: Naiara
+  empresa3:
+    id: 3
+    name: comun
