@@ -6,7 +6,7 @@ default:
             env: test
             debug: true
         Behat\MinkExtension\Extension:
-          base_url:   http://127.0.0.1/app_test.php
+          base_url:   ~
           default_session: symfony2
           goutte: ~
         VIPSoft\DoctrineDataFixturesExtension\Extension:
