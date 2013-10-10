@@ -10,7 +10,7 @@ default:
           default_session: symfony2
           goutte: ~
         VIPSoft\DoctrineDataFixturesExtension\Extension:
-          lifetime:    feature
+          lifetime:    scenario
           autoload:    true
           directories: ~
           fixtures:    ~
