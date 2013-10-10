@@ -15,7 +15,7 @@ Feature: Ser capaz de gestionar la entidad Empresa
   Scenario: se puede borrar una empresa
     Given I am on "/empresas"
     And the JSON node "root" should have 3 elements
-    When I send a GET request on "/empresa/1/borrar"
+    When I send a GET request on "/empresa/1/borrar/"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
