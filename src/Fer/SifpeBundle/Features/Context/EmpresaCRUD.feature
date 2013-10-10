@@ -6,7 +6,7 @@ Feature: Ser capaz de gestionar la entidad Empresa
     Then the response status code should be 200
 
   Scenario: se puede recuperar el listado de empresas
-    When I go to "/empresas"
+    When I send a GET request on "/empresas"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
@@ -15,7 +15,7 @@ Feature: Ser capaz de gestionar la entidad Empresa
   Scenario: se puede borrar una empresa
     Given I am on "/empresas"
     And the JSON node "root" should have 3 elements
-    When I go to "/empresa/1/borrar"
+    When I send a GET request on "/empresa/1/borrar"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
@@ -34,12 +34,13 @@ Feature: Ser capaz de gestionar la entidad Empresa
 
 
   Scenario: puedo visualizar una empresa en JSON
-    When I go to "/empresa/3"
+    When I send a GET request on "/empresa/3"
     Then the response status code should be 200
     And the response should be in JSON
 
   Scenario: puedo crear una nueva empresa
-    When I send a POST request on "/empresa" with body:
+    When I add "CONTENT_TYPE" header equal to "application/json"
+    And I send a POST request on "/empresa" with body:
       """
       {"name": "mi empresa"}
       """
@@ -48,11 +49,12 @@ Feature: Ser capaz de gestionar la entidad Empresa
     And the JSON node "root" should have 2 elements
 
   Scenario: puedo actualizar una empresa
-    When I send a POST request on "/empresa" with body:
+    When I add "CONTENT_TYPE" header equal to "application/json"
+    And I send a POST request on "/empresa" with body:
       """
       {"id": "3", "name": "nuevo nombre"}
       """
     Then the response status code should be 200
     And I go to "/empresa/3"
-    And And the JSON node "root.name" should be equal to "nuevo nombre"
+    And the JSON node "root.name" should be equal to "nuevo nombre"
 
