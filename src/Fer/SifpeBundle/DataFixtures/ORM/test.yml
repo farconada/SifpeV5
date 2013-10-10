@@ -8,3 +8,27 @@ Fer\SifpeBundle\Entity\Empresa:
   empresa3:
     id: 3
     name: comun
+
+Fer\SifpeBundle\Entity\GrupoCuenta:
+  grupo1:
+    id: 1
+    name: grupo1
+  grupo2:
+    id: 2
+    name: grupo2
+
+Fer\SifpeBundle\Entity\Cuenta:
+  cuenta{1..10}:
+    name: cuenta<current()>
+    grupo: @grupo1
+  cuenta{11..20}:
+      name: cuenta<current()>
+      grupo: @grupo2
+
+Fer\SifpeBundle\Entity\Gasto:
+  gasto{1..10}:
+      empresa: @empresa<numberBetween(1, 3)>
+      cuenta: @cuenta<numberBetween(1, 15)>
+      notas: <sentence(10)>
+      fecha: <dateTimeThisMonth()>
+      cantidad: <randomFloat(2,0,2000)>
