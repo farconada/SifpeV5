@@ -24,13 +24,13 @@ Feature: Ser capaz de gestionar la entidad Empresa
 
   Scenario: se puede borrar una empresa via HTTP DELETE
     Given I am on "/empresas"
-    And the JSON node "root" should have 2 elements
+    And the JSON node "root" should have 3 elements
     When I send a DELETE request on "/empresa/2"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
     And I go to "/empresas"
-    And the JSON node "root" should have 1 elements
+    And the JSON node "root" should have 2 elements
 
 
   Scenario: puedo visualizar una empresa en JSON
@@ -46,7 +46,7 @@ Feature: Ser capaz de gestionar la entidad Empresa
       """
     Then the response status code should be 200
     And I go to "/empresas"
-    And the JSON node "root" should have 2 elements
+    And the JSON node "root" should have 4 elements
 
   Scenario: puedo actualizar una empresa
     When I add "CONTENT_TYPE" header equal to "application/json"
