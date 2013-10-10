@@ -25,5 +25,5 @@ interface IRepository {
 
     public function findAll();
 
-
+	public function find($id);
 }
