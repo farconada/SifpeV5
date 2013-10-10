@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8bfbd7bfc301a62c9dd92baeb4b79f8f",
+    "hash": "dc8b3638311e2876a58f8a09471ee6bb",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -860,17 +860,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "0.13.1",
+            "version": "dev-master",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "2c3434f17fdbbcc22c2da2737b04234646749463"
+                "reference": "e3b58653299f8f296a4296d83eeb914d6e4be944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/2c3434f17fdbbcc22c2da2737b04234646749463",
-                "reference": "2c3434f17fdbbcc22c2da2737b04234646749463",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/e3b58653299f8f296a4296d83eeb914d6e4be944",
+                "reference": "e3b58653299f8f296a4296d83eeb914d6e4be944",
                 "shasum": ""
             },
             "require": {
@@ -889,6 +889,8 @@
                 "sensio/framework-extra-bundle": "~2.1",
                 "symfony/form": "~2.1",
                 "symfony/security": "~2.1",
+                "symfony/serializer": "~2.1",
+                "symfony/validator": "~2.1",
                 "symfony/yaml": "~2.1"
             },
             "suggest": {
@@ -931,7 +933,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-08-15 13:30:47"
+            "time": "2013-10-10 06:03:53"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1290,12 +1292,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "d4bf45027f5843ea5984d6246e59963ae4b3ebf2"
+                "reference": "82ba81e1299a196f563763b22551e66b7594fe94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/d4bf45027f5843ea5984d6246e59963ae4b3ebf2",
-                "reference": "d4bf45027f5843ea5984d6246e59963ae4b3ebf2",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/82ba81e1299a196f563763b22551e66b7594fe94",
+                "reference": "82ba81e1299a196f563763b22551e66b7594fe94",
                 "shasum": ""
             },
             "require": {
@@ -1349,7 +1351,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2013-10-07 20:57:22"
+            "time": "2013-10-10 08:29:58"
         },
         {
             "name": "jms/serializer-bundle",
@@ -2220,12 +2222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "8840591b25e38b636b3fbc20df0e419bb1949a6e"
+                "reference": "f3bd125aed5a78a6d06be588823e5e4feb636011"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/8840591b25e38b636b3fbc20df0e419bb1949a6e",
-                "reference": "8840591b25e38b636b3fbc20df0e419bb1949a6e",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/f3bd125aed5a78a6d06be588823e5e4feb636011",
+                "reference": "f3bd125aed5a78a6d06be588823e5e4feb636011",
                 "shasum": ""
             },
             "require": {
@@ -2320,7 +2322,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-10-01 17:10:09"
+            "time": "2013-10-10 14:16:40"
         },
         {
             "name": "twbs/bootstrap",
@@ -3167,12 +3169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "7a56e4469954bf982b832e3e078c08ef9fef7258"
+                "reference": "2355fcf8d19de6eaa562f809150e4ddace90d985"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/7a56e4469954bf982b832e3e078c08ef9fef7258",
-                "reference": "7a56e4469954bf982b832e3e078c08ef9fef7258",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/2355fcf8d19de6eaa562f809150e4ddace90d985",
+                "reference": "2355fcf8d19de6eaa562f809150e4ddace90d985",
                 "shasum": ""
             },
             "require": {
@@ -3205,7 +3207,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2013-09-23 22:28:51"
+            "time": "2013-10-10 13:40:29"
         },
         {
             "name": "guzzle/common",
@@ -3731,12 +3733,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "82d11835df7eccf904ea0c84fbb7304080346bc1"
+                "reference": "b024785173490e8ec090c6c07aaefaa237d42e8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/82d11835df7eccf904ea0c84fbb7304080346bc1",
-                "reference": "82d11835df7eccf904ea0c84fbb7304080346bc1",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b024785173490e8ec090c6c07aaefaa237d42e8f",
+                "reference": "b024785173490e8ec090c6c07aaefaa237d42e8f",
                 "shasum": ""
             },
             "require-dev": {
@@ -3778,7 +3780,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2013-09-30 08:21:23"
+            "time": "2013-10-09 23:22:09"
         },
         {
             "name": "sanpi/behatch-contexts",
