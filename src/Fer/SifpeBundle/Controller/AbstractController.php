@@ -48,4 +48,10 @@ class AbstractController extends FOSRestController {
         return $this->handleView($view);
     }
 
+	public function showAction($id) {
+		$entity = $this->entityRepository->find($id);
+		$view = $this->view($entity, 200);
+		return $this->handleView($view);
+	}
+
 }
