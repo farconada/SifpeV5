@@ -10,27 +10,27 @@ Feature: Ser capaz de gestionar la entidad Cuenta
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
-    And the JSON node "root" should have 3 elements
+    And the JSON node "root" should have 20 elements
 
-  Scenario: se puede borrar una cuenta
-    Given I am on "/cuenta"
-    And the JSON node "root" should have 3 elements
-    When I send a GET request on "/cuenta/1/borrar/"
-    Then the response status code should be 200
-    And the header "Content-Type" should be equal to "application/json"
-    And the response should be in JSON
-    And I go to "/cuentas"
-    And the JSON node "root" should have 2 elements
-
-  Scenario: se puede borrar una cuenta via HTTP DELETE
+  Scenario: se puede borrar una cuenta que no tenga elementos en cascada
     Given I am on "/cuentas"
-    And the JSON node "root" should have 3 elements
-    When I send a DELETE request on "/cuenta/2"
+    And the JSON node "root" should have 20 elements
+    When I send a GET request on "/cuenta/20/borrar/"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
     And I go to "/cuentas"
-    And the JSON node "root" should have 2 elements
+    And the JSON node "root" should have 19 elements
+
+  Scenario: se puede borrar una cuenta via HTTP DELETE que no tenga elementos en cascada
+    Given I am on "/cuentas"
+    And the JSON node "root" should have 20 elements
+    When I send a DELETE request on "/cuenta/20"
+    Then the response status code should be 200
+    And the header "Content-Type" should be equal to "application/json"
+    And the response should be in JSON
+    And I go to "/cuentas"
+    And the JSON node "root" should have 19 elements
 
 
   Scenario: puedo visualizar una cuenta en JSON
@@ -46,7 +46,7 @@ Feature: Ser capaz de gestionar la entidad Cuenta
       """
     Then the response status code should be 200
     And I go to "/cuentas"
-    And the JSON node "root" should have 4 elements
+    And the JSON node "root" should have 21 elements
 
   Scenario: puedo actualizar una cuenta
     When I add "CONTENT_TYPE" header equal to "application/json"

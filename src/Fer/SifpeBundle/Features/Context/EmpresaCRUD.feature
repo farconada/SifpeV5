@@ -12,20 +12,20 @@ Feature: Ser capaz de gestionar la entidad Empresa
     And the response should be in JSON
     And the JSON node "root" should have 3 elements
 
-  Scenario: se puede borrar una empresa
+  Scenario: se puede borrar una empresa que no tenga elementos en cascada
     Given I am on "/empresas"
     And the JSON node "root" should have 3 elements
-    When I send a GET request on "/empresa/1/borrar/"
+    When I send a GET request on "/empresa/3/borrar/"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
     And I go to "/empresas"
     And the JSON node "root" should have 2 elements
 
-  Scenario: se puede borrar una empresa via HTTP DELETE
+  Scenario: se puede borrar una empresa via HTTP DELETE que no tenga elementos en cascada
     Given I am on "/empresas"
     And the JSON node "root" should have 3 elements
-    When I send a DELETE request on "/empresa/2"
+    When I send a DELETE request on "/empresa/3"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
