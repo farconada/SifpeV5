@@ -94,13 +94,6 @@ fer_sifpe_resumen_xcuenta:
     options:
       expose: true
 
-fer_sifpe_empresas_list:
-    pattern:  /empresas
-    defaults: { _controller: FerSifpeBundle:Empresa:listAll, _format: json }
-    methods: [GET]
-    options:
-      expose: true
-
 fer_sifpe_cuentas_list:
     pattern:  /cuentas
     defaults: { _controller: FerSifpeBundle:Cuenta:listAll, _format: json }
@@ -111,6 +104,13 @@ fer_sifpe_cuentas_list:
 fer_sifpe_gasto_search:
     pattern:  /gastos/buscar/{dateIni}/{dateEnd}/{query}
     defaults: { _controller: FerSifpeBundle:Gasto:search, _format: json}
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_empresas_list:
+    pattern:  /empresas
+    defaults: { _controller: FerSifpeBundle:Empresa:listAll, _format: json }
     methods: [GET]
     options:
       expose: true
@@ -139,6 +139,41 @@ fer_sifpe_empresa_save:
 fer_sifpe_empresa_show_rest:
     pattern:  /empresa/{id}
     defaults: { _controller: FerSifpeBundle:Empresa:show, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_cuenta_show_rest:
+    pattern:  /cuenta/{id}
+    defaults: { _controller: FerSifpeBundle:Cuenta:show, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_cuenta_delete:
+    pattern:  /cuenta/{id}/borrar/
+    defaults: { _controller: FerSifpeBundle:Cuenta:delete, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_cuenta_delete_rest:
+    pattern:  /cuenta/{id}
+    defaults: { _controller: FerSifpeBundle:Cuenta:delete, _format: json }
+    methods: [DELETE]
+    options:
+      expose: true
+
+fer_sifpe_cuetna_save:
+    pattern:  /cuenta
+    defaults: { _controller: FerSifpeBundle:Cuenta:save, _format: json }
+    methods: [POST]
+    options:
+      expose: true
+
+fer_sifpe_cuentas_list:
+    pattern:  /cuentas
+    defaults: { _controller: FerSifpeBundle:Cuenta:listAll, _format: json }
     methods: [GET]
     options:
       expose: true
