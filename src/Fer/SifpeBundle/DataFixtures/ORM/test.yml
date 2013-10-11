@@ -5,6 +5,7 @@ Fer\SifpeBundle\Entity\Empresa:
   empresa2:
     id: 2
     name: Naiara
+  # este elemento se mantiene en los fixtures sin relaciones con otros
   empresa3:
     id: 3
     name: comun
@@ -16,18 +17,26 @@ Fer\SifpeBundle\Entity\GrupoCuenta:
   grupo2:
     id: 2
     name: grupo2
+  # este elemento se mantiene en los fixtures sin relaciones con otros
+  grupo3:
+    id: 3
+    name: grupo3
 
 Fer\SifpeBundle\Entity\Cuenta:
   cuenta{1..10}:
     name: cuenta<current()>
     grupo: @grupo1
-  cuenta{11..20}:
+  cuenta{11..19}:
       name: cuenta<current()>
+      grupo: @grupo2
+  # este elemento se mantiene en los fixtures sin relaciones con otros
+  cuenta20:
+      name: cuenta20
       grupo: @grupo2
 
 Fer\SifpeBundle\Entity\Gasto:
   gasto{1..10}:
-      empresa: @empresa<numberBetween(1, 3)>
+      empresa: @empresa<numberBetween(1, 2)>
       cuenta: @cuenta<numberBetween(1, 15)>
       notas: <sentence(10)>
       fecha: <dateTimeThisMonth()>
