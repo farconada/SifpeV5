@@ -22,7 +22,7 @@ class CuentaController extends AbstractController
     }
 
     /**
-     * @ParamConverter("cuenta", class="FerSifpeBundle:cuenta")
+     * @ParamConverter("cuenta", class="Fer\SifpeBundle\Entity\Cuenta")
      * @param \Fer\SifpeBundle\Entity\IEntidad $cuenta
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -31,6 +31,14 @@ class CuentaController extends AbstractController
         return parent::deleteAction($cuenta);
     }
 
+	/**
+	 * @ParamConverter("cuenta", converter="fos_rest.request_body", class="Fer\SifpeBundle\Entity\Cuenta")
+	 * @param IEntidad $cuenta
+	 * @return \Symfony\Component\HttpFoundation\Response|void
+	 */
+	public function saveAction(IEntidad $cuenta) {
+		return parent::saveAction($cuenta);
+	}
 
 
     public function indexAction()
