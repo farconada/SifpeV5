@@ -58,7 +58,8 @@
         "vipsoft/doctrine-data-fixtures-extension": "*",
         "sanpi/behatch-contexts": "*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "hautelook/alice-bundle": "0.1.*"
+        "hautelook/alice-bundle": "0.1.*",
+        "pdepend/pdepend" : "1.*"
     },
     "scripts": {
         "post-install-cmd": [
