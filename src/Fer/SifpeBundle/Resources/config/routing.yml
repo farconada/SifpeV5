@@ -32,6 +32,20 @@ fer_sifpe_ingreso_delete:
     options:
       expose: true
 
+fer_sifpe_ingreso_delete_rest:
+    pattern:  /ingreso/{id}
+    defaults: { _controller: FerSifpeBundle:Ingreso:delete, _format: json }
+    methods: [DELETE]
+    options:
+      expose: true
+
+fer_sifpe_ingreso_show:
+    pattern:  /ingreso/{id}
+    defaults: { _controller: FerSifpeBundle:Ingreso:show, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
 fer_sifpe_gasto_xcuenta:
     pattern:  /cuentas/gastos/{anio}/{mes}
     defaults: { _controller: FerSifpeBundle:Gasto:listResumenPorCuenta, _format: json}
@@ -99,6 +113,13 @@ fer_sifpe_empresa_save:
     pattern:  /empresa
     defaults: { _controller: FerSifpeBundle:Empresa:save, _format: json }
     methods: [POST]
+    options:
+      expose: true
+
+fer_sifpe_ingreso_list_all:
+    pattern:  /ingresos
+    defaults: { _controller: FerSifpeBundle:Ingreso:listAll, _format: json }
+    methods: [GET]
     options:
       expose: true
 
