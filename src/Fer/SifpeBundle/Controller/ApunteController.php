@@ -37,8 +37,7 @@ abstract class ApunteController extends AbstractController {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listDesdeMesAction($desdeMeses = 0) {
-        $items = $this->entityRepository->findPorMes($desdeMeses);
-        $output['data'] = $items;
+        $output['data'] = $this->entityRepository->findPorMes($desdeMeses);
         $output['totalPaginas'] = $this->entityRepository->getTotalMesesRegistrados();
         $view = $this->view($output, 200);
         return $this->handleView($view);
