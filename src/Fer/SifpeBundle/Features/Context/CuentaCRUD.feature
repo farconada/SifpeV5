@@ -50,11 +50,11 @@ Feature: Ser capaz de gestionar la entidad Cuenta
 
   Scenario: puedo actualizar una cuenta
     When I add "CONTENT_TYPE" header equal to "application/json"
-    And I send a POST request on "/cuentas" with body:
+    And I send a POST request on "/cuenta" with body:
       """
       {"id": "3", "name": "nuevo nombre"}
       """
     Then the response status code should be 200
     And I go to "/cuenta/3"
-    And the JSON node "root.name" should be equal to "nuevo nombre"
+    And the JSON node "name" should be equal to "nuevo nombre"
 

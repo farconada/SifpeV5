@@ -83,5 +83,5 @@ Feature: Ser capaz de gestionar la entidad Gasto
     """
     Then the response status code should be 200
     And I go to "/gasto/10"
-    And the JSON node "root.name" should be equal to "nuevo nombre"
+    And the JSON node "notas" should be equal to "bla bla bla"
 

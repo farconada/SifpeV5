@@ -56,5 +56,5 @@ Feature: Ser capaz de gestionar la entidad Empresa
       """
     Then the response status code should be 200
     And I go to "/empresa/3"
-    And the JSON node "root.name" should be equal to "nuevo nombre"
+    And the JSON node "name" should be equal to "nuevo nombre"
 
