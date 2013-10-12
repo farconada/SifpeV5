@@ -15,7 +15,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Fer\SifpeBundle\Entity\IEntidad;
 use Fer\SifpeBundle\Entity\IRepository;
 
-class AbstractController extends FOSRestController {
+abstract class AbstractController extends FOSRestController {
 
     /**
      * @var IRepository
