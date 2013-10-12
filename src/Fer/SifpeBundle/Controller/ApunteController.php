@@ -28,8 +28,7 @@ abstract class ApunteController extends AbstractController {
     public function listDesdeMesAction($desdeMeses = 0) {
         $output['data'] = $this->entityRepository->findPorMes($desdeMeses);
         $output['totalPaginas'] = $this->entityRepository->getTotalMesesRegistrados();
-        $view = $this->view($output, 200);
-        return $this->handleView($view);
+        return $this->renderResponse($output, 200);
     }
 
     /**
@@ -40,8 +39,7 @@ abstract class ApunteController extends AbstractController {
     public function listResumenPorCuentaAction($anio, $mes) {
         $cuentasMes = $this->entityRepository->getTotalCuentasMensual($anio, $mes);
         $resultado = array('data' => $cuentasMes, 'anio' => $anio, 'mes' => $mes);
-        $view = $this->view($resultado, 200);
-        return $this->handleView($view);
+        return $this->renderResponse($resultado, 200);
     }
 
     /**
@@ -53,8 +51,7 @@ abstract class ApunteController extends AbstractController {
     public function listResumenAnualAction($anio) {
         $resultado['data'] = $this->entityRepository->getResumenAnual($anio);
         $resultado['anio'] = $anio;
-        $view = $this->view($resultado, 200);
-        return $this->handleView($view);
+        return $this->renderResponse($resultado, 200);
 
     }
 
@@ -67,8 +64,7 @@ abstract class ApunteController extends AbstractController {
      */
     public function listResumenMesAction($anio, $mes){
         $items = $this->entityRepository->getResumenMes($anio, $mes);
-        $view = $this->view($items, 200);
-        return $this->handleView($view);
+        return $this->renderResponse($items, 200);
     }
 
 	/**
@@ -89,8 +85,7 @@ abstract class ApunteController extends AbstractController {
 		);
 		$queryObj->setFilter($queryFilter);
 		$items = $this->apunteFinder->find($queryObj, 500);
-		$view = $this->view($items, 200);
-		return $this->handleView($view);
+        return $this->renderResponse($items, 200);
 	}
 
 }

@@ -36,8 +36,7 @@ abstract class AbstractController extends FOSRestController {
      */
     public function deleteAction(IEntidad $entity) {
         $this->entityRepository->remove($entity);
-        $view = $this->view(array('msg' => 'deleted'), 200);
-        return $this->handleView($view);
+        return $this->renderResponse(array('msg' => 'deleted'), 200);
     }
 
     /**
@@ -46,20 +45,22 @@ abstract class AbstractController extends FOSRestController {
      */
     public function saveAction(IEntidad $entity) {
         $this->entityRepository->save($entity);
-        $view = $this->view(array('msg' => 'saved'), 200);
-        return $this->handleView($view);
+        return $this->renderResponse(array('msg' => 'saved'), 200);
     }
 
     public function listAllAction() {
         $entities = $this->entityRepository->findAll();
-        $view = $this->view($entities);
-        return $this->handleView($view);
+        return $this->renderResponse($entities, 200);
     }
 
 	public function showAction($id) {
 		$entity = $this->entityRepository->find($id);
-		$view = $this->view($entity, 200);
-		return $this->handleView($view);
+        return $this->renderResponse($entity, 200);
 	}
+
+    public function renderResponse($output, $responseCode){
+        $view = $this->view($output, $responseCode);
+        return $this->handleView($view);
+    }
 
 }
