@@ -18,20 +18,15 @@ use FOS\RestBundle\View\ViewHandler;
 class CuentaControllerSpec  extends ObjectBehavior {
     public function let(
         CuentaRepository $repository,
-        ContainerInterface $container,
         ViewHandler $viewHandler
     ) {
         $this->beConstructedWith($repository);
-        /**
-         * $this->handleView() hace use de este ViewHandler
-         */
-        $container->get('fos_rest.view_handler')->willReturn($viewHandler);
-        $this->setContainer($container);
+        $this->viewHandler = $viewHandler;
     }
 
     public function it_should_extend_some_classes() {
         $this->shouldHaveType('Fer\SifpeBundle\Controller\AbstractController');
-        $this->shouldHaveType('FOS\RestBundle\Controller\FOSRestController');
+        $this->shouldNotHaveType('FOS\RestBundle\Controller\FOSRestController');
     }
 
     public function it_should_have_delete_action(

@@ -22,20 +22,14 @@ class GastoControllerSpec extends ObjectBehavior {
     public function let (
         GastoRepository $repository,
         FinderInterface $finder,
-        ContainerInterface $container,
         ViewHandler $viewHandler
     ) {
         $this->beConstructedWith($repository, $finder);
-
-        /**
-         * $this->handleView() hace use de este ViewHandler
-         */
-        $container->get('fos_rest.view_handler')->willReturn($viewHandler);
-        $this->setContainer($container);
+        $this->viewHandler = $viewHandler;
     }
     public function it_should_extend_some_classes() {
         $this->shouldHaveType('Fer\SifpeBundle\Controller\AbstractController');
-        $this->shouldHaveType('FOS\RestBundle\Controller\FOSRestController');
+        $this->shouldNotHaveType('FOS\RestBundle\Controller\FOSRestController');
     }
 
     public function it_should_be_an_apunte_controller() {

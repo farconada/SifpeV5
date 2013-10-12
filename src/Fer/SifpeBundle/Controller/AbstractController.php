@@ -13,8 +13,15 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Fer\SifpeBundle\Entity\IEntidad;
 use Fer\SifpeBundle\Entity\IRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use FOS\RestBundle\View\View;
 
-abstract class AbstractController extends FOSRestController {
+
+abstract class AbstractController {
+
+    /**
+     * @DI\Inject("fos_rest.view_handler", required = true)
+     */
+    public $viewHandler;
 
     /**
      * @Template
@@ -58,9 +65,9 @@ abstract class AbstractController extends FOSRestController {
         return $this->renderResponse($entity, 200);
 	}
 
-    public function renderResponse($output, $responseCode){
-        $view = $this->view($output, $responseCode);
-        return $this->handleView($view);
+    public function renderResponse($output, $statusCode){
+        $view = View::create($output, $statusCode);
+        return $this->viewHandler->handle($view);
     }
 
 }
