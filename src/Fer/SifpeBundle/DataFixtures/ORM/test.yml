@@ -37,7 +37,15 @@ Fer\SifpeBundle\Entity\Cuenta:
 Fer\SifpeBundle\Entity\Gasto:
   gasto{1..10}:
       empresa: @empresa<numberBetween(1, 2)>
-      cuenta: @cuenta<numberBetween(1, 15)>
+      cuenta: @cuenta<numberBetween(1, 10)>
+      notas: <sentence(10)>
+      fecha: <dateTimeThisMonth()>
+      cantidad: <randomFloat(2,0,2000)>
+
+Fer\SifpeBundle\Entity\Ingreso:
+  ingreso{1..10}:
+      empresa: @empresa<numberBetween(1, 2)>
+      cuenta: @cuenta<numberBetween(16, 19)>
       notas: <sentence(10)>
       fecha: <dateTimeThisMonth()>
       cantidad: <randomFloat(2,0,2000)>
