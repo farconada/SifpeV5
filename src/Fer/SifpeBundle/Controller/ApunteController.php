@@ -10,8 +10,6 @@
 namespace Fer\SifpeBundle\Controller;
 
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 
 abstract class ApunteController extends AbstractController {
 
@@ -19,15 +17,6 @@ abstract class ApunteController extends AbstractController {
 	 * @var $apunteFinder \FOS\ElasticaBundle\Finder\TransformedFinder
 	 */
 	public $apunteFinder;
-
-    /**
-     * @Template
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function indexAction()
-    {
-        return array();
-    }
 
     /**
      * Lista los objeto gestionados por el repositorio
