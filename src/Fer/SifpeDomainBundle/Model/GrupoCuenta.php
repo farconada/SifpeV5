@@ -1,10 +1,10 @@
 <?php
 
-namespace Fer\SifpeBundle\Entity;
+namespace Fer\SifpeDomainBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
-
+use Fer\SifpeDomainBundle\Model\Cuenta;
 
 /**
  * GrupoCuenta
@@ -29,7 +29,7 @@ class GrupoCuenta implements IEntidad
      */
     private $name;
 	/**
-	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Cuenta>
+	 * @var \Doctrine\Common\Collections\ArrayCollection<Cuenta>
 	 * @ORM\OneToMany(mappedBy="grupo", targetEntity="Cuenta")
      * @JMS\Exclude
 	 */

@@ -7,9 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeBundle\Entity;
+namespace Fer\SifpeDomainBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Fer\SifpeDomainBundle\Repository\ORM\IngresoRepository;
+use Fer\SifpeDomainBundle\Model\Empresa;
+use Fer\SifpeDomainBundle\Model\Cuenta;
 
 /**
  * Apunte
@@ -20,14 +23,14 @@ use Doctrine\ORM\Mapping as ORM;
 class Ingreso extends Apunte {
 
 	/**
-	 * @var \Fer\SifpeBundle\Entity\Empresa
+	 * @var Empresa
 	 * @ORM\ManyToOne(inversedBy="ingresos",  targetEntity="Empresa")
 	 * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id")
 	 */
 	protected $empresa;
 
 	/**
-	 * @var \Fer\SifpeBundle\Entity\Cuenta
+	 * @var Cuenta
 	 * @ORM\ManyToOne(inversedBy="ingresos",  targetEntity="Cuenta")
 	 * @ORM\JoinColumn(name="cuenta_id", referencedColumnName="id")
 	 */

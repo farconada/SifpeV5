@@ -7,9 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeBundle\Entity;
+namespace Fer\SifpeDomainBundle\Repository\ORM;
 
-use Fer\SifpeBundle\Entity\AbstractRepository;
+use Fer\SifpeDomainBundle\Repository\ORM\AbstractRepository;
 
 class CuentaRepository extends AbstractRepository {
 

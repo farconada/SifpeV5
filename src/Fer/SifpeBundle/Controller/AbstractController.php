@@ -10,8 +10,8 @@
 namespace Fer\SifpeBundle\Controller;
 use FOS\RestBundle\Controller\FOSRestController;
 use JMS\DiExtraBundle\Annotation as DI;
-use Fer\SifpeBundle\Entity\IEntidad;
-use Fer\SifpeBundle\Entity\IRepository;
+use Fer\SifpeDomainBundle\Model\IEntidad;
+use Fer\SifpeDomainBundle\Repository\IRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\View\View;
 

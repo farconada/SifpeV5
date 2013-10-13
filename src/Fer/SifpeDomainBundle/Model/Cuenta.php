@@ -1,10 +1,14 @@
 <?php
 
-namespace Fer\SifpeBundle\Entity;
+namespace Fer\SifpeDomainBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;
+use Fer\SifpeDomainBundle\Model\GrupoCuenta;
+use Fer\SifpeDomainBundle\Repository\ORM\CuentaRepository;
+use Fer\SifpeDomainBundle\Model\Gasto;
+use Fer\SifpeDomainBundle\Model\Ingreso;
 
 /**
  * Cuenta
@@ -29,19 +33,19 @@ class Cuenta implements IEntidad
      */
     private $name;
 	/**
-	 * @var \Fer\SifpeBundle\Entity\GrupoCuenta
+	 * @var GrupoCuenta
 	 * @ORM\ManyToOne(inversedBy="cuentas",  targetEntity="GrupoCuenta")
 	 * @ORM\JoinColumn(name="grupo_cuenta_id", referencedColumnName="id")
 	 */
 	private $grupo;
 	/**
-	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Gasto>
+	 * @var \Doctrine\Common\Collections\ArrayCollection<Gasto>
 	 * @ORM\OneToMany(mappedBy="cuenta", targetEntity="Gasto")
      * @JMS\Exclude
 	 */
 	private  $gastos;
 	/**
-	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Ingreso>
+	 * @var \Doctrine\Common\Collections\ArrayCollection<Ingreso>
 	 * @ORM\OneToMany(mappedBy="cuenta", targetEntity="Ingreso")
      * @JMS\Exclude
 	 */
@@ -67,14 +71,14 @@ class Cuenta implements IEntidad
 	}
 
 	/**
-	 * @return \Fer\SifpeBundle\Entity\GrupoCuenta
+	 * @return GrupoCuenta
 	 */
 	public function getGrupo() {
 		return $this->grupo;
 	}
 
 	/**
-	 * @param \Fer\SifpeBundle\Entity\GrupoCuenta $grupo
+	 * @param GrupoCuenta $grupo
 	 */
 	public function setGrupo($grupo) {
 		$this->grupo = $grupo;

@@ -7,8 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeBundle\Entity;
+namespace Fer\SifpeDomainBundle\Repository;
 
+use Fer\SifpeDomainBundle\Model\IEntidad;
 
 interface IRepository {
     /**

@@ -7,10 +7,13 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeBundle\Entity;
+namespace Fer\SifpeDomainBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
+use Fer\SifpeDomainBundle\Repository\ORM\GastoRepository;
+use Fer\SifpeDomainBundle\Model\Empresa;
+use Fer\SifpeDomainBundle\Model\Cuenta;
 
 
 /**
@@ -21,18 +24,18 @@ use JMS\Serializer\Annotation as JMS;
 class Gasto extends Apunte {
 
 	/**
-	 * @var \Fer\SifpeBundle\Entity\Empresa
+	 * @var Empresa
 	 * @ORM\ManyToOne(inversedBy="gastos", targetEntity="Empresa")
 	 * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id", nullable=false)
-	 * @JMS\Type("Fer\SifpeBundle\Entity\Empresa")
+	 * @JMS\Type("Empresa")
 	 */
 	protected $empresa;
 
 	/**
-	 * @var \Fer\SifpeBundle\Entity\Cuenta
+	 * @var Cuenta
 	 * @ORM\ManyToOne(inversedBy="gastos",  targetEntity="Cuenta")
 	 * @ORM\JoinColumn(name="cuenta_id", referencedColumnName="id", nullable=false)
-	 * @JMS\Type("Fer\SifpeBundle\Entity\Cuenta")
+	 * @JMS\Type("Cuenta")
 	 */
 	protected $cuenta;
 

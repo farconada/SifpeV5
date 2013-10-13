@@ -2,11 +2,11 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeBundle\Entity\IEntidad;
+use Fer\SifpeDomainBundle\Model\IEntidad;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Fer\SifpeBundle\Entity\Cuenta;
-use Fer\SifpeBundle\Entity\IRepository;
+use Fer\SifpeDomainBundle\Model\Cuenta;
+use Fer\SifpeDomainBundle\Repository\IRepository;
 
 class CuentaController extends AbstractController
 {
@@ -22,8 +22,8 @@ class CuentaController extends AbstractController
     }
 
     /**
-     * @ParamConverter("cuenta", class="Fer\SifpeBundle\Entity\Cuenta")
-     * @param \Fer\SifpeBundle\Entity\IEntidad $cuenta
+     * @ParamConverter("cuenta", class="Cuenta")
+     * @param IEntidad $cuenta
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(IEntidad $cuenta)
@@ -32,7 +32,7 @@ class CuentaController extends AbstractController
     }
 
 	/**
-	 * @ParamConverter("cuenta", converter="fos_rest.request_body", class="Fer\SifpeBundle\Entity\Cuenta")
+	 * @ParamConverter("cuenta", converter="fos_rest.request_body", class="Cuenta")
 	 * @param IEntidad $cuenta
 	 * @return \Symfony\Component\HttpFoundation\Response|void
 	 */

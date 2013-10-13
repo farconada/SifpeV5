@@ -2,8 +2,9 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeBundle\Entity\IApunteRepository;
-use Fer\SifpeBundle\Entity\IEntidad;
+use Fer\SifpeDomainBundle\Model\IEntidad;
+use Fer\SifpeDomainBundle\Repository\IApunteRepository;
+use Fer\SifpeDomainBundle\Model\Ingreso;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -23,7 +24,7 @@ class IngresoController extends ApunteController
 
     /**
      * @param IEntidad $ingreso
-     * @ParamConverter("ingreso", class="Fer\SifpeBundle\Entity\Ingreso")
+     * @ParamConverter("ingreso", class="Ingreso")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(IEntidad $ingreso)
@@ -32,7 +33,7 @@ class IngresoController extends ApunteController
     }
 
     /**
-     * @ParamConverter("ingreso", converter="fos_rest.request_body", class="Fer\SifpeBundle\Entity\Ingreso")
+     * @ParamConverter("ingreso", converter="fos_rest.request_body", class="Ingreso")
      * @param IEntidad $ingreso
      * @return \Symfony\Component\HttpFoundation\Response|void
      */
