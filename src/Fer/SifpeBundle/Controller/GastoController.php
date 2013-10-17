@@ -26,7 +26,7 @@ class GastoController extends ApunteController
 
     /**
      * @param IEntidad $gasto
-     * @ParamConverter("gasto", class="Gasto")
+     * @ParamConverter("gasto", class="Fer\SifpeDomain\Model\Gasto")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(IEntidad $gasto)
@@ -35,7 +35,7 @@ class GastoController extends ApunteController
     }
 
 	/**
-	 * @ParamConverter("gasto", converter="fos_rest.request_body", class="Gasto")
+	 * @ParamConverter("gasto", converter="fos_rest.request_body", class="Fer\SifpeDomain\Model\Gasto")
 	 * @param IEntidad $gasto
 	 * @return \Symfony\Component\HttpFoundation\Response|void
 	 */

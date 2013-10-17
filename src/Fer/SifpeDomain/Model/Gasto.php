@@ -27,7 +27,7 @@ class Gasto extends Apunte {
 	 * @var Empresa
 	 * @ORM\ManyToOne(inversedBy="gastos", targetEntity="Empresa")
 	 * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id", nullable=false)
-	 * @JMS\Type("Empresa")
+	 * @JMS\Type("Fer\SifpeDomain\Model\Empresa")
 	 */
 	protected $empresa;
 
@@ -35,7 +35,7 @@ class Gasto extends Apunte {
 	 * @var Cuenta
 	 * @ORM\ManyToOne(inversedBy="gastos",  targetEntity="Cuenta")
 	 * @ORM\JoinColumn(name="cuenta_id", referencedColumnName="id", nullable=false)
-	 * @JMS\Type("Cuenta")
+	 * @JMS\Type("Fer\SifpeDomain\Model\Cuenta")
 	 */
 	protected $cuenta;
 

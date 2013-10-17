@@ -22,7 +22,7 @@ class CuentaController extends AbstractController
     }
 
     /**
-     * @ParamConverter("cuenta", class="Cuenta")
+     * @ParamConverter("cuenta", class="Fer\SifpeDomain\Model\Cuenta")
      * @param IEntidad $cuenta
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -32,7 +32,7 @@ class CuentaController extends AbstractController
     }
 
 	/**
-	 * @ParamConverter("cuenta", converter="fos_rest.request_body", class="Cuenta")
+	 * @ParamConverter("cuenta", converter="fos_rest.request_body", class="Fer\SifpeDomain\Model\Cuenta")
 	 * @param IEntidad $cuenta
 	 * @return \Symfony\Component\HttpFoundation\Response|void
 	 */

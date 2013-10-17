@@ -23,7 +23,7 @@ class EmpresaController extends AbstractController
 
     /**
      * @param IEntidad $empresa
-     * @ParamConverter("empresa", class="Empresa")
+     * @ParamConverter("empresa", class="Fer\SifpeDomain\Model\Empresa")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(IEntidad $empresa)
@@ -32,7 +32,7 @@ class EmpresaController extends AbstractController
     }
 
 	/**
-	 * @ParamConverter("empresa", converter="fos_rest.request_body", class="Empresa")
+	 * @ParamConverter("empresa", converter="fos_rest.request_body", class="Fer\SifpeDomain\Model\Empresa")
 	 * @param IEntidad $empresa
 	 * @return \Symfony\Component\HttpFoundation\Response|void
 	 */
