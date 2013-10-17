@@ -10,9 +10,9 @@
 namespace spec\Fer\SifpeBundle\Controller;
 
 use PhpSpec\ObjectBehavior;
-use Fer\SifpeBundle\Entity\IngresoRepository;
+use Fer\SifpeDomain\Repository\ORM\IngresoRepository;
+use Fer\SifpeDomain\Model\Ingreso;
 use FOS\ElasticaBundle\Finder\FinderInterface;
-use Fer\SifpeBundle\Entity\Ingreso;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use FOS\RestBundle\View\ViewHandler;
 use Prophecy\Argument;

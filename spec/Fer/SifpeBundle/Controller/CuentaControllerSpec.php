@@ -10,8 +10,8 @@
 namespace spec\Fer\SifpeBundle\Controller;
 
 use PhpSpec\ObjectBehavior;
-use Fer\SifpeBundle\Entity\Cuenta;
-use Fer\SifpeBundle\Entity\CuentaRepository;
+use Fer\SifpeDomain\Model\Cuenta;
+use Fer\SifpeDomain\Repository\ORM\CuentaRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use FOS\RestBundle\View\ViewHandler;
 
