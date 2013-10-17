@@ -62,6 +62,13 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+        mappings:
+          sifpedomain:
+            mapping: true
+            type: annotation
+            dir:        %kernel.root_dir%/../src/Fer/SifpeDomainBundle/Model
+            prefix:     Fer\SifpeDomainBundle\Model
+            alias:      ~
 
 # Swiftmailer Configuration
 swiftmailer:
