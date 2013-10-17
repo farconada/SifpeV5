@@ -1,15 +1,18 @@
 <?php
 
-namespace Fer\SifpeBundle\Entity;
+namespace Fer\SifpeDomain\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
+use Fer\SifpeDomain\Model\Gasto;
+use Fer\SifpeDomain\Model\Ingreso;
+use Fer\SifpeDomain\Repository\ORM\EmpresaRepository;
 
 /**
  * Empresa
  *
  * @ORM\Table(name="empresa")
- * @ORM\Entity(repositoryClass="EmpresaRepository")
+ * @ORM\Entity(repositoryClass="Fer\SifpeDomain\Repository\ORM\EmpresaRepository")
  */
 class Empresa implements IEntidad
 {
@@ -30,13 +33,13 @@ class Empresa implements IEntidad
      */
     private $name;
 	/**
-	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Gasto>
+	 * @var \Doctrine\Common\Collections\ArrayCollection<Gasto>
 	 * @ORM\OneToMany(mappedBy="empresa", targetEntity="Gasto")
      * @JMS\Exclude
 	 */
 	private  $gastos;
 	/**
-	 * @var \Doctrine\Common\Collections\ArrayCollection<\Fer\SifpeBundle\Entity\Ingreso>
+	 * @var \Doctrine\Common\Collections\ArrayCollection<Ingreso>
 	 * @ORM\OneToMany(mappedBy="empresa", targetEntity="Ingreso")
      * @JMS\Exclude
 	 */

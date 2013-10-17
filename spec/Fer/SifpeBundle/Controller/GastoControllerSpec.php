@@ -10,9 +10,9 @@
 namespace spec\Fer\SifpeBundle\Controller;
 
 use PhpSpec\ObjectBehavior;
-use Fer\SifpeBundle\Entity\GastoRepository;
+use Fer\SifpeDomain\Model\Gasto;
+use Fer\SifpeDomain\Repository\ORM\GastoRepository;
 use FOS\ElasticaBundle\Finder\FinderInterface;
-use Fer\SifpeBundle\Entity\Gasto;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use FOS\RestBundle\View\ViewHandler;
 use Prophecy\Argument;

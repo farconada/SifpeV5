@@ -7,8 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeBundle\Entity;
+namespace Fer\SifpeDomain\Repository\ORM;
 use Doctrine\ORM\EntityRepository;
+use Fer\SifpeDomain\Repository\IApunteRepository;
+use Fer\SifpeDomain\Model\IEntidad;
 
 class ApunteRepository extends AbstractRepository implements IApunteRepository {
     /**
@@ -153,8 +155,8 @@ class ApunteRepository extends AbstractRepository implements IApunteRepository {
      */
     public function save(IEntidad $apunte)
     {
-        $empresa = $this->getEntityManager()->find('FerSifpeBundle:Empresa', $apunte->getEmpresa()->getId());
-        $cuenta = $this->getEntityManager()->find('FerSifpeBundle:Cuenta', $apunte->getCuenta()->getId());
+        $empresa = $this->getEntityManager()->find('Fer\SifpeDomain\Model\Empresa', $apunte->getEmpresa()->getId());
+        $cuenta = $this->getEntityManager()->find('Fer\SifpeDomain\Model\Cuenta', $apunte->getCuenta()->getId());
         $apunte->setEmpresa($empresa);
         $apunte->setCuenta($cuenta);
         parent::save($apunte);

@@ -62,6 +62,13 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+        mappings:
+          sifpedomain:
+            mapping: true
+            type: annotation
+            dir:        %kernel.root_dir%/../src/Fer/SifpeDomain/
+            prefix:     Fer\SifpeDomain
+            alias:      FerSifpeDomain
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -94,7 +101,7 @@ fos_elastica:
                 name: ~
           persistence:
             driver: orm # orm, mongodb, propel are available
-            model: Fer\SifpeBundle\Entity\Gasto
+            model: Fer\SifpeDomain\Model\Gasto
             provider: ~
             finder: ~
             listener:
@@ -115,7 +122,7 @@ fos_elastica:
                 name: ~
           persistence:
             driver: orm # orm, mongodb, propel are available
-            model: Fer\SifpeBundle\Entity\Ingreso
+            model: Fer\SifpeDomain\Model\Ingreso
             provider: ~
             finder: ~
             listener:

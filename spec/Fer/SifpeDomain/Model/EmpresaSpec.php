@@ -7,13 +7,13 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace spec\Fer\SifpeBundle\Entity;
+namespace spec\Fer\SifpeDomain\Model;
 
 use PhpSpec\ObjectBehavior;
 
 class EmpresaSpec extends ObjectBehavior {
 
     public function it_should_implement_ientidad() {
-        $this->shouldHaveType('Fer\SifpeBundle\Entity\IEntidad');
+        $this->shouldHaveType('Fer\SifpeDomain\Model\IEntidad');
     }
 }

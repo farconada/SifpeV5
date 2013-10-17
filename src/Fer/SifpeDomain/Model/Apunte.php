@@ -1,13 +1,15 @@
 <?php
 
-namespace Fer\SifpeBundle\Entity;
+namespace Fer\SifpeDomain\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
+use Fer\SifpeDomain\Model\Cuenta;
+use Fer\SifpeDomain\Model\Empresa;
 
 /**
  * Class Apunte
- * @package Fer\SifpeBundle\Entity
+ * @package Fer\SifpeDomain\Model
  * @ORM\MappedSuperclass
  */
 abstract class Apunte implements IEntidad
@@ -127,28 +129,28 @@ abstract class Apunte implements IEntidad
     }
 
 	/**
-	 * @param \Fer\SifpeBundle\Entity\Cuenta $cuenta
+	 * @param Cuenta $cuenta
 	 */
 	public function setCuenta($cuenta) {
 		$this->cuenta = $cuenta;
 	}
 
 	/**
-	 * @return \Fer\SifpeBundle\Entity\Cuenta
+	 * @return Cuenta
 	 */
 	public function getCuenta() {
 		return $this->cuenta;
 	}
 
 	/**
-	 * @param \Fer\SifpeBundle\Entity\Empresa $empresa
+	 * @param Empresa $empresa
 	 */
 	public function setEmpresa($empresa) {
 		$this->empresa = $empresa;
 	}
 
 	/**
-	 * @return \Fer\SifpeBundle\Entity\Empresa
+	 * @return Empresa
 	 */
 	public function getEmpresa() {
 		return $this->empresa;

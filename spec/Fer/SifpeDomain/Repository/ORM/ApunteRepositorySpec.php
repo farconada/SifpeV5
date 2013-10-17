@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace spec\Fer\SifpeBundle\Entity;
+namespace spec\Fer\SifpeDomain\Repository\ORM;
 
 use PhpSpec\ObjectBehavior;
 use Doctrine\ORM\Mapping\ClassMetadata;
@@ -22,10 +22,10 @@ class ApunteRepositorySpec extends ObjectBehavior {
     }
 
     public function it_implements_my_base_repository_interface() {
-        $this->shouldHaveType('Fer\SifpeBundle\Entity\IRepository');
+        $this->shouldHaveType('Fer\SifpeDomain\Repository\IRepository');
     }
 
     public function it_implements_apunte_repository_interface() {
-        $this->shouldHaveType('Fer\SifpeBundle\Entity\IApunteRepository');
+        $this->shouldHaveType('Fer\SifpeDomain\Repository\IApunteRepository');
     }
 }

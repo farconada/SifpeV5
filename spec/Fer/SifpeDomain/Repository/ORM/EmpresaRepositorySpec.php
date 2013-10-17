@@ -7,13 +7,13 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace spec\Fer\SifpeBundle\Entity;
+namespace spec\Fer\SifpeDomain\Repository\ORM;
 
 use PhpSpec\ObjectBehavior;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\EntityManager;
 
-class GastoRepositorySpec extends ObjectBehavior {
+class IngresoRepositorySpec extends ObjectBehavior {
     public function let(
         EntityManager $em,
         ClassMetadata $classMetadata
@@ -22,10 +22,6 @@ class GastoRepositorySpec extends ObjectBehavior {
     }
 
     public function it_implements_my_base_repository_interface() {
-        $this->shouldHaveType('Fer\SifpeBundle\Entity\IRepository');
-    }
-
-    public function it_implements_apunte_repository_interface() {
-        $this->shouldHaveType('Fer\SifpeBundle\Entity\IApunteRepository');
+        $this->shouldHaveType('Fer\SifpeDomain\Repository\IRepository');
     }
 }

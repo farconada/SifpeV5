@@ -7,8 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeBundle\Entity;
-use JMS\DiExtraBundle\Annotation as DI;
+namespace Fer\SifpeDomain\Repository\ORM;
 
-class IngresoRepository extends ApunteRepository {
+class GastoRepository extends ApunteRepository {
+
 }

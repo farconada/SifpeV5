@@ -2,12 +2,13 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeBundle\Entity\IEntidad;
+use Fer\SifpeDomain\Model\IEntidad;
+use Fer\SifpeDomain\Repository\IRepository;
+use Fer\SifpeDomain\Model\Gasto;
+use Fer\SifpeDomain\Repository\IApunteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
-use Fer\SifpeBundle\Entity\Gasto;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Fer\SifpeBundle\Entity\IApunteRepository;
 
 class GastoController extends ApunteController
 {
@@ -25,7 +26,7 @@ class GastoController extends ApunteController
 
     /**
      * @param IEntidad $gasto
-     * @ParamConverter("gasto", class="Fer\SifpeBundle\Entity\Gasto")
+     * @ParamConverter("gasto", class="Fer\SifpeDomain\Model\Gasto")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(IEntidad $gasto)
@@ -34,7 +35,7 @@ class GastoController extends ApunteController
     }
 
 	/**
-	 * @ParamConverter("gasto", converter="fos_rest.request_body", class="Fer\SifpeBundle\Entity\Gasto")
+	 * @ParamConverter("gasto", converter="fos_rest.request_body", class="Fer\SifpeDomain\Model\Gasto")
 	 * @param IEntidad $gasto
 	 * @return \Symfony\Component\HttpFoundation\Response|void
 	 */

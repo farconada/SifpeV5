@@ -7,8 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeBundle\Entity;
-use Fer\SifpeBundle\Entity\AbstractRepository;
+namespace Fer\SifpeDomain\Repository\ORM;
+use Fer\SifpeDomain\Repository\ORM\AbstractRepository;
 
 class EmpresaRepository extends AbstractRepository {
 

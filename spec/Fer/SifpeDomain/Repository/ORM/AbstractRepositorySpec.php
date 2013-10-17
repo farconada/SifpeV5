@@ -1,5 +1,5 @@
 <?php
-namespace spec\Fer\SifpeBundle\Entity;
+namespace spec\Fer\SifpeDomain\Repository\ORM;
 
 /**
  * Created by JetBrains PhpStorm.
@@ -10,7 +10,7 @@ namespace spec\Fer\SifpeBundle\Entity;
  */
 
 use PhpSpec\ObjectBehavior;
-use Fer\SifpeBundle\Entity\IEntidad;
+use Fer\SifpeDomain\Model\IEntidad;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\EntityManager;
 use Prophecy\Argument;
@@ -28,7 +28,7 @@ class AbstractRepositorySpec extends ObjectBehavior {
     }
 
     public function it_implements_my_base_repository_interface() {
-        $this->shouldHaveType('Fer\SifpeBundle\Entity\IRepository');
+        $this->shouldHaveType('Fer\SifpeDomain\Repository\IRepository');
     }
 
     public function it_could_save_entities(

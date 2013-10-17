@@ -9,8 +9,8 @@ namespace spec\Fer\SifpeBundle\Controller;
  */
 
 use PhpSpec\ObjectBehavior;
-use Fer\SifpeBundle\Entity\EmpresaRepository;
-use Fer\SifpeBundle\Entity\Empresa;
+use Fer\SifpeDomain\Model\Empresa;
+use Fer\SifpeDomain\Repository\ORM\EmpresaRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use FOS\RestBundle\View\ViewHandler;
 

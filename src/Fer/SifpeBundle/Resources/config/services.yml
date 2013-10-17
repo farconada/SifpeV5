@@ -1,12 +1,12 @@
 parameters:
-  fer_sifpe.gasto_repository.class: Fer\SifpeBundle\Entity\GastoRepository
-  fer_sifpe.gasto_repository.factory_argument: 'FerSifpeBundle:Gasto'
-  fer_sifpe.ingreso_repository.class: Fer\SifpeBundle\Entity\IngresoRepository
-  fer_sifpe.ingreso_repository.factory_argument: 'FerSifpeBundle:Ingreso'
-  fer_sifpe.empresa_repository.class: Fer\SifpeBundle\Entity\EmpresaRepository
-  fer_sifpe.empresa_repository.factory_argument: 'FerSifpeBundle:Empresa'
-  fer_sifpe.cuenta_repository.class: Fer\SifpeBundle\Entity\CuentaRepository
-  fer_sifpe.cuenta_repository.factory_argument: 'FerSifpeBundle:Cuenta'
+  fer_sifpe.gasto_repository.class: Fer\SifpeDomain\Repository\ORM\GastoRepository
+  fer_sifpe.gasto_repository.factory_argument: 'Fer\SifpeDomain\Model\Gasto'
+  fer_sifpe.ingreso_repository.class: Fer\SifpeDomain\Repository\ORM\IngresoRepository
+  fer_sifpe.ingreso_repository.factory_argument: 'Fer\SifpeDomain\Model\Ingreso'
+  fer_sifpe.empresa_repository.class: Fer\SifpeDomain\Repository\ORM\EmpresaRepository
+  fer_sifpe.empresa_repository.factory_argument: 'Fer\SifpeDomain\Model\Empresa'
+  fer_sifpe.cuenta_repository.class: Fer\SifpeDomain\Repository\ORM\CuentaRepository
+  fer_sifpe.cuenta_repository.factory_argument: 'Fer\SifpeDomain\Model\Cuenta'
 
 services:
   fer_sifpe.gasto_repository:
