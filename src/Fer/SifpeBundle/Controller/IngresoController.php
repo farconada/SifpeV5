@@ -2,9 +2,9 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeDomainBundle\Model\IEntidad;
-use Fer\SifpeDomainBundle\Repository\IApunteRepository;
-use Fer\SifpeDomainBundle\Model\Ingreso;
+use Fer\SifpeDomain\Model\IEntidad;
+use Fer\SifpeDomain\Repository\IApunteRepository;
+use Fer\SifpeDomain\Model\Ingreso;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;

@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeDomainBundle\Repository\ORM;
+namespace Fer\SifpeDomain\Repository\ORM;
 use Doctrine\ORM\EntityRepository;
-use Fer\SifpeDomainBundle\Repository\IApunteRepository;
-use Fer\SifpeDomainBundle\Model\IEntidad;
+use Fer\SifpeDomain\Repository\IApunteRepository;
+use Fer\SifpeDomain\Model\IEntidad;
 
 class ApunteRepository extends AbstractRepository implements IApunteRepository {
     /**

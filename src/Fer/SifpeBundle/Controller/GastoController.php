@@ -2,10 +2,10 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeDomainBundle\Model\IEntidad;
-use Fer\SifpeDomainBundle\Repository\IRepository;
-use Fer\SifpeDomainBundle\Model\Gasto;
-use Fer\SifpeDomainBundle\Repository\IApunteRepository;
+use Fer\SifpeDomain\Model\IEntidad;
+use Fer\SifpeDomain\Repository\IRepository;
+use Fer\SifpeDomain\Model\Gasto;
+use Fer\SifpeDomain\Repository\IApunteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;

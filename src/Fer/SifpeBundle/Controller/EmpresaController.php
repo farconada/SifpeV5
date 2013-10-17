@@ -2,11 +2,11 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeDomainBundle\Model\IEntidad;
+use Fer\SifpeDomain\Model\IEntidad;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Fer\SifpeDomainBundle\Repository\IRepository;
-use Fer\SifpeDomainBundle\Model\Empresa;
+use Fer\SifpeDomain\Repository\IRepository;
+use Fer\SifpeDomain\Model\Empresa;
 
 class EmpresaController extends AbstractController
 {

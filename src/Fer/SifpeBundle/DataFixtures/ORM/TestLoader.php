@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeDomainBundle\DataFixtures;
+namespace Fer\SifpeBundle\DataFixtures;
 
 use Hautelook\AliceBundle\Alice\DataFixtureLoader;
 use Nelmio\Alice\Fixtures;

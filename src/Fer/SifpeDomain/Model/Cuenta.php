@@ -1,20 +1,20 @@
 <?php
 
-namespace Fer\SifpeDomainBundle\Model;
+namespace Fer\SifpeDomain\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as JMS;
-use Fer\SifpeDomainBundle\Model\GrupoCuenta;
-use Fer\SifpeDomainBundle\Repository\ORM\CuentaRepository;
-use Fer\SifpeDomainBundle\Model\Gasto;
-use Fer\SifpeDomainBundle\Model\Ingreso;
+use Fer\SifpeDomain\Model\GrupoCuenta;
+use Fer\SifpeDomain\Repository\ORM\CuentaRepository;
+use Fer\SifpeDomain\Model\Gasto;
+use Fer\SifpeDomain\Model\Ingreso;
 
 /**
  * Cuenta
  *
  * @ORM\Table(name="cuenta")
- * @ORM\Entity(repositoryClass="CuentaRepository")
+ * @ORM\Entity(repositoryClass="Fer\SifpeDomain\Repository\ORM\CuentaRepository")
  */
 class Cuenta implements IEntidad
 {

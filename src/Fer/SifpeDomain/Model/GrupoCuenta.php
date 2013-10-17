@@ -1,10 +1,10 @@
 <?php
 
-namespace Fer\SifpeDomainBundle\Model;
+namespace Fer\SifpeDomain\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
-use Fer\SifpeDomainBundle\Model\Cuenta;
+use Fer\SifpeDomain\Model\Cuenta;
 
 /**
  * GrupoCuenta

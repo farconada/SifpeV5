@@ -2,11 +2,11 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeDomainBundle\Model\IEntidad;
+use Fer\SifpeDomain\Model\IEntidad;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Fer\SifpeDomainBundle\Model\Cuenta;
-use Fer\SifpeDomainBundle\Repository\IRepository;
+use Fer\SifpeDomain\Model\Cuenta;
+use Fer\SifpeDomain\Repository\IRepository;
 
 class CuentaController extends AbstractController
 {

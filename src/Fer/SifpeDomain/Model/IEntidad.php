@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeDomainBundle\Model;
+namespace Fer\SifpeDomain\Model;
 
 
 interface IEntidad {

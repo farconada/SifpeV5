@@ -7,17 +7,17 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeDomainBundle\Model;
+namespace Fer\SifpeDomain\Model;
 
 use Doctrine\ORM\Mapping as ORM;
-use Fer\SifpeDomainBundle\Repository\ORM\IngresoRepository;
-use Fer\SifpeDomainBundle\Model\Empresa;
-use Fer\SifpeDomainBundle\Model\Cuenta;
+use Fer\SifpeDomain\Repository\ORM\IngresoRepository;
+use Fer\SifpeDomain\Model\Empresa;
+use Fer\SifpeDomain\Model\Cuenta;
 
 /**
  * Apunte
  *
- * @ORM\Entity(repositoryClass="IngresoRepository")
+ * @ORM\Entity(repositoryClass="Fer\SifpeDomain\Repository\ORM\IngresoRepository")
  * @ORM\Table(name="ingreso")
  */
 class Ingreso extends Apunte {

@@ -66,8 +66,8 @@ doctrine:
           sifpedomain:
             mapping: true
             type: annotation
-            dir:        %kernel.root_dir%/../src/Fer/SifpeDomainBundle/Model
-            prefix:     Fer\SifpeDomainBundle\Model
+            dir:        %kernel.root_dir%/../src/Fer/SifpeDomain/
+            prefix:     Fer\SifpeDomain
             alias:      ~
 
 # Swiftmailer Configuration

@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeDomainBundle\Repository;
+namespace Fer\SifpeDomain\Repository;
 
 
 interface IApunteRepository extends IRepository {

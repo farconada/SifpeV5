@@ -1,4 +1,4 @@
-Fer\SifpeDomainBundle\Model\Empresa:
+Fer\SifpeDomain\Model\Empresa:
   empresa1:
     id: 1
     name: fernando
@@ -10,7 +10,7 @@ Fer\SifpeDomainBundle\Model\Empresa:
     id: 3
     name: comun
 
-Fer\SifpeDomainBundle\Model\GrupoCuenta:
+Fer\SifpeDomain\Model\GrupoCuenta:
   grupo1:
     id: 1
     name: grupo1
@@ -22,7 +22,7 @@ Fer\SifpeDomainBundle\Model\GrupoCuenta:
     id: 3
     name: grupo3
 
-Fer\SifpeDomainBundle\Model\Cuenta:
+Fer\SifpeDomain\Model\Cuenta:
   cuenta{1..10}:
     name: cuenta<current()>
     grupo: @grupo1
@@ -34,7 +34,7 @@ Fer\SifpeDomainBundle\Model\Cuenta:
       name: cuenta20
       grupo: @grupo2
 
-Fer\SifpeDomainBundle\Model\Gasto:
+Fer\SifpeDomain\Model\Gasto:
   gasto{1..10}:
       empresa: @empresa<numberBetween(1, 2)>
       cuenta: @cuenta<numberBetween(1, 10)>
@@ -42,7 +42,7 @@ Fer\SifpeDomainBundle\Model\Gasto:
       fecha: <dateTimeThisMonth()>
       cantidad: <randomFloat(2,0,2000)>
 
-Fer\SifpeDomainBundle\Model\Ingreso:
+Fer\SifpeDomain\Model\Ingreso:
   ingreso{1..10}:
       empresa: @empresa<numberBetween(1, 2)>
       cuenta: @cuenta<numberBetween(16, 19)>

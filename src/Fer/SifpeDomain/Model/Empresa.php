@@ -1,18 +1,18 @@
 <?php
 
-namespace Fer\SifpeDomainBundle\Model;
+namespace Fer\SifpeDomain\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
-use Fer\SifpeDomainBundle\Model\Gasto;
-use Fer\SifpeDomainBundle\Model\Ingreso;
-use Fer\SifpeDomainBundle\Repository\ORM\EmpresaRepository;
+use Fer\SifpeDomain\Model\Gasto;
+use Fer\SifpeDomain\Model\Ingreso;
+use Fer\SifpeDomain\Repository\ORM\EmpresaRepository;
 
 /**
  * Empresa
  *
  * @ORM\Table(name="empresa")
- * @ORM\Entity(repositoryClass="EmpresaRepository")
+ * @ORM\Entity(repositoryClass="Fer\SifpeDomain\Repository\ORM\EmpresaRepository")
  */
 class Empresa implements IEntidad
 {

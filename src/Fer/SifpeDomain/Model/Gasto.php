@@ -7,18 +7,18 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeDomainBundle\Model;
+namespace Fer\SifpeDomain\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
-use Fer\SifpeDomainBundle\Repository\ORM\GastoRepository;
-use Fer\SifpeDomainBundle\Model\Empresa;
-use Fer\SifpeDomainBundle\Model\Cuenta;
+use Fer\SifpeDomain\Repository\ORM\GastoRepository;
+use Fer\SifpeDomain\Model\Empresa;
+use Fer\SifpeDomain\Model\Cuenta;
 
 
 /**
  * Apunte
- * @ORM\Entity(repositoryClass="GastoRepository")
+ * @ORM\Entity(repositoryClass="Fer\SifpeDomain\Repository\ORM\GastoRepository")
  * @ORM\Table(name="gasto")
  */
 class Gasto extends Apunte {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Fer\SifpeDomainBundle\Model;
+namespace Fer\SifpeDomain\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
-use Fer\SifpeDomainBundle\Model\Cuenta;
-use Fer\SifpeDomainBundle\Model\Empresa;
+use Fer\SifpeDomain\Model\Cuenta;
+use Fer\SifpeDomain\Model\Empresa;
 
 /**
  * Class Apunte
- * @package Fer\SifpeDomainBundle\Model
+ * @package Fer\SifpeDomain\Model
  * @ORM\MappedSuperclass
  */
 abstract class Apunte implements IEntidad

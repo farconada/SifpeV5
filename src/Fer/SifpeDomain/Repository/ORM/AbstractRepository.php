@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Fer\SifpeDomainBundle\Repository\ORM;
+namespace Fer\SifpeDomain\Repository\ORM;
 use Doctrine\ORM\EntityRepository;
-use Fer\SifpeDomainBundle\Model\IEntidad;
-use Fer\SifpeDomainBundle\Repository\IRepository;
+use Fer\SifpeDomain\Model\IEntidad;
+use Fer\SifpeDomain\Repository\IRepository;
 
 class AbstractRepository extends EntityRepository implements IRepository {
 
