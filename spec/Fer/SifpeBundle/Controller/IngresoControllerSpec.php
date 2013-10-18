@@ -16,17 +16,17 @@ use FOS\ElasticaBundle\Finder\FinderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use FOS\RestBundle\View\ViewHandler;
 use Prophecy\Argument;
+use Fer\SifpeBundle\Service\ApunteService;
 
 class IngresoControllerSpec extends ObjectBehavior {
 
-    public function let (
-        IngresoRepository $repository,
-        FinderInterface $finder,
-        ViewHandler $viewHandler
-    ) {
-        $this->beConstructedWith($repository, $finder);
-        $this->viewHandler = $viewHandler;
-    }
+	public function let (
+		ApunteService $apunteService,
+		ViewHandler $viewHandler
+	) {
+		$this->beConstructedWith($apunteService);
+		$this->viewHandler = $viewHandler;
+	}
     public function it_should_extend_some_classes() {
         $this->shouldHaveType('Fer\SifpeBundle\Controller\AbstractController');
         $this->shouldNotHaveType('FOS\RestBundle\Controller\FOSRestController');
@@ -37,27 +37,27 @@ class IngresoControllerSpec extends ObjectBehavior {
     }
 
     public function it_should_have_delete_action(
-        IngresoRepository $repository,
+	    ApunteService $apunteService,
         Ingreso $ingreso
     ) {
-        $repository->remove($ingreso)->shouldBeCalled();
+	    $apunteService->remove($ingreso)->shouldBeCalled();
         $this->deleteAction($ingreso);
     }
 
     public function it_should_have_save_action(
-        IngresoRepository $repository,
+	    ApunteService $apunteService,
         Ingreso $ingreso
     ) {
-        $repository->save($ingreso)->shouldBeCalled();
+	    $apunteService->save($ingreso)->shouldBeCalled();
         $this->saveAction($ingreso);
     }
 
     public function it_should_have_search_action(
-        FinderInterface $finder
+	    ApunteService $apunteService
     ) {
         $fromTime = new \DateTime();
         $toTime = new \DateTime();
-        $finder->find(Argument::cetera())->shouldBeCalled();
+	    $apunteService->searchFullText(Argument::cetera())->shouldBeCalled();
         $this->searchAction('query string', $fromTime, $toTime);
     }
 }

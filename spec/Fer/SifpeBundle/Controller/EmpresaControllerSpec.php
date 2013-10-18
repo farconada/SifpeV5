@@ -13,15 +13,16 @@ use Fer\SifpeDomain\Model\Empresa;
 use Fer\SifpeDomain\Repository\ORM\EmpresaRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use FOS\RestBundle\View\ViewHandler;
+use Fer\SifpeBundle\Service\EntityService;
 
 class EmpresaControllerSpec extends ObjectBehavior {
-    public function let(
-        EmpresaRepository $repository,
-        ViewHandler $viewHandler
-    ) {
-        $this->beConstructedWith($repository);
-        $this->viewHandler = $viewHandler;
-    }
+	public function let(
+		EntityService $entityService,
+		ViewHandler $viewHandler
+	) {
+		$this->beConstructedWith($entityService);
+		$this->viewHandler = $viewHandler;
+	}
 
     public function it_should_extend_some_classes() {
         $this->shouldHaveType('Fer\SifpeBundle\Controller\AbstractController');
@@ -30,18 +31,18 @@ class EmpresaControllerSpec extends ObjectBehavior {
 
     public function it_should_have_delete_action(
         Empresa $empresa,
-        EmpresaRepository $repository
+        EntityService $entityService
     )
     {
-        $repository->remove($empresa)->shouldBeCalled();
+	    $entityService->remove($empresa)->shouldBeCalled();
         $this->deleteAction($empresa);
     }
 
     public function it_should_have_save_action(
         Empresa $empresa,
-        EmpresaRepository $repository
+        EntityService $entityService
     ){
-        $repository->save($empresa)->shouldBeCalled();
+	    $entityService->save($empresa)->shouldBeCalled();
         $this->saveAction($empresa);
     }
 

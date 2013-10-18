@@ -9,6 +9,8 @@
 
 namespace spec\Fer\SifpeBundle\Controller;
 
+use Fer\SifpeBundle\Service\ApunteService;
+use Fer\SifpeBundle\Service\EntityService;
 use PhpSpec\ObjectBehavior;
 use Fer\SifpeDomain\Model\Cuenta;
 use Fer\SifpeDomain\Repository\ORM\CuentaRepository;
@@ -17,10 +19,10 @@ use FOS\RestBundle\View\ViewHandler;
 
 class CuentaControllerSpec  extends ObjectBehavior {
     public function let(
-        CuentaRepository $repository,
+        EntityService $entityService,
         ViewHandler $viewHandler
     ) {
-        $this->beConstructedWith($repository);
+        $this->beConstructedWith($entityService);
         $this->viewHandler = $viewHandler;
     }
 
@@ -31,18 +33,18 @@ class CuentaControllerSpec  extends ObjectBehavior {
 
     public function it_should_have_delete_action(
         Cuenta $cuenta,
-        CuentaRepository $repository
+        EntityService $entityService
     )
     {
-        $repository->remove($cuenta)->shouldBeCalled();
+	    $entityService->remove($cuenta)->shouldBeCalled();
         $this->deleteAction($cuenta);
     }
 
     public function it_should_have_save_action(
         Cuenta $cuenta,
-        CuentaRepository $repository
+        EntityService $entityService
     ){
-        $repository->save($cuenta)->shouldBeCalled();
+	    $entityService->save($cuenta)->shouldBeCalled();
         $this->saveAction($cuenta);
     }
 

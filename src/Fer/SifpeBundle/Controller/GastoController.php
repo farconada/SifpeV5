@@ -2,6 +2,7 @@
 
 namespace Fer\SifpeBundle\Controller;
 
+use Fer\SifpeBundle\Service\ApunteService;
 use Fer\SifpeDomain\Model\IEntidad;
 use Fer\SifpeDomain\Repository\IRepository;
 use Fer\SifpeDomain\Model\Gasto;
@@ -14,14 +15,12 @@ class GastoController extends ApunteController
 {
 
     /** @DI\InjectParams({
-    *     "gastoRepository" = @DI\Inject("fer_sifpe.gasto_repository"),
-     *    "gastoFinder" = @DI\Inject("fos_elastica.finder.website.gasto")
+    *     "apunteService" = @DI\Inject("fer_sifpe.gasto_service")
     * })
     */
-    public function __construct(IApunteRepository $gastoRepository, $gastoFinder)
+    public function __construct(ApunteService $apunteService)
     {
-        $this->entityRepository = $gastoRepository;
-	    $this->apunteFinder = $gastoFinder;
+        $this->entityService = $apunteService;
     }
 
     /**

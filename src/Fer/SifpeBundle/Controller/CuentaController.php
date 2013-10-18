@@ -2,6 +2,7 @@
 
 namespace Fer\SifpeBundle\Controller;
 
+use Fer\SifpeBundle\Service\EntityService;
 use Fer\SifpeDomain\Model\IEntidad;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -13,12 +14,12 @@ class CuentaController extends AbstractController
 
     /**
      * @DI\InjectParams({
-    *     "cuentaRepository" = @DI\Inject("fer_sifpe.cuenta_repository"),
+    *     "entityService" = @DI\Inject("fer_sifpe.cuenta_service"),
     * })
     */
-    public function __construct(IRepository $cuentaRepository)
+    public function __construct(EntityService $entityService)
     {
-        $this->entityRepository = $cuentaRepository;
+        $this->entityService = $entityService;
     }
 
     /**

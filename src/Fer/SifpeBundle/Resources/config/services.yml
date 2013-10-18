@@ -7,6 +7,8 @@ parameters:
   fer_sifpe.empresa_repository.factory_argument: 'Fer\SifpeDomain\Model\Empresa'
   fer_sifpe.cuenta_repository.class: Fer\SifpeDomain\Repository\ORM\CuentaRepository
   fer_sifpe.cuenta_repository.factory_argument: 'Fer\SifpeDomain\Model\Cuenta'
+  fer_sifpe.apunte_service.class: Fer\SifpeBundle\Service\ApunteService
+  fer_sifpe.entity_service.class: Fer\SifpeBundle\Service\EntityService
 
 services:
   fer_sifpe.gasto_repository:
@@ -36,3 +38,29 @@ services:
       factory_method:  getRepository
       arguments:
           - %fer_sifpe.cuenta_repository.factory_argument%
+
+########################################
+# Servicios para manejar entidades
+########################################
+
+  fer_sifpe.gasto_service:
+    class: %fer_sifpe.apunte_service.class%
+    arguments:
+      - @fer_sifpe.gasto_repository
+      - @fos_elastica.finder.website.gasto
+
+  fer_sifpe.ingreso_service:
+      class: %fer_sifpe.apunte_service.class%
+      arguments:
+        - @fer_sifpe.ingreso_repository
+        - @fos_elastica.finder.website.ingreso
+
+  fer_sifpe.cuenta_service:
+      class: %fer_sifpe.entity_service.class%
+      arguments:
+        - @fer_sifpe.cuenta_repository
+
+  fer_sifpe.empresa_service:
+      class: %fer_sifpe.entity_service.class%
+      arguments:
+        - @fer_sifpe.empresa_repository
