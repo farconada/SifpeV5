@@ -679,12 +679,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSElasticaBundle.git",
-                "reference": "2cbf5f797b607bb4acfe6b8daa24ed2bd0596fed"
+                "reference": "c6b01a2c506fca0c6f078bbfafd29624ba69015c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSElasticaBundle/zipball/2cbf5f797b607bb4acfe6b8daa24ed2bd0596fed",
-                "reference": "2cbf5f797b607bb4acfe6b8daa24ed2bd0596fed",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSElasticaBundle/zipball/c6b01a2c506fca0c6f078bbfafd29624ba69015c",
+                "reference": "c6b01a2c506fca0c6f078bbfafd29624ba69015c",
                 "shasum": ""
             },
             "require": {
@@ -751,7 +751,7 @@
                 "propel",
                 "search"
             ],
-            "time": "2013-10-13 13:15:13"
+            "time": "2013-10-17 22:05:42"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
@@ -1459,12 +1459,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/lessphp.git",
-                "reference": "c6cd043c94ba2a94ae3eeedc7a4c925302b61252"
+                "reference": "bc4f33b4bfc889018ebe53611050729641b82dc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/lessphp/zipball/c6cd043c94ba2a94ae3eeedc7a4c925302b61252",
-                "reference": "c6cd043c94ba2a94ae3eeedc7a4c925302b61252",
+                "url": "https://api.github.com/repos/leafo/lessphp/zipball/bc4f33b4bfc889018ebe53611050729641b82dc6",
+                "reference": "bc4f33b4bfc889018ebe53611050729641b82dc6",
                 "shasum": ""
             },
             "type": "library",
@@ -1492,7 +1492,7 @@
             ],
             "description": "lessphp is a compiler for LESS written in PHP.",
             "homepage": "http://leafo.net/lessphp/",
-            "time": "2013-10-04 15:40:57"
+            "time": "2013-10-17 16:23:00"
         },
         {
             "name": "monolog/monolog",
@@ -2170,12 +2170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "8e21cac9e1406ce6e3fd18f22b868f823c689672"
+                "reference": "408769ead1990d6277f7d3ddd654110058b17c62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/8e21cac9e1406ce6e3fd18f22b868f823c689672",
-                "reference": "8e21cac9e1406ce6e3fd18f22b868f823c689672",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/408769ead1990d6277f7d3ddd654110058b17c62",
+                "reference": "408769ead1990d6277f7d3ddd654110058b17c62",
                 "shasum": ""
             },
             "require": {
@@ -2270,7 +2270,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-10-17 11:48:01"
+            "time": "2013-10-17 21:24:37"
         },
         {
             "name": "twbs/bootstrap",
@@ -3110,6 +3110,56 @@
                 "scraper"
             ],
             "time": "2013-08-16 06:03:22"
+        },
+        {
+            "name": "friendsofsymfony/rest",
+            "version": "dev-master",
+            "target-dir": "FOS/Rest",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSRest.git",
+                "reference": "02efd1e9f2011c2df9687b3e6e7ab217da0e3a6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRest/zipball/02efd1e9f2011c2df9687b3e6e7ab217da0e3a6e",
+                "reference": "02efd1e9f2011c2df9687b3e6e7ab217da0e3a6e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "FOS\\Rest": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lukas Kahwe Smith",
+                    "email": "smith@pooteeweet.org"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/FriendsOfSymfony/FOSRest/contributors"
+                }
+            ],
+            "description": "This library provides various tools to develop RESTful API's",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "rest"
+            ],
+            "time": "2013-10-12 20:34:05"
         },
         {
             "name": "fzaninotto/faker",
