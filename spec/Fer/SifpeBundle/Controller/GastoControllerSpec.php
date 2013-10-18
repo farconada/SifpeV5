@@ -9,6 +9,7 @@
 
 namespace spec\Fer\SifpeBundle\Controller;
 
+use Fer\SifpeBundle\Service\ApunteService;
 use PhpSpec\ObjectBehavior;
 use Fer\SifpeDomain\Model\Gasto;
 use Fer\SifpeDomain\Repository\ORM\GastoRepository;
@@ -20,11 +21,10 @@ use Prophecy\Argument;
 class GastoControllerSpec extends ObjectBehavior {
 
     public function let (
-        GastoRepository $repository,
-        FinderInterface $finder,
+        ApunteService $apunteService,
         ViewHandler $viewHandler
     ) {
-        $this->beConstructedWith($repository, $finder);
+        $this->beConstructedWith($apunteService);
         $this->viewHandler = $viewHandler;
     }
     public function it_should_extend_some_classes() {
@@ -37,27 +37,27 @@ class GastoControllerSpec extends ObjectBehavior {
     }
 
     public function it_should_have_delete_action(
-        GastoRepository $repository,
+	    ApunteService $apunteService,
         Gasto $gasto
     ) {
-        $repository->remove($gasto)->shouldBeCalled();
+	    $apunteService->remove($gasto)->shouldBeCalled();
         $this->deleteAction($gasto);
     }
 
     public function it_should_have_save_action(
-        GastoRepository $repository,
+	    ApunteService $apunteService,
         Gasto $gasto
     ) {
-        $repository->save($gasto)->shouldBeCalled();
+	    $apunteService->save($gasto)->shouldBeCalled();
         $this->saveAction($gasto);
     }
 
     public function it_should_have_search_action(
-        FinderInterface $finder
+	    ApunteService $apunteService
     ) {
         $fromTime = new \DateTime();
         $toTime = new \DateTime();
-        $finder->find(Argument::cetera())->shouldBeCalled();
+	    $apunteService->searchFullText(Argument::cetera())->shouldBeCalled();
         $this->searchAction('query string', $fromTime, $toTime);
     }
 }
