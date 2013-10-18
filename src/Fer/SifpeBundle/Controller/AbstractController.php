@@ -9,6 +9,7 @@
 
 namespace Fer\SifpeBundle\Controller;
 use FOS\RestBundle\Controller\FOSRestController;
+use Fer\SifpeBundle\Service\EntityService;
 use JMS\DiExtraBundle\Annotation as DI;
 use Fer\SifpeDomain\Model\IEntidad;
 use Fer\SifpeDomain\Repository\IRepository;
@@ -33,16 +34,16 @@ abstract class AbstractController {
     }
 
     /**
-     * @var IRepository
+     * @var EntityService
      */
-    public $entityRepository;
+    public $entityService;
 
     /**
      * @param IEntidad $entity
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(IEntidad $entity) {
-        $this->entityRepository->remove($entity);
+        $this->entityService->remove($entity);
         return $this->renderResponse(array('msg' => 'deleted'), 200);
     }
 
@@ -51,17 +52,17 @@ abstract class AbstractController {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function saveAction(IEntidad $entity) {
-        $this->entityRepository->save($entity);
+        $this->entityService->save($entity);
         return $this->renderResponse(array('msg' => 'saved'), 200);
     }
 
     public function listAllAction() {
-        $entities = $this->entityRepository->findAll();
+        $entities = $this->entityService->findAll();
         return $this->renderResponse($entities, 200);
     }
 
 	public function showAction($id) {
-		$entity = $this->entityRepository->find($id);
+		$entity = $this->entityService->find($id);
         return $this->renderResponse($entity, 200);
 	}
 
