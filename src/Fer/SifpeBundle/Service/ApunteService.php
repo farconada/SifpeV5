@@ -65,7 +65,7 @@ class ApunteService extends EntityService {
 	 * @return array
 	 */
 	public function getTotalCuentasMensual($anio, $mes) {
-		return $this->repository->getTotalMesesRegistrados($anio, $mes);
+		return $this->repository->getTotalCuentasMensual($anio, $mes);
 	}
 
 	/**
