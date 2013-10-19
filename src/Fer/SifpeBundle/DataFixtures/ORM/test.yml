@@ -60,13 +60,13 @@ Fer\SifpeDomain\Model\Gasto:
 Fer\SifpeDomain\Model\Ingreso:
   ingreso{1..6}:
       empresa: @empresa<numberBetween(1, 2)>
-      cuenta: @cuenta<numberBetween(16, 19)>
+      cuenta: @cuenta16
       notas: <sentence(10)>
       fecha: <dateTimeBetween("first day of this month","now")>
       cantidad: 1000
   ingreso{7..10}:
       empresa: @empresa<numberBetween(1, 2)>
-      cuenta: @cuenta<numberBetween(16, 19)>
+      cuenta: @cuenta17
       notas: <sentence(10)>
       fecha: <dateTimeBetween("first day of last month","last day of last month")>
       cantidad: 1000
