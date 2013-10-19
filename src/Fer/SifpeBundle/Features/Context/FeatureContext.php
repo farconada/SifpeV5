@@ -50,16 +50,17 @@ class FeatureContext extends MinkContext //MinkContext if you want to test web
         $this->kernel = $kernel;
     }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        $container = $this->kernel->getContainer();
-//        $container->get('some_service')->doSomethingWith($argument);
-//    }
-//
+    /**
+     * Opens specified page. and replace vars
+     *
+     * @Given /^(?:|I )am on a URL like "(?P<page>[^"]+)"$/
+     * @When /^(?:|I )go to a URL like "(?P<page>[^"]+)"$/
+     */
+    public function visit($page)
+    {
+        $date = new \DateTime();
+        $page = str_replace('{esteAnio}', $date->format('Y'),$page);
+        $page = str_replace('{esteMes}', $date->format('m'),$page);
+        parent::visit($page);
+    }
 }
