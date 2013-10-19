@@ -35,17 +35,38 @@ Fer\SifpeDomain\Model\Cuenta:
       grupo: @grupo2
 
 Fer\SifpeDomain\Model\Gasto:
-  gasto{1..10}:
+  # 6 apuntes este mes por un total de 4500eur
+  #   3 apuntes en la cuenta1 y 3 en la cuenta2
+  gasto{1..3}:
+      empresa: @empresa<numberBetween(1, 2)>
+      cuenta: @cuenta1
+      notas: <sentence(10)>
+      fecha: <dateTimeBetween("first day of this month","now")>
+      cantidad: 1000
+  gasto{4..6}:
+      empresa: @empresa<numberBetween(1, 2)>
+      cuenta: @cuenta2
+      notas: "un texto especial"
+      fecha: <dateTimeBetween("first day of this month","now")>
+      cantidad: 500
+  # el mas anterior por un total de 2000eur
+  gasto{7..10}:
       empresa: @empresa<numberBetween(1, 2)>
       cuenta: @cuenta<numberBetween(1, 10)>
       notas: <sentence(10)>
-      fecha: <dateTimeThisMonth()>
-      cantidad: <randomFloat(2,0,2000)>
+      fecha: <dateTimeBetween("first day of last month","last day of last month")>
+      cantidad: 500
 
 Fer\SifpeDomain\Model\Ingreso:
-  ingreso{1..10}:
+  ingreso{1..6}:
       empresa: @empresa<numberBetween(1, 2)>
       cuenta: @cuenta<numberBetween(16, 19)>
       notas: <sentence(10)>
-      fecha: <dateTimeThisMonth()>
-      cantidad: <randomFloat(2,0,2000)>
+      fecha: <dateTimeBetween("first day of this month","now")>
+      cantidad: 1000
+  ingreso{7..10}:
+      empresa: @empresa<numberBetween(1, 2)>
+      cuenta: @cuenta<numberBetween(16, 19)>
+      notas: <sentence(10)>
+      fecha: <dateTimeBetween("first day of last month","last day of last month")>
+      cantidad: 1000
