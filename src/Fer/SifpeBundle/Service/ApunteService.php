@@ -45,7 +45,7 @@ class ApunteService extends EntityService {
 	 * @return mixed
 	 */
 	public function findPorMes($mesesAtras = 0) {
-		$this->repository->findPorMes($mesesAtras);
+		return $this->repository->findPorMes($mesesAtras);
 	}
 
 	/**
@@ -54,7 +54,7 @@ class ApunteService extends EntityService {
 	 * @return int
 	 */
 	public function getTotalMesesRegistrados() {
-		$this->repository->getTotalMesesRegistrados();
+		return $this->repository->getTotalMesesRegistrados();
 	}
 
 	/**
@@ -65,7 +65,7 @@ class ApunteService extends EntityService {
 	 * @return array
 	 */
 	public function getTotalCuentasMensual($anio, $mes) {
-		$this->repository->getTotalMesesRegistrados($anio, $mes);
+		return $this->repository->getTotalMesesRegistrados($anio, $mes);
 	}
 
 	/**
@@ -75,7 +75,7 @@ class ApunteService extends EntityService {
 	 * @return array
 	 */
 	public function getResumenAnual($anio) {
-		$this->repository->getResumenAnual($anio);
+		return $this->repository->getResumenAnual($anio);
 	}
 
 	/**
@@ -85,7 +85,7 @@ class ApunteService extends EntityService {
 	 * @return array
 	 */
 	public function getResumenMes($anio, $mes) {
-		$this->repository->getResumenMes($anio, $mes);
+		return $this->repository->getResumenMes($anio, $mes);
 	}
 
 }
