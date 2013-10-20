@@ -39,3 +39,7 @@ fer_sifpe_cuentas_list:
     methods: [GET]
     options:
       expose: true
+
+fer_sifpe_cuenta_index:
+    pattern:  /cuentas/gestion
+    defaults: { _controller: FerSifpeBundle:Cuenta:index }

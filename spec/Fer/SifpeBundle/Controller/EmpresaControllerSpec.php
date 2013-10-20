@@ -51,6 +51,6 @@ class EmpresaControllerSpec extends ObjectBehavior {
     }
 
     public function it_should_have_list_action() {
-        $this->listAction();
+        $this->listAllAction();
     }
 }
