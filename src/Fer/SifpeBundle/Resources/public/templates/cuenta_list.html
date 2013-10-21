@@ -7,48 +7,30 @@
         </div>
         <div class="modal-body">
             <form class="form-horizontal">
-                <input type="hidden" id="id" value="[[apunteEditar.id]]">
+                <input type="hidden" id="id" value="[[cuentaEditar.id]]">
                 <div class="control-group">
-                    <label class="control-label" for="fecha">Fecha</label>
+                    <label class="control-label" for="name">Nombre</label>
                     <div class="controls">
-                        <input ng-model="apunteEditar.fecha" type="date" id="fecha" placeholder="fecha"">
+                        <input ng-model="cuentaEditar.name" type="text" id="name" placeholder="name">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="cuenta">Cuenta</label>
+                    <label class="control-label" for="grupo">Grupo de cuentas</label>
                     <div class="controls">
-                        <select options-proxy id="cuenta" ng-model="apunteEditar.cuenta" ng-options="c.id as c.name for c in cuentas"></select>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="empresa">Empresa</label>
-                    <div class="controls">
-                        <select options-proxy id="empresa" ng-model="apunteEditar.empresa" ng-options="e.id as e.name for e in empresas"></select>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="cantidad">Cantidad</label>
-                    <div class="controls">
-                        <input type="text" id="cantidad" placeholder="cantidad"  ng-model="apunteEditar.cantidad">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="notas">Notas</label>
-                    <div class="controls">
-                        <textarea rows="3" id="notas" placeholder="notas" ng-model="apunteEditar.notas" />
+                        <select options-proxy id="grupo" ng-model="cuentaEditar.grupo" ng-options="g.id as g.name for g in grupos"></select>
                     </div>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
             <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-            <a href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="save(apunteEditar)">Guardar cambios</a>
+            <a href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="save(cuentaEditar)">Guardar cambios</a>
         </div>
     </div>
 
 
     <div class="well well-small">
-        <form class="form-inline" name="apunte_form_new" ng-submit="add(cuentaNueva)">
+        <form class="form-inline" name="cuenta_form_new" ng-submit="add(cuentaNueva)">
             <input ng-model="cuentaNueva.name" type="text" class="input" placeholder="Nombre" required="required">
             <select options-proxy ng-model="cuentaNueva.grupo" ng-options="g.id as g.name for g in grupos" required="required"></select>
             <button type="submit" class="btn">Guardar</button>
