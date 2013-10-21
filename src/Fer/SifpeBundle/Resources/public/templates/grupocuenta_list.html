@@ -1,0 +1,52 @@
+<div class="container">
+
+    <div id="modalEdit" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Editar grupo</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <input type="hidden" id="id" value="[[grupocuentaEditar.id]]">
+                <div class="control-group">
+                    <label class="control-label" for="name">Nombre</label>
+                    <div class="controls">
+                        <input ng-model="grupocuentaEditar.name" type="text" id="name" placeholder="name">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            <a href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="save(grupocuentaEditar)">Guardar cambios</a>
+        </div>
+    </div>
+
+
+    <div class="well well-small">
+        <form class="form-inline" name="grupocuenta_form_new" ng-submit="add(grupocuentaNueva)">
+            <input ng-model="grupocuentaNueva.name" type="text" class="input" placeholder="Nombre" required="required">
+            <button type="submit" class="btn">Guardar</button>
+        </form>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="hidden">#</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="grupocuenta in grupocuentas" ng-dblclick="edit($index)">
+            <td class="hidden">[[grupocuenta.id]]</td>
+            <td>[[grupocuenta.name]]</td>
+            <td>
+                <a ng-click="delete($index)" class="icon-remove"></a>
+                <a ng-click="edit($index)" class="icon-edit"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
