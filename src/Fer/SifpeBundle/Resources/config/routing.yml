@@ -11,6 +11,9 @@ ingreso_routing:
 cuenta_routing:
     resource: "@FerSifpeBundle/Resources/config/cuenta_routing.yml"
 
+grupocuenta_routing:
+    resource: "@FerSifpeBundle/Resources/config/grupocuenta_routing.yml"
+
 empresa_routing:
     resource: "@FerSifpeBundle/Resources/config/empresa_routing.yml"
 

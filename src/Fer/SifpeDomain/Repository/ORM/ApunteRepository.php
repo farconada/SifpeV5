@@ -155,10 +155,16 @@ class ApunteRepository extends AbstractRepository implements IApunteRepository {
      */
     public function save(IEntidad $apunte)
     {
-        $empresa = $this->getEntityManager()->find('Fer\SifpeDomain\Model\Empresa', $apunte->getEmpresa()->getId());
-        $cuenta = $this->getEntityManager()->find('Fer\SifpeDomain\Model\Cuenta', $apunte->getCuenta()->getId());
-        $apunte->setEmpresa($empresa);
-        $apunte->setCuenta($cuenta);
+	    if($apunte->getEmpresa()) {
+		    $empresa = $this->getEntityManager()->find('Fer\SifpeDomain\Model\Empresa', $apunte->getEmpresa()->getId());
+		    $apunte->setEmpresa($empresa);
+	    }
+
+	    if($apunte->getCuenta()) {
+		    $cuenta = $this->getEntityManager()->find('Fer\SifpeDomain\Model\Cuenta', $apunte->getCuenta()->getId());
+		    $apunte->setCuenta($cuenta);
+	    }
+
         parent::save($apunte);
     }
 

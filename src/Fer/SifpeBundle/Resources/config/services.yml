@@ -7,6 +7,8 @@ parameters:
   fer_sifpe.empresa_repository.factory_argument: 'Fer\SifpeDomain\Model\Empresa'
   fer_sifpe.cuenta_repository.class: Fer\SifpeDomain\Repository\ORM\CuentaRepository
   fer_sifpe.cuenta_repository.factory_argument: 'Fer\SifpeDomain\Model\Cuenta'
+  fer_sifpe.grupocuenta_repository.class: Fer\SifpeDomain\Repository\ORM\GrupoCuentaRepository
+  fer_sifpe.grupocuenta_repository.factory_argument: 'Fer\SifpeDomain\Model\GrupoCuenta'
   fer_sifpe.apunte_service.class: Fer\SifpeBundle\Service\ApunteService
   fer_sifpe.entity_service.class: Fer\SifpeBundle\Service\EntityService
 
@@ -39,6 +41,13 @@ services:
       arguments:
           - %fer_sifpe.cuenta_repository.factory_argument%
 
+  fer_sifpe.grupocuenta_repository:
+      class:           %fer_sifpe.grupocuenta_repository.class%
+      factory_service: doctrine.orm.entity_manager
+      factory_method:  getRepository
+      arguments:
+          - %fer_sifpe.grupocuenta_repository.factory_argument%
+
 ########################################
 # Servicios para manejar entidades
 ########################################
@@ -64,3 +73,8 @@ services:
       class: %fer_sifpe.entity_service.class%
       arguments:
         - @fer_sifpe.empresa_repository
+
+  fer_sifpe.grupocuenta_service:
+      class: %fer_sifpe.entity_service.class%
+      arguments:
+        - @fer_sifpe.grupocuenta_repository

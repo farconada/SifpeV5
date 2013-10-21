@@ -24,20 +24,25 @@ class Cuenta implements IEntidad
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @JMS\Type("integer")
      */
     private $id;
+
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=80)
+     * @JMS\Type("string")
      */
-    private $name;
+	protected $name;
+
 	/**
 	 * @var GrupoCuenta
 	 * @ORM\ManyToOne(inversedBy="cuentas",  targetEntity="GrupoCuenta")
 	 * @ORM\JoinColumn(name="grupo_cuenta_id", referencedColumnName="id")
+	 * @JMS\Type("Fer\SifpeDomain\Model\GrupoCuenta")
 	 */
-	private $grupo;
+	protected $grupo;
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<Gasto>
 	 * @ORM\OneToMany(mappedBy="cuenta", targetEntity="Gasto")

@@ -12,12 +12,12 @@ namespace spec\Fer\SifpeBundle\Controller;
 use Fer\SifpeBundle\Service\ApunteService;
 use Fer\SifpeBundle\Service\EntityService;
 use PhpSpec\ObjectBehavior;
-use Fer\SifpeDomain\Model\Cuenta;
+use Fer\SifpeDomain\Model\GrupoCuenta;
 use Fer\SifpeDomain\Repository\ORM\CuentaRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use FOS\RestBundle\View\ViewHandler;
 
-class CuentaControllerSpec  extends ObjectBehavior {
+class GrupoCuentaControllerSpec  extends ObjectBehavior {
     public function let(
         EntityService $entityService,
         ViewHandler $viewHandler
@@ -32,7 +32,7 @@ class CuentaControllerSpec  extends ObjectBehavior {
     }
 
     public function it_should_have_delete_action(
-        Cuenta $cuenta,
+	    GrupoCuenta $cuenta,
         EntityService $entityService
     )
     {
@@ -41,7 +41,7 @@ class CuentaControllerSpec  extends ObjectBehavior {
     }
 
     public function it_should_have_save_action(
-        Cuenta $cuenta,
+	    GrupoCuenta $cuenta,
         EntityService $entityService
     ){
 	    $entityService->save($cuenta)->shouldBeCalled();

@@ -41,14 +41,4 @@ class CuentaController extends AbstractController
 		return parent::saveAction($cuenta);
 	}
 
-
-    public function indexAction()
-    {
-        // TODO: write logic here
-    }
-
-    public function listAction()
-    {
-        // TODO: write logic here
-    }
 }
