@@ -10,7 +10,7 @@ use Fer\SifpeDomain\Model\Cuenta;
  * GrupoCuenta
  *
  * @ORM\Table(name="grupo_cuenta")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Fer\SifpeDomain\Repository\ORM\GrupoCuentaRepository")
  */
 class GrupoCuenta implements IEntidad
 {
