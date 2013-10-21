@@ -17,10 +17,6 @@ grupocuenta_routing:
 empresa_routing:
     resource: "@FerSifpeBundle/Resources/config/empresa_routing.yml"
 
-fer_sifpe_ingreso_index:
-    pattern:  /ingresos/gestion
-    defaults: { _controller: FerSifpeBundle:Ingreso:index }
-
 fer_sifpe_gasto_xcuenta:
     pattern:  /cuentas/gastos/{anio}/{mes}
     defaults: { _controller: FerSifpeBundle:Gasto:listResumenPorCuenta, _format: json}
