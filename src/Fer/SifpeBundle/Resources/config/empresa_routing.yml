@@ -1,3 +1,7 @@
+fer_sifpe_empresa_index:
+    pattern:  /empresas/gestion
+    defaults: { _controller: FerSifpeBundle:Empresa:index }
+
 fer_sifpe_empresa_save:
     pattern:  /empresa
     defaults: { _controller: FerSifpeBundle:Empresa:save, _format: json }
