@@ -19,21 +19,14 @@ fer_sifpe_cuenta_delete_rest:
     options:
       expose: true
 
-fer_sifpe_cuetna_save:
+fer_sifpe_cuenta_save:
     pattern:  /cuenta
     defaults: { _controller: FerSifpeBundle:Cuenta:save, _format: json }
     methods: [POST]
     options:
       expose: true
 
-fer_sifpe_cuentas_list:
-    pattern:  /cuentas
-    defaults: { _controller: FerSifpeBundle:Cuenta:listAll, _format: json }
-    methods: [GET]
-    options:
-      expose: true
-
-fer_sifpe_cuentas_list:
+fer_sifpe_cuenta_list:
     pattern:  /cuentas
     defaults: { _controller: FerSifpeBundle:Cuenta:listAll, _format: json }
     methods: [GET]
