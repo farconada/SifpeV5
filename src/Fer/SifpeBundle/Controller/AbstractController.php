@@ -8,6 +8,7 @@
  */
 
 namespace Fer\SifpeBundle\Controller;
+use Fer\SifpeBundle\Service\IEntityService;
 use FOS\RestBundle\Controller\FOSRestController;
 use Fer\SifpeBundle\Service\EntityService;
 use JMS\DiExtraBundle\Annotation as DI;
@@ -34,7 +35,7 @@ abstract class AbstractController {
     }
 
     /**
-     * @var EntityService
+     * @var IEntityService
      */
     public $entityService;
 

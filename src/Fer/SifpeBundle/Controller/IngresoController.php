@@ -7,7 +7,7 @@ use Fer\SifpeDomain\Model\Ingreso;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Fer\SifpeBundle\Service\ApunteService;
+use Fer\SifpeBundle\Service\IApunteService;
 
 class IngresoController extends ApunteController
 {
@@ -15,7 +15,7 @@ class IngresoController extends ApunteController
      *     "apunteService" = @DI\Inject("fer_sifpe.ingreso_service")
      * })
      */
-    public function __construct(ApunteService $apunteService)
+    public function __construct(IApunteService $apunteService)
     {
         $this->entityService = $apunteService;
     }

@@ -13,7 +13,8 @@ use Fer\SifpeDomain\Model\IEntidad;
 use Fer\SifpeDomain\Repository\IApunteRepository;
 use FOS\ElasticaBundle\Finder\FinderInterface;
 
-class ApunteService extends EntityService {
+class ApunteService extends EntityService implements IApunteService
+{
 
 
     /**

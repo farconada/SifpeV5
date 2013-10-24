@@ -13,7 +13,8 @@ use Fer\SifpeDomain\Model\IEntidad;
 use Fer\SifpeDomain\Repository\IRepository;
 use FOS\ElasticaBundle\Finder\FinderInterface;
 
-class EntityService {
+class EntityService implements IEntityService
+{
 	/**
 	 * @var IRepository
 	 */

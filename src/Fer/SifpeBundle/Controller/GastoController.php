@@ -2,7 +2,6 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeBundle\Service\ApunteService;
 use Fer\SifpeDomain\Model\IEntidad;
 use Fer\SifpeDomain\Repository\IRepository;
 use Fer\SifpeDomain\Model\Gasto;
@@ -10,6 +9,7 @@ use Fer\SifpeDomain\Repository\IApunteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Fer\SifpeBundle\Service\IApunteService;
 
 class GastoController extends ApunteController
 {
@@ -18,7 +18,7 @@ class GastoController extends ApunteController
     *     "apunteService" = @DI\Inject("fer_sifpe.gasto_service")
     * })
     */
-    public function __construct(ApunteService $apunteService)
+    public function __construct(IApunteService $apunteService)
     {
         $this->entityService = $apunteService;
     }

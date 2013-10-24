@@ -2,7 +2,7 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeBundle\Service\EntityService;
+use Fer\SifpeBundle\Service\IEntityService;
 use Fer\SifpeDomain\Model\IEntidad;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -17,7 +17,7 @@ class EmpresaController extends AbstractController
     *     "entityService" = @DI\Inject("fer_sifpe.empresa_service"),
     * })
     */
-    public function __construct(EntityService $entityService)
+    public function __construct(IEntityService $entityService)
     {
         $this->entityService = $entityService;
     }
