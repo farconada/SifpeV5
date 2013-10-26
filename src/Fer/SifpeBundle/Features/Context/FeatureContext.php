@@ -59,8 +59,14 @@ class FeatureContext extends MinkContext //MinkContext if you want to test web
     public function visit($page)
     {
         $date = new \DateTime();
+        $date1Mes = new \DateTime("first day of 1 month ago");
+        $date2Mes = new \DateTime("first day of 1 month ago");
+
         $page = str_replace('{esteAnio}', $date->format('Y'),$page);
         $page = str_replace('{esteMes}', $date->format('m'),$page);
+        $page = str_replace('{hoy-1mes}', $date1Mes->format('Y-m-d'), $page);
+        $page = str_replace('{hoy}', $date->format('Y-m-d'), $page);
+
         parent::visit($page);
     }
 }

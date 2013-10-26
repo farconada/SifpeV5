@@ -22,4 +22,6 @@ interface IEntityService
     public function remove(IEntidad $entity);
 
     public function save(IEntidad $entity);
+
+    public function totalByMonth(IEntidad $entidad, \DateTime $dateIni, \DateTime $dateEnd);
 }

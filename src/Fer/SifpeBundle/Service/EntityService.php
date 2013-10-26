@@ -53,4 +53,9 @@ class EntityService implements IEntityService
 	public function find($id) {
 		return $this->repository->find($id);
 	}
+
+    public function totalByMonth(IEntidad $entidad, \DateTime $dateIni, \DateTime $dateEnd)
+    {
+        return $this->repository->totalByMonth($entidad, $dateIni, $dateEnd);
+    }
 }

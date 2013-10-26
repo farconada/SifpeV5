@@ -27,4 +27,6 @@ interface IRepository {
     public function findAll();
 
 	public function find($id);
+
+    public function totalByMonth(IEntidad $entidad, \DateTime $dateIni, \DateTime $dateEnd);
 }

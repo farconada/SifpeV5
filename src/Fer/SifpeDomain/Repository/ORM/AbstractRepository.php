@@ -40,4 +40,19 @@ class AbstractRepository extends EntityRepository implements IRepository {
         $this->getEntityManager()->flush();
     }
 
+    public function totalByMonth(IEntidad $entidad, \DateTime $dateIni, \DateTime $dateEnd) {
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT sum(a.cantidad) AS cantidad FROM ' .
+            $this->getEntityName() .
+            ' a WHERE g.fecha <=:fechaFinal AND g.fecha >=:fechaInicial GROUP BY c.id'
+        );
+        return $query->execute(
+            array(
+                'fechaInicial' => $dateIni->format('Y-m-d'),
+                'fechaFinal' => $dateEnd->format('Y-m-d'),
+                ''
+            )
+        );
+    }
+
 }

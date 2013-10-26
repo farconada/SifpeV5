@@ -36,3 +36,9 @@ fer_sifpe_cuenta_list:
 fer_sifpe_cuenta_index:
     pattern:  /cuentas/gestion
     defaults: { _controller: FerSifpeBundle:Cuenta:index }
+
+fer_sifpe_cuenta_pormes:
+    pattern: /cuenta/{id}/total-por-mes/{dateIni}/{dateEnd}
+    defaults: { _controller: FerSifpeBundle:Cuenta:totalByMonth, _format: json }
+    options:
+      expose: true

@@ -72,4 +72,16 @@ abstract class AbstractController {
         return $this->viewHandler->handle($view);
     }
 
+    /**
+     * Total de una entidad entre dos fechas agrupado por mes
+     * @param $id
+     * @param \DateTime $dateIni
+     * @param \DateTime $dateEnd
+     */
+    public function totalByMonthAction($id, \DateTime $dateIni, \DateTime $dateEnd) {
+        $entity = $this->entityService->find($id);
+        $totals = $this->entityService->totalByMonth($entity, $dateIni, $dateEnd);
+        return $this->renderResponse($totals, 200);
+    }
+
 }
