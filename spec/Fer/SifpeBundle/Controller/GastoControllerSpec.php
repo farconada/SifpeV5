@@ -20,11 +20,14 @@ use Prophecy\Argument;
 
 class GastoControllerSpec extends ObjectBehavior {
 
+    protected $apunteService;
+
     public function let (
         ApunteService $apunteService,
         ViewHandler $viewHandler
     ) {
-        $this->beConstructedWith($apunteService);
+        $this->apunteService = $apunteService;
+        $this->beConstructedWith($this->apunteService);
         $this->viewHandler = $viewHandler;
     }
     public function it_should_extend_some_classes() {
@@ -59,5 +62,44 @@ class GastoControllerSpec extends ObjectBehavior {
         $toTime = new \DateTime();
 	    $apunteService->searchFullText(Argument::cetera())->shouldBeCalled();
         $this->searchAction('query string', $fromTime, $toTime);
+    }
+
+    public function it_should_have_a_listado_de_meses() {
+        $desdeMes = 1;
+        $this->apunteService->findPorMes($desdeMes)->shouldBeCalled();
+        $this->apunteService->getTotalMesesRegistrados()->shouldBeCalled();
+        $this->listDesdeMesAction($desdeMes);
+    }
+
+    public function it_should_have_a_listada_resumen_por_cuenta() {
+        $mes =  5;
+        $anio = 2014;
+        $this->apunteService->getTotalCuentasMensual($anio, $mes)->shouldBeCalled();
+        $this->listResumenPorCuentaAction($anio, $mes);
+    }
+
+    public function it_should_have_a_resumen_anual() {
+        $anio = 2014;
+        $this->apunteService->getResumenAnual($anio)->shouldBeCalled();
+        $this->listResumenAnualAction($anio);
+    }
+
+    public function it_should_have_resumen_por_mes() {
+        $anio = 2014;
+        $this->apunteService->getResumenAnual($anio)->shouldBeCalled();
+        $this->listResumenAnualAction($anio);
+    }
+
+    public function it_should_have_resumen_mensual() {
+        $mes =  5;
+        $anio = 2014;
+        $this->apunteService->getResumenMes($anio, $mes)->shouldBeCalled();
+        $this->listResumenMesAction($anio, $mes);
+    }
+
+    public function it_should_have_show_Action() {
+        $id =1;
+        $this->apunteService->find($id)->shouldBeCalled();
+        $this->showAction($id);
     }
 }

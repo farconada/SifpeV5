@@ -30,6 +30,6 @@ assetic:
 hautelook_alice:
     locale: es_ES   # default
     seed: 1         # default
-    
+
 #swiftmailer:
 #    delivery_address: me@example.com
