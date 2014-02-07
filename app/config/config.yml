@@ -167,8 +167,3 @@ fos_rest:
     body_listener:
        decoders:
            json: fos_rest.decoder.json
-
-
-hautelook_alice:
-    locale: es_ES   # default
-    seed: 1         # default
