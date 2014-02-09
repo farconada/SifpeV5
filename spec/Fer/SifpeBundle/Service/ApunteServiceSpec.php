@@ -41,9 +41,9 @@ class ApunteServiceSpec extends ObjectBehavior {
             Argument::that(
                 function($arg) use ($queryString, $dateIni, $dateEnd){
                     return
-                        ($arg->getParam('filter')['range']['fecha']['from'] == $dateIni->format('Y-m-d')) &&
-                        ($arg->getParam('filter')['range']['fecha']['to'] == $dateEnd->format('Y-m-d')) &&
-                        ($arg->getQuery()['query_string']['query'] == $queryString)
+                        ($arg['filter']['range']['fecha']['from'] == $dateIni->format('Y-m-d')) &&
+                        ($arg['filter']['range']['fecha']['to'] == $dateEnd->format('Y-m-d')) &&
+                        ($arg['query']['query_string']['query'] == $queryString)
                         ;
                 }),
             Argument::type('int')

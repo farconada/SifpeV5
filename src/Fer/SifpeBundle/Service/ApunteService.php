@@ -24,17 +24,15 @@ class ApunteService extends EntityService implements IApunteService
      * @return array
      */
     public function searchFullText($queryString, \DateTime $dateIni, \DateTime $dateEnd, $limit = 500) {
-        $queryString = new \Elastica\Query\QueryString($queryString);
-        $queryObj = new \Elastica\Query($queryString);
-        $queryFilter = new \Elastica\Filter\Range(
-            'fecha',
-            array(
-                'from' => $dateIni->format('Y-m-d'),
-                'to' => $dateEnd->format('Y-m-d')
-            )
-        );
-        $queryObj->setFilter($queryFilter);
-        return $this->finder->find($queryObj, $limit);
+        $queryArray = [
+            'query'     => ['query_string' =>['query' => $queryString]],
+            'filter'    => [
+                'range' =>
+                    ['fecha' => ['from' => $dateIni->format('Y-m-d'), 'to' => $dateEnd->format('Y-m-d')]]
+            ]
+        ];
+
+        return $this->finder->find($queryArray, $limit);
     }
 
 	/**
