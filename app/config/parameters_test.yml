@@ -12,4 +12,4 @@ parameters:
     mailer_password: null
     locale: es
     secret: tyyhfguyhfghfhr565yr
-    jquery_version: 2.0.3
+    jquery_version: 1.11.0

@@ -61,14 +61,17 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
-        mappings:
-          sifpedomain:
-            mapping: true
-            type: annotation
-            dir:        %kernel.root_dir%/../src/Fer/SifpeDomain/
-            prefix:     Fer\SifpeDomain
-            alias:      FerSifpeDomain
+        entity_managers:
+          default:
+              auto_mapping: true
+              mappings:
+                  sifpedomain:
+                      is_bundle: false
+                      mapping: true
+                      type: annotation
+                      dir:        %kernel.root_dir%/../src/Fer/SifpeDomain/
+                      prefix:     Fer\SifpeDomain
+                      alias:      FerSifpeDomain
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -130,8 +133,8 @@ fos_elastica:
               update: true
               delete: true
 
-bc_bootstrap:
-  less_filter: lessphp
+braincrafted_bootstrap:
+  less_filter: less
   jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-%jquery_version%.js
 
 assetic:
@@ -139,6 +142,10 @@ assetic:
     lessphp:
       file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
       apply_to:   "\.less$"
+    less:
+      node: /usr/local/bin/node
+      node_paths: [/usr/local/share/npm/lib/node_modules/]
+      apply_to: "\.less$"
     cssrewrite: ~
   assets:
     jquery:

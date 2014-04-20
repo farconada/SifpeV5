@@ -14,22 +14,23 @@
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
 
-    <div class="container">
         <!-- Navbar
         ================================================== -->
-        <div class="navbar">
-            <div class="navbar-inner">
-                <a class="brand" href="#">Sifpe v5</a>
-                <ul class="nav">
-                    <li><a href="{{ path('fer_sifpe_gasto_index') }}">Gastos</a></li>
-                    <li><a href="{{ path('fer_sifpe_ingreso_index') }}">Ingresos</a></li>
-                    <li><a href="{{ path('fer_sifpe_cuenta_index') }}">Cuentas</a></li>
-                    <li><a href="{{ path('fer_sifpe_grupocuenta_index') }}">Grupos de cuentas</a></li>
-                    <li><a href="{{ path('fer_sifpe_empresa_index') }}">Empresas</a></li>
-                </ul>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Sifpe v5</a>
+                </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ path('fer_sifpe_gasto_index') }}">Gastos</a></li>
+                        <li><a href="{{ path('fer_sifpe_ingreso_index') }}">Ingresos</a></li>
+                        <li><a href="{{ path('fer_sifpe_cuenta_index') }}">Cuentas</a></li>
+                        <li><a href="{{ path('fer_sifpe_grupocuenta_index') }}">Grupos de cuentas</a></li>
+                        <li><a href="{{ path('fer_sifpe_empresa_index') }}">Empresas</a></li>
+                    </ul>
+
             </div>
-        </div>
-    </div>
+        </nav>
 
 
 {% block body %}
