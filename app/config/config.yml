@@ -66,7 +66,6 @@ doctrine:
               auto_mapping: true
               mappings:
                   sifpedomain:
-                      is_bundle: false
                       mapping: true
                       type: annotation
                       dir:        %kernel.root_dir%/../src/Fer/SifpeDomain/
