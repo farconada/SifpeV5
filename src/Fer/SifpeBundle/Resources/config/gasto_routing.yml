@@ -16,12 +16,12 @@ fer_sifpe_gasto_delete_rest:
     options:
       expose: true
 
-fer_sifpe_gasto_list_all:
-    pattern:  /gastos
-    defaults: { _controller: FerSifpeBundle:Gasto:listAll, _format: json }
-    methods: [GET]
-    options:
-      expose: true
+#fer_sifpe_gasto_list_all:
+#    pattern:  /gastos
+#    defaults: { _controller: FerSifpeBundle:Gasto:listAll, _format: json }
+#    methods: [GET]
+#    options:
+#      expose: true
 
 fer_sifpe_gasto_show:
     pattern:  /gasto/{id}

@@ -74,16 +74,16 @@
         <thead>
         <tr>
             <th class="hidden">#</th>
-            <th>Fecha</th>
-            <th>Notas</th>
-            <th>Cuenta</th>
-            <th>Empresa</th>
-            <th>Cantidad</th>
+            <th><a ng-click="orderByField='fecha'; reverseSort = !reverseSort">Fecha</a></th>
+            <th><a ng-click="orderByField='notas'; reverseSort = !reverseSort">Notas</a></th>
+            <th><a ng-click="orderByField='cuenta.name'; reverseSort = !reverseSort">Cuenta</a></th>
+            <th><a ng-click="orderByField='empresa.name'; reverseSort = !reverseSort">Empresa</a></th>
+            <th><a ng-click="orderByField='cantidad'; reverseSort = !reverseSort">Cantidad</a></th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="apunte in apuntes" ng-dblclick="edit($index)">
+        <tr ng-repeat="apunte in apuntes|orderBy:orderByField:reverseSort" ng-dblclick="edit($index)" >
             <td class="hidden">[[apunte.id]]</td>
             <td>[[apunte.fecha]]</td>
             <td>[[apunte.notas]]</td>

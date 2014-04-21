@@ -30,12 +30,12 @@ fer_sifpe_ingreso_index:
     pattern:  /ingresos/gestion
     defaults: { _controller: FerSifpeBundle:Ingreso:index }
 
-fer_sifpe_ingreso_list_all:
-    pattern:  /ingresos
-    defaults: { _controller: FerSifpeBundle:Ingreso:listAll, _format: json }
-    methods: [GET]
-    options:
-      expose: true
+#fer_sifpe_ingreso_list_all:
+#    pattern:  /ingresos
+#    defaults: { _controller: FerSifpeBundle:Ingreso:listAll, _format: json }
+#    methods: [GET]
+#    options:
+#      expose: true
 
 fer_sifpe_ingreso_list:
     pattern:  /ingresos/{desdeMeses}
