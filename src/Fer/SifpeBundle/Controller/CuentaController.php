@@ -2,27 +2,29 @@
 
 namespace Fer\SifpeBundle\Controller;
 
-use Fer\SifpeBundle\Entity\IEntidad;
+use Fer\SifpeBundle\Service\IEntityService;
+use Fer\SifpeDomain\Model\IEntidad;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Fer\SifpeBundle\Entity\Cuenta;
+use Fer\SifpeDomain\Model\Cuenta;
+use Fer\SifpeDomain\Repository\IRepository;
 
 class CuentaController extends AbstractController
 {
 
     /**
      * @DI\InjectParams({
-    *     "cuentaRepository" = @DI\Inject("fer_sifpe.cuenta_repository"),
+    *     "entityService" = @DI\Inject("fer_sifpe.cuenta_service"),
     * })
     */
-    public function __construct($cuentaRepository)
+    public function __construct(IEntityService $entityService)
     {
-        $this->entityRepository = $cuentaRepository;
+        $this->entityService = $entityService;
     }
 
     /**
-     * @ParamConverter("cuenta", class="FerSifpeBundle:cuenta")
-     * @param \Fer\SifpeBundle\Entity\IEntidad $cuenta
+     * @ParamConverter("cuenta", class="Fer\SifpeDomain\Model\Cuenta")
+     * @param IEntidad $cuenta
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(IEntidad $cuenta)
@@ -30,5 +32,13 @@ class CuentaController extends AbstractController
         return parent::deleteAction($cuenta);
     }
 
+	/**
+	 * @ParamConverter("cuenta", converter="fos_rest.request_body", class="Fer\SifpeDomain\Model\Cuenta")
+	 * @param IEntidad $cuenta
+	 * @return \Symfony\Component\HttpFoundation\Response|void
+	 */
+	public function saveAction(IEntidad $cuenta) {
+		return parent::saveAction($cuenta);
+	}
 
 }

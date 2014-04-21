@@ -8,28 +8,44 @@
  */
 
 namespace Fer\SifpeBundle\Controller;
+use Fer\SifpeBundle\Service\IEntityService;
 use FOS\RestBundle\Controller\FOSRestController;
-use Doctrine\ORM\EntityManager;
-use FOS\RestBundle\View\View;
+use Fer\SifpeBundle\Service\EntityService;
 use JMS\DiExtraBundle\Annotation as DI;
-use Fer\SifpeBundle\Entity\IEntidad;
-use Fer\SifpeBundle\Entity\AbstractRepository;
+use Fer\SifpeDomain\Model\IEntidad;
+use Fer\SifpeDomain\Repository\IRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use FOS\RestBundle\View\View;
 
-class AbstractController extends FOSRestController {
+
+abstract class AbstractController {
 
     /**
-     * @var AbstractRepository
+     * @DI\Inject("fos_rest.view_handler", required = true)
      */
-    public $entityRepository;
+    public $viewHandler;
+
+    /**
+     * @Template
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexAction()
+    {
+        return array();
+    }
+
+    /**
+     * @var IEntityService
+     */
+    public $entityService;
 
     /**
      * @param IEntidad $entity
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(IEntidad $entity) {
-        $this->entityRepository->remove($entity);
-        $view = $this->view(array('msg' => 'deleted'), 200);
-        return $this->handleView($view);
+        $this->entityService->remove($entity);
+        return $this->renderResponse(array('msg' => 'deleted'), 200);
     }
 
     /**
@@ -37,15 +53,23 @@ class AbstractController extends FOSRestController {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function saveAction(IEntidad $entity) {
-        $this->entityRepository->save($entity);
-        $view = $this->view(array('msg' => 'saved'), 200);
-        return $this->handleView($view);
+        $this->entityService->save($entity);
+        return $this->renderResponse(array('msg' => 'saved'), 200);
     }
 
     public function listAllAction() {
-        $entities = $this->entityRepository->findAll();
-        $view = $this->view($entities);
-        return $this->handleView($view);
+        $entities = $this->entityService->findAll();
+        return $this->renderResponse($entities, 200);
+    }
+
+	public function showAction($id) {
+		$entity = $this->entityService->find($id);
+        return $this->renderResponse($entity, 200);
+	}
+
+    public function renderResponse($output, $statusCode){
+        $view = View::create($output, $statusCode);
+        return $this->viewHandler->handle($view);
     }
 
 }

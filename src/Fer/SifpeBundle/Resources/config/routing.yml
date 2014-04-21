@@ -2,27 +2,20 @@ fer_sifpe_default:
     pattern:  /
     defaults: { _controller: FerSifpeBundle:Gasto:index }
 
-fer_sifpe_gasto_index:
-    pattern:  /gastos/gestion
-    defaults: { _controller: FerSifpeBundle:Gasto:index }
+gasto_routing:
+    resource: "@FerSifpeBundle/Resources/config/gasto_routing.yml"
 
-fer_sifpe_ingreso_index:
-    pattern:  /ingresos/gestion
-    defaults: { _controller: FerSifpeBundle:Ingreso:index }
+ingreso_routing:
+    resource: "@FerSifpeBundle/Resources/config/ingreso_routing.yml"
 
-fer_sifpe_gasto_delete:
-    pattern:  /gasto/{id}/borrar/
-    defaults: { _controller: FerSifpeBundle:Gasto:delete, _format: json }
-    methods: [GET]
-    options:
-      expose: true
+cuenta_routing:
+    resource: "@FerSifpeBundle/Resources/config/cuenta_routing.yml"
 
-fer_sifpe_ingreso_delete:
-    pattern:  /ingreso/{id}/borrar/
-    defaults: { _controller: FerSifpeBundle:Ingreso:delete, _format: json }
-    methods: [GET]
-    options:
-      expose: true
+grupocuenta_routing:
+    resource: "@FerSifpeBundle/Resources/config/grupocuenta_routing.yml"
+
+empresa_routing:
+    resource: "@FerSifpeBundle/Resources/config/empresa_routing.yml"
 
 fer_sifpe_gasto_xcuenta:
     pattern:  /cuentas/gastos/{anio}/{mes}
@@ -52,65 +45,9 @@ fer_sifpe_ingreso_xanio:
     options:
       expose: true
 
-fer_sifpe_gasto_list:
-    pattern:  /gastos/{desdeMeses}
-    defaults: { _controller: FerSifpeBundle:Gasto:listDesdeMes, _format: json, desdeMeses: 0 }
-    methods: [GET]
-    options:
-      expose: true
-
-fer_sifpe_gasto_save:
-    pattern:  /gasto
-    defaults: { _controller: FerSifpeBundle:Gasto:save, _format: json }
-    methods: [POST]
-    options:
-      expose: true
-
-fer_sifpe_ingreso_save:
-    pattern:  /ingreso
-    defaults: { _controller: FerSifpeBundle:Ingreso:save, _format: json }
-    methods: [POST]
-    options:
-      expose: true
-
-fer_sifpe_empresa_save:
-    pattern:  /empresa
-    defaults: { _controller: FerSifpeBundle:Empresa:save, _format: json }
-    methods: [POST]
-    options:
-      expose: true
-
-fer_sifpe_ingreso_list:
-    pattern:  /ingresos/{desdeMeses}
-    defaults: { _controller: FerSifpeBundle:Ingreso:listDesdeMes, _format: json, desdeMeses: 0 }
-    methods: [GET]
-    options:
-      expose: true
-
 fer_sifpe_resumen_xcuenta:
     pattern:  /{anio}/{mes}/resumen
     defaults: { _controller: FerSifpeBundle:Ingreso:listResumenMes, _format: json }
-    methods: [GET]
-    options:
-      expose: true
-
-fer_sifpe_empresas_list:
-    pattern:  /empresas
-    defaults: { _controller: FerSifpeBundle:Empresa:listAll, _format: json }
-    methods: [GET]
-    options:
-      expose: true
-
-fer_sifpe_cuentas_list:
-    pattern:  /cuentas
-    defaults: { _controller: FerSifpeBundle:Cuenta:listAll, _format: json }
-    methods: [GET]
-    options:
-      expose: true
-
-fer_sifpe_gasto_search:
-    pattern:  /gastos/buscar/{dateIni}/{dateEnd}/{query}
-    defaults: { _controller: FerSifpeBundle:Gasto:search, _format: json}
     methods: [GET]
     options:
       expose: true

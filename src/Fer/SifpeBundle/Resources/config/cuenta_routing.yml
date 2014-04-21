@@ -1,0 +1,38 @@
+fer_sifpe_cuenta_show_rest:
+    pattern:  /cuenta/{id}
+    defaults: { _controller: FerSifpeBundle:Cuenta:show, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_cuenta_delete:
+    pattern:  /cuenta/{id}/borrar/
+    defaults: { _controller: FerSifpeBundle:Cuenta:delete, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_cuenta_delete_rest:
+    pattern:  /cuenta/{id}
+    defaults: { _controller: FerSifpeBundle:Cuenta:delete, _format: json }
+    methods: [DELETE]
+    options:
+      expose: true
+
+fer_sifpe_cuenta_save:
+    pattern:  /cuenta
+    defaults: { _controller: FerSifpeBundle:Cuenta:save, _format: json }
+    methods: [POST]
+    options:
+      expose: true
+
+fer_sifpe_cuenta_list:
+    pattern:  /cuentas
+    defaults: { _controller: FerSifpeBundle:Cuenta:listAll, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_cuenta_index:
+    pattern:  /cuentas/gestion
+    defaults: { _controller: FerSifpeBundle:Cuenta:index }

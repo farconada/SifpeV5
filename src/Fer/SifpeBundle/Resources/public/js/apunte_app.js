@@ -140,12 +140,12 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
 
 
     // carga inicial, lista de empresas
-    $http.get(Routing.generate('fer_sifpe_empresas_list')).success(function(data){
+    $http.get(Routing.generate('fer_sifpe_empresa_list')).success(function(data){
         $scope.empresas = data;
     });
 
     // carga inicial, lista de cuentas
-    $http.get(Routing.generate('fer_sifpe_cuentas_list')).success(function(data){
+    $http.get(Routing.generate('fer_sifpe_cuenta_list')).success(function(data){
         $scope.cuentas = data;
     });
 

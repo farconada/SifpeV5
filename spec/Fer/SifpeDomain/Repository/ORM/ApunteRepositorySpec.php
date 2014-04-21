@@ -1,0 +1,31 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: fernando
+ * Date: 06/10/13
+ * Time: 11:27
+ * To change this template use File | Settings | File Templates.
+ */
+
+namespace spec\Fer\SifpeDomain\Repository\ORM;
+
+use PhpSpec\ObjectBehavior;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\EntityManager;
+
+class ApunteRepositorySpec extends ObjectBehavior {
+    public function let(
+        EntityManager $em,
+        ClassMetadata $classMetadata
+    ) {
+        $this->beConstructedWith($em, $classMetadata);
+    }
+
+    public function it_implements_my_base_repository_interface() {
+        $this->shouldHaveType('Fer\SifpeDomain\Repository\IRepository');
+    }
+
+    public function it_implements_apunte_repository_interface() {
+        $this->shouldHaveType('Fer\SifpeDomain\Repository\IApunteRepository');
+    }
+}

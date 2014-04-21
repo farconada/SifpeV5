@@ -1,0 +1,46 @@
+fer_sifpe_empresa_index:
+    pattern:  /empresas/gestion
+    defaults: { _controller: FerSifpeBundle:Empresa:index }
+
+fer_sifpe_empresa_save:
+    pattern:  /empresa
+    defaults: { _controller: FerSifpeBundle:Empresa:save, _format: json }
+    methods: [POST]
+    options:
+      expose: true
+
+fer_sifpe_empresa_list:
+    pattern:  /empresas
+    defaults: { _controller: FerSifpeBundle:Empresa:listAll, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_empresa_delete:
+    pattern:  /empresa/{id}/borrar/
+    defaults: { _controller: FerSifpeBundle:Empresa:delete, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+
+fer_sifpe_empresa_delete_rest:
+    pattern:  /empresa/{id}
+    defaults: { _controller: FerSifpeBundle:Empresa:delete, _format: json }
+    methods: [DELETE]
+    options:
+      expose: true
+
+fer_sifpe_empresa_save:
+    pattern:  /empresa
+    defaults: { _controller: FerSifpeBundle:Empresa:save, _format: json }
+    methods: [POST]
+    options:
+      expose: true
+
+fer_sifpe_empresa_show_rest:
+    pattern:  /empresa/{id}
+    defaults: { _controller: FerSifpeBundle:Empresa:show, _format: json }
+    methods: [GET]
+    options:
+      expose: true
+

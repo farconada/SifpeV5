@@ -1,0 +1,72 @@
+Fer\SifpeDomain\Model\Empresa:
+  empresa1:
+    id: 1
+    name: fernando
+  empresa2:
+    id: 2
+    name: Naiara
+  # este elemento se mantiene en los fixtures sin relaciones con otros
+  empresa3:
+    id: 3
+    name: comun
+
+Fer\SifpeDomain\Model\GrupoCuenta:
+  grupo1:
+    id: 1
+    name: grupo1
+  grupo2:
+    id: 2
+    name: grupo2
+  # este elemento se mantiene en los fixtures sin relaciones con otros
+  grupo3:
+    id: 3
+    name: grupo3
+
+Fer\SifpeDomain\Model\Cuenta:
+  cuenta{1..10}:
+    name: cuenta<current()>
+    grupo: @grupo1
+  cuenta{11..19}:
+      name: cuenta<current()>
+      grupo: @grupo2
+  # este elemento se mantiene en los fixtures sin relaciones con otros
+  cuenta20:
+      name: cuenta20
+      grupo: @grupo2
+
+Fer\SifpeDomain\Model\Gasto:
+  # 6 apuntes este mes por un total de 4500eur
+  #   3 apuntes en la cuenta1 y 3 en la cuenta2
+  gasto{1..3}:
+      empresa: @empresa<numberBetween(1, 2)>
+      cuenta: @cuenta1
+      notas: <sentence(10)>
+      fecha: <dateTimeBetween("first day of this month","now")>
+      cantidad: 1000
+  gasto{4..6}:
+      empresa: @empresa<numberBetween(1, 2)>
+      cuenta: @cuenta2
+      notas: "un texto especial"
+      fecha: <dateTimeBetween("first day of this month","now")>
+      cantidad: 500
+  # el mas anterior por un total de 2000eur
+  gasto{7..10}:
+      empresa: @empresa<numberBetween(1, 2)>
+      cuenta: @cuenta<numberBetween(1, 10)>
+      notas: <sentence(10)>
+      fecha: <dateTimeBetween("first day of last month","last day of last month")>
+      cantidad: 500
+
+Fer\SifpeDomain\Model\Ingreso:
+  ingreso{1..6}:
+      empresa: @empresa<numberBetween(1, 2)>
+      cuenta: @cuenta16
+      notas: <sentence(10)>
+      fecha: <dateTimeBetween("first day of this month","now")>
+      cantidad: 1000
+  ingreso{7..10}:
+      empresa: @empresa<numberBetween(1, 2)>
+      cuenta: @cuenta17
+      notas: <sentence(10)>
+      fecha: <dateTimeBetween("first day of last month","last day of last month")>
+      cantidad: 1000

@@ -1,0 +1,54 @@
+<div class="container">
+
+    <div id="modalEdit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Editar grupo</h3>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" id="id" value="[[grupocuentaEditar.id]]">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input class="form-control" ng-model="grupocuentaEditar.name" type="text" id="name" placeholder="name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+                    <a href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="save(grupocuentaEditar)">Guardar cambios</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="well well-small">
+        <form class="form-inline" name="grupocuenta_form_new" ng-submit="add(grupocuentaNueva)">
+            <input ng-model="grupocuentaNueva.name" type="text" class="form-control" placeholder="Nombre" required="required">
+            <button type="submit" class="btn">Guardar</button>
+        </form>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th class="hidden">#</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="grupocuenta in grupocuentas" ng-dblclick="edit($index)">
+            <td class="hidden">[[grupocuenta.id]]</td>
+            <td>[[grupocuenta.name]]</td>
+            <td>
+                <a ng-click="delete($index)" class="glyphicon glyphicon-remove"></a>
+                <a ng-click="edit($index)" class="glyphicon glyphicon-edit"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

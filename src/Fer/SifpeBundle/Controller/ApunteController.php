@@ -10,24 +10,8 @@
 namespace Fer\SifpeBundle\Controller;
 
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 
 abstract class ApunteController extends AbstractController {
-
-	/**
-	 * @var $apunteFinder \FOS\ElasticaBundle\Finder\TransformedFinder
-	 */
-	public $apunteFinder;
-
-    /**
-     * @Template
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function indexAction()
-    {
-        return array();
-    }
 
     /**
      * Lista los objeto gestionados por el repositorio
@@ -37,11 +21,9 @@ abstract class ApunteController extends AbstractController {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listDesdeMesAction($desdeMeses = 0) {
-        $items = $this->entityRepository->findPorMes($desdeMeses);
-        $output['data'] = $items;
-        $output['totalPaginas'] = $this->entityRepository->getTotalMesesRegistrados();
-        $view = $this->view($output, 200);
-        return $this->handleView($view);
+        $output['data'] = $this->entityService->findPorMes($desdeMeses);
+        $output['totalPaginas'] = $this->entityService->getTotalMesesRegistrados();
+        return $this->renderResponse($output, 200);
     }
 
     /**
@@ -50,10 +32,9 @@ abstract class ApunteController extends AbstractController {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listResumenPorCuentaAction($anio, $mes) {
-        $cuentasMes = $this->entityRepository->getTotalCuentasMensual($anio, $mes);
+        $cuentasMes = $this->entityService->getTotalCuentasMensual($anio, $mes);
         $resultado = array('data' => $cuentasMes, 'anio' => $anio, 'mes' => $mes);
-        $view = $this->view($resultado, 200);
-        return $this->handleView($view);
+        return $this->renderResponse($resultado, 200);
     }
 
     /**
@@ -63,10 +44,9 @@ abstract class ApunteController extends AbstractController {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listResumenAnualAction($anio) {
-        $resultado['data'] = $this->entityRepository->getResumenAnual($anio);
+        $resultado['data'] = $this->entityService->getResumenAnual($anio);
         $resultado['anio'] = $anio;
-        $view = $this->view($resultado, 200);
-        return $this->handleView($view);
+        return $this->renderResponse($resultado, 200);
 
     }
 
@@ -78,9 +58,8 @@ abstract class ApunteController extends AbstractController {
      * @return mixed
      */
     public function listResumenMesAction($anio, $mes){
-        $items = $this->entityRepository->getResumenMes($anio, $mes);
-        $view = $this->view($items, 200);
-        return $this->handleView($view);
+        $items = $this->entityService->getResumenMes($anio, $mes);
+        return $this->renderResponse($items, 200);
     }
 
 	/**
@@ -90,19 +69,8 @@ abstract class ApunteController extends AbstractController {
 	 * @return mixed
 	 */
 	public function searchAction($query, \DateTime $dateIni, \DateTime $dateEnd) {
-		$queryString = new \Elastica\Query\QueryString($query);
-		$queryObj = new \Elastica\Query($queryString);
-		$queryFilter = new \Elastica\Filter\Range(
-			'fecha',
-			array(
-				'from' => $dateIni->format('Y-m-d'),
-				'to' => $dateEnd->format('Y-m-d')
-			)
-		);
-		$queryObj->setFilter($queryFilter);
-		$items = $this->apunteFinder->find($queryObj, 500);
-		$view = $this->view($items, 200);
-		return $this->handleView($view);
+		$items = $this->entityService->searchFullText($query, $dateIni, $dateEnd, 500);
+        return $this->renderResponse($items, 200);
 	}
 
 }
