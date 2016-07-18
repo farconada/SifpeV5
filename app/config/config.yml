@@ -14,7 +14,6 @@ framework:
     validation:      { enable_annotations: true }
     templating:
         engines: ['twig']
-        #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:         ~
@@ -31,26 +30,6 @@ jms_di_extra:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-
-# Assetic Configuration
-assetic:
-    debug:          %kernel.debug%
-    use_controller: false
-    bundles:        [ ]
-    filters:
-        lessphp:
-          file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
-          apply_to:   "\.less$"
-        less:
-          node: /usr/local/bin/node
-          node_paths: [/usr/local/share/npm/lib/node_modules/]
-          apply_to: "\.less$"
-        cssrewrite: ~
-    assets:
-      jquery:
-        inputs:
-          - %kernel.root_dir%/../vendor/jquery/jquery/jquery-%jquery_version%.js
-        output: js/jquery.js
 
 # Doctrine Configuration
 doctrine:
@@ -138,11 +117,6 @@ fos_elastica:
               insert: true
               update: true
               delete: true
-
-braincrafted_bootstrap:
-  less_filter: less
-  jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-%jquery_version%.js
-
 
 fos_rest:
     param_fetcher_listener: true

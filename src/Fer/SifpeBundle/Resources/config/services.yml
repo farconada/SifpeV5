@@ -55,26 +55,26 @@ services:
   fer_sifpe.gasto_service:
     class: %fer_sifpe.apunte_service.class%
     arguments:
-      - @fer_sifpe.gasto_repository
-      - @fos_elastica.finder.website.gasto
+      - "@fer_sifpe.gasto_repository"
+      - "@fos_elastica.finder.website.gasto"
 
   fer_sifpe.ingreso_service:
       class: %fer_sifpe.apunte_service.class%
       arguments:
-        - @fer_sifpe.ingreso_repository
-        - @fos_elastica.finder.website.ingreso
+        - "@fer_sifpe.ingreso_repository"
+        - "@fos_elastica.finder.website.ingreso"
 
   fer_sifpe.cuenta_service:
       class: %fer_sifpe.entity_service.class%
       arguments:
-        - @fer_sifpe.cuenta_repository
+        - "@fer_sifpe.cuenta_repository"
 
   fer_sifpe.empresa_service:
       class: %fer_sifpe.entity_service.class%
       arguments:
-        - @fer_sifpe.empresa_repository
+        - "@fer_sifpe.empresa_repository"
 
   fer_sifpe.grupocuenta_service:
       class: %fer_sifpe.entity_service.class%
       arguments:
-        - @fer_sifpe.grupocuenta_repository
+        - "@fer_sifpe.grupocuenta_repository"
