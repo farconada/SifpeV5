@@ -15,36 +15,31 @@ parameters:
 services:
   fer_sifpe.gasto_repository:
     class:           %fer_sifpe.gasto_repository.class%
-    factory_service: doctrine.orm.entity_manager
-    factory_method:  getRepository
+    factory:	     ['@doctrine.orm.entity_manager', getRepository]
     arguments:
         - %fer_sifpe.gasto_repository.factory_argument%
 
   fer_sifpe.ingreso_repository:
     class:           %fer_sifpe.ingreso_repository.class%
-    factory_service: doctrine.orm.entity_manager
-    factory_method:  getRepository
+    factory: 	     ['@doctrine.orm.entity_manager', getRepository]
     arguments:
         - %fer_sifpe.ingreso_repository.factory_argument%
 
   fer_sifpe.empresa_repository:
     class:           %fer_sifpe.empresa_repository.class%
-    factory_service: doctrine.orm.entity_manager
-    factory_method:  getRepository
+    factory: 	     ['@doctrine.orm.entity_manager', getRepository]
     arguments:
         - %fer_sifpe.empresa_repository.factory_argument%
 
   fer_sifpe.cuenta_repository:
       class:           %fer_sifpe.cuenta_repository.class%
-      factory_service: doctrine.orm.entity_manager
-      factory_method:  getRepository
+      factory:         ['@doctrine.orm.entity_manager',getRepository]
       arguments:
           - %fer_sifpe.cuenta_repository.factory_argument%
 
   fer_sifpe.grupocuenta_repository:
       class:           %fer_sifpe.grupocuenta_repository.class%
-      factory_service: doctrine.orm.entity_manager
-      factory_method:  getRepository
+      factory: 	       ['@doctrine.orm.entity_manager', getRepository]
       arguments:
           - %fer_sifpe.grupocuenta_repository.factory_argument%
 
@@ -55,26 +50,26 @@ services:
   fer_sifpe.gasto_service:
     class: %fer_sifpe.apunte_service.class%
     arguments:
-      - "@fer_sifpe.gasto_repository"
-      - "@fos_elastica.finder.website.gasto"
+      - '@fer_sifpe.gasto_repository'
+      - '@fos_elastica.finder.website.gasto'
 
   fer_sifpe.ingreso_service:
       class: %fer_sifpe.apunte_service.class%
       arguments:
-        - "@fer_sifpe.ingreso_repository"
-        - "@fos_elastica.finder.website.ingreso"
+        - '@fer_sifpe.ingreso_repository'
+        - '@fos_elastica.finder.website.ingreso'
 
   fer_sifpe.cuenta_service:
       class: %fer_sifpe.entity_service.class%
       arguments:
-        - "@fer_sifpe.cuenta_repository"
+        - '@fer_sifpe.cuenta_repository'
 
   fer_sifpe.empresa_service:
       class: %fer_sifpe.entity_service.class%
       arguments:
-        - "@fer_sifpe.empresa_repository"
+        - '@fer_sifpe.empresa_repository'
 
   fer_sifpe.grupocuenta_service:
       class: %fer_sifpe.entity_service.class%
       arguments:
-        - "@fer_sifpe.grupocuenta_repository"
+        - '@fer_sifpe.grupocuenta_repository'

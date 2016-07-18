@@ -1,51 +1,51 @@
 fer_sifpe_gasto_index:
-    pattern:  /gastos/gestion
+    path:  /gastos/gestion
     defaults: { _controller: FerSifpeBundle:Gasto:index }
 
 fer_sifpe_gasto_delete:
-    pattern:  /gasto/{id}/borrar/
+    path:  /gasto/{id}/borrar/
     defaults: { _controller: FerSifpeBundle:Gasto:delete, _format: json }
     methods: [GET]
     options:
       expose: true
 
 fer_sifpe_gasto_delete_rest:
-    pattern:  /gasto/{id}
+    path:  /gasto/{id}
     defaults: { _controller: FerSifpeBundle:Gasto:delete, _format: json }
     methods: [DELETE]
     options:
       expose: true
 
 #fer_sifpe_gasto_list_all:
-#    pattern:  /gastos
+#    path:  /gastos
 #    defaults: { _controller: FerSifpeBundle:Gasto:listAll, _format: json }
 #    methods: [GET]
 #    options:
 #      expose: true
 
 fer_sifpe_gasto_show:
-    pattern:  /gasto/{id}
+    path:  /gasto/{id}
     defaults: { _controller: FerSifpeBundle:Gasto:show, _format: json }
     methods: [GET]
     options:
       expose: true
 
 fer_sifpe_gasto_list:
-    pattern:  /gastos/{desdeMeses}
+    path:  /gastos/{desdeMeses}
     defaults: { _controller: FerSifpeBundle:Gasto:listDesdeMes, _format: json, desdeMeses: 0 }
     methods: [GET]
     options:
       expose: true
 
 fer_sifpe_gasto_save:
-    pattern:  /gasto
+    path:  /gasto
     defaults: { _controller: FerSifpeBundle:Gasto:save, _format: json }
     methods: [POST]
     options:
       expose: true
 
 fer_sifpe_gasto_search:
-    pattern:  /gastos/buscar/{dateIni}/{dateEnd}/{query}
+    path:  /gastos/buscar/{dateIni}/{dateEnd}/{query}
     defaults: { _controller: FerSifpeBundle:Gasto:search, _format: json}
     methods: [GET]
     options:

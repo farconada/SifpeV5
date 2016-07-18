@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ee1a48432a6e51e382d8ff1f30e31e2b",
-    "content-hash": "2db69c0777b711cc5a42a8f04d515d3d",
+    "hash": "6c32e160cc6f1386994c4c2e1a075b78",
+    "content-hash": "2794be21063acca3a37c2c26c94cd35f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -5203,6 +5203,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "symfony/symfony": 0,
         "behat/symfony2-extension": 20,
         "behat/mink": 0,
         "behat/mink-extension": 20,
