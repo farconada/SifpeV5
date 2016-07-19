@@ -25,7 +25,7 @@ class ApunteService extends EntityService implements IApunteService
      */
     public function searchFullText($queryString, \DateTime $dateIni, \DateTime $dateEnd, $limit = 500) {
         $queryArray = [
-            'query'     => ['query_string' =>['query' => $queryString]],
+            'query'     => $queryString,
             'filter'    => [
                 'range' =>
                     ['fecha' => ['from' => $dateIni->format('Y-m-d'), 'to' => $dateEnd->format('Y-m-d')]]

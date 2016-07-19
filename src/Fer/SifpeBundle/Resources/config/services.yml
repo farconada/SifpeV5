@@ -44,6 +44,21 @@ services:
           - %fer_sifpe.grupocuenta_repository.factory_argument%
 
 ########################################
+# Finder
+########################################
+  fer_sifpe.finder_service_gasto:
+    class: 'Fer\SifpeBundle\SphinxSearch\SphinxFinder'
+    arguments:
+      - '@iakumai.sphinxsearch.search'
+      - 'gastoidx'
+
+  fer_sifpe.finder_service_ingreso:
+    class: 'Fer\SifpeBundle\SphinxSearch\SphinxFinder'
+    arguments:
+      - '@iakumai.sphinxsearch.search'
+      - 'ingresoidx'
+
+########################################
 # Servicios para manejar entidades
 ########################################
 
@@ -51,13 +66,13 @@ services:
     class: %fer_sifpe.apunte_service.class%
     arguments:
       - '@fer_sifpe.gasto_repository'
-      - ''
+      - '@fer_sifpe.finder_service_gasto'
 
   fer_sifpe.ingreso_service:
       class: %fer_sifpe.apunte_service.class%
       arguments:
         - '@fer_sifpe.ingreso_repository'
-        - ''
+        - '@fer_sifpe.finder_service_ingreso'
 
   fer_sifpe.cuenta_service:
       class: %fer_sifpe.entity_service.class%

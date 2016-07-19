@@ -87,3 +87,15 @@ fos_rest:
     body_listener:
        decoders:
            json: fos_rest.decoder.json
+
+sphinxsearch:
+   searchd:
+       # Host name for your Sphinx daemon
+       host: localhost
+       # Port number for your Sphinx daemon
+       port: 9312
+   indexes:
+       # List of sphinx index names (key) and entity names (value)
+       # to use it in searchEx() method
+       gastoidx: 'Fer\SifpeDomain\Model\Gasto'
+       ingresoidx: 'Fer\SifpeDomain\Model\Ingreso'
