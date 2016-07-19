@@ -66,58 +66,6 @@ swiftmailer:
     password:  %mailer_password%
     spool:     { type: memory }
 
-## elastic search
-fos_elastica:
-  clients:
-    default: { host: localhost, port: 9200 }
-  indexes:
-    website:
-      client: default
-      finder: ~
-      types:
-        gasto:
-          mappings:
-            notas: { boost: 5 }
-            fecha: {type: "date"}
-            cuenta:
-              type: "nested"
-              properties:
-                name: ~
-            empresa:
-              type: "nested"
-              properties:
-                name: ~
-          persistence:
-            driver: orm # orm, mongodb, propel are available
-            model: Fer\SifpeDomain\Model\Gasto
-            provider: ~
-            finder: ~
-            listener:
-              insert: true
-              update: true
-              delete: true
-        ingreso:
-          mappings:
-            notas: { boost: 5 }
-            fecha: {type: "date"}
-            cuenta:
-              type: "nested"
-              properties:
-                name: ~
-            empresa:
-              type: "nested"
-              properties:
-                name: ~
-          persistence:
-            driver: orm # orm, mongodb, propel are available
-            model: Fer\SifpeDomain\Model\Ingreso
-            provider: ~
-            finder: ~
-            listener:
-              insert: true
-              update: true
-              delete: true
-
 fos_rest:
     param_fetcher_listener: true
     routing_loader:
