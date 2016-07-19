@@ -11,7 +11,7 @@ namespace Fer\SifpeBundle\Service;
 
 use Fer\SifpeDomain\Model\IEntidad;
 use Fer\SifpeDomain\Repository\IRepository;
-use FOS\ElasticaBundle\Finder\FinderInterface;
+
 
 class EntityService implements IEntityService
 {
@@ -27,9 +27,9 @@ class EntityService implements IEntityService
 
 	/**
 	 * @param IRepository $repository
-	 * @param FinderInterface $finder
+	 * @param  $finder
 	 */
-	public function __construct(IRepository $repository, FinderInterface $finder = null) {
+	public function __construct(IRepository $repository, $finder = null) {
 		$this->repository = $repository;
 		$this->finder = $finder;
 	}

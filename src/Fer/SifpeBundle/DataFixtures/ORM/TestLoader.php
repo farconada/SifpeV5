@@ -9,15 +9,14 @@
 
 namespace Fer\SifpeBundle\DataFixtures;
 
-use Hautelook\AliceBundle\Alice\DataFixtureLoader;
-use Nelmio\Alice\Fixtures;
+use Hautelook\AliceBundle\Doctrine\DataFixtures\AbstractLoader;
 
-class TestLoader extends DataFixtureLoader
+class TestLoader extends AbstractLoader
 {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function getFixtures()
+	public function getFixtures()
 	{
 		return  array(
 			__DIR__ . '/test.yml',

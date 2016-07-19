@@ -1,44 +1,44 @@
 fer_sifpe_ingreso_delete:
-    pattern:  /ingreso/{id}/borrar/
+    path:  /ingreso/{id}/borrar/
     defaults: { _controller: FerSifpeBundle:Ingreso:delete, _format: json }
     methods: [GET]
     options:
       expose: true
 
 fer_sifpe_ingreso_delete_rest:
-    pattern:  /ingreso/{id}
+    path:  /ingreso/{id}
     defaults: { _controller: FerSifpeBundle:Ingreso:delete, _format: json }
     methods: [DELETE]
     options:
       expose: true
 
 fer_sifpe_ingreso_show:
-    pattern:  /ingreso/{id}
+    path:  /ingreso/{id}
     defaults: { _controller: FerSifpeBundle:Ingreso:show, _format: json }
     methods: [GET]
     options:
       expose: true
 
 fer_sifpe_ingreso_save:
-    pattern:  /ingreso
+    path:  /ingreso
     defaults: { _controller: FerSifpeBundle:Ingreso:save, _format: json }
     methods: [POST]
     options:
       expose: true
 
 fer_sifpe_ingreso_index:
-    pattern:  /ingresos/gestion
+    path:  /ingresos/gestion
     defaults: { _controller: FerSifpeBundle:Ingreso:index }
 
 #fer_sifpe_ingreso_list_all:
-#    pattern:  /ingresos
+#    path:  /ingresos
 #    defaults: { _controller: FerSifpeBundle:Ingreso:listAll, _format: json }
 #    methods: [GET]
 #    options:
 #      expose: true
 
 fer_sifpe_ingreso_list:
-    pattern:  /ingresos/{desdeMeses}
+    path:  /ingresos/{desdeMeses}
     defaults: { _controller: FerSifpeBundle:Ingreso:listDesdeMes, _format: json, desdeMeses: 0 }
     methods: [GET]
     options:

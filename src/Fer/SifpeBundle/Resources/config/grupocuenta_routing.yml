@@ -1,38 +1,38 @@
 fer_sifpe_grupocuenta_show_rest:
-    pattern:  /grupocuenta/{id}
+    path:  /grupocuenta/{id}
     defaults: { _controller: FerSifpeBundle:GrupoCuenta:show, _format: json }
     methods: [GET]
     options:
       expose: true
 
 fer_sifpe_grupocuenta_delete:
-    pattern:  /grupocuenta/{id}/borrar/
+    path:  /grupocuenta/{id}/borrar/
     defaults: { _controller: FerSifpeBundle:GrupoCuenta:delete, _format: json }
     methods: [GET]
     options:
       expose: true
 
 fer_sifpe_grupocuenta_delete_rest:
-    pattern:  /grupocuenta/{id}
+    path:  /grupocuenta/{id}
     defaults: { _controller: FerSifpeBundle:GrupoCuenta:delete, _format: json }
     methods: [DELETE]
     options:
       expose: true
 
 fer_sifpe_grupocuenta_save:
-    pattern:  /grupocuenta
+    path:  /grupocuenta
     defaults: { _controller: FerSifpeBundle:GrupoCuenta:save, _format: json }
     methods: [POST]
     options:
       expose: true
 
 fer_sifpe_grupocuenta_list:
-    pattern:  /grupocuentas
+    path:  /grupocuentas
     defaults: { _controller: FerSifpeBundle:GrupoCuenta:listAll, _format: json }
     methods: [GET]
     options:
       expose: true
 
 fer_sifpe_grupocuenta_index:
-    pattern:  /grupocuentas/gestion
+    path:  /grupocuentas/gestion
     defaults: { _controller: FerSifpeBundle:GrupoCuenta:index }

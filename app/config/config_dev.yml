@@ -24,9 +24,6 @@ monolog:
             type:  chromephp
             level: info
 
-assetic:
-    use_controller: true
-
 hautelook_alice:
     locale: es_ES   # default
     seed: 1         # default
