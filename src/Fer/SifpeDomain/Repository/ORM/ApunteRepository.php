@@ -169,4 +169,27 @@ class ApunteRepository extends AbstractRepository implements IApunteRepository {
     }
 
 
+    /**
+     * Estado de los presupuestos en un año y fecha
+     *
+     * @param $anio 2013, 2012, 2011....
+     * @param $mes 1,2,3
+     * @return array
+     */
+    public function getEstadoPrespuestos($anio, $mes)
+    {
+        $query = $this->getEntityManager()->getConnection()->executeQuery(
+            'select A.nombre nombre, consumidoMes, consumidoAnual, presupuestoMes, presupuestoAnual
+from 
+        (select gr.name nombre, sum(cantidad) consumidoMes, gr.presupuestoMes, gr.presupuestoAnual 
+        from gasto g, cuenta c, grupo_cuenta gr 
+        where g.cuenta_id = c.id and c.grupo_cuenta_id = gr.id and year(fecha) = :anio and month(fecha) = :mes group by grupo_cuenta_id) as A, 
+        (select gr.name nombre, sum(cantidad) consumidoAnual 
+        from gasto g, cuenta c, grupo_cuenta gr 
+        where g.cuenta_id = c.id and c.grupo_cuenta_id = gr.id and year(fecha) = :anio and month(fecha) <= :mes group by grupo_cuenta_id) as B 
+where A.nombre = B.nombre;',
+            ['anio' => $anio, 'mes' => $mes]
+        );
+        return $query->fetchAll();
+    }
 }

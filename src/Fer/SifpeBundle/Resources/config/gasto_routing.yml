@@ -50,3 +50,10 @@ fer_sifpe_gasto_search:
     methods: [GET]
     options:
       expose: true
+
+fer_sifpe_gasto_presupuesto:
+    path:  /gastos/presupuestos/{anio}/{mes}
+    defaults: { _controller: FerSifpeBundle:Gasto:estadoPresupuestos,  _format: json}
+    methods: [GET]
+    options:
+      expose: true
