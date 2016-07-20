@@ -43,19 +43,19 @@
         <thead>
         <tr>
             <th class="hidden">#</th>
-            <th><a ng-click="orderByField='fecha'; reverseSort = !reverseSort">Nombre</a></th>
-            <th><a ng-click="orderByField='notas'; reverseSort = !reverseSort">Consumido este Mes</a></th>
-            <th><a ng-click="orderByField='cuenta.name'; reverseSort = !reverseSort">Presupuesto Mensual</a></th>
-            <th><a ng-click="orderByField='empresa.name'; reverseSort = !reverseSort">Consumido este año</a></th>
-            <th><a ng-click="orderByField='cantidad'; reverseSort = !reverseSort">Presupuesto anual</a></th>
+            <th>Nombre</th>
+            <th>Consumido este Mes</th>
+            <th>Presupuesto Mensual</th>
+            <th>Consumido este año</th>
+            <th>Presupuesto anual</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="presu in presupuestos"  >
             <td>[[presu.nombre]]</td>
-            <td ng-class="{badpresu: (presu.presupuestoMes - presu.consumidoMes) < 0 }">[[presu.consumidoMes]] ([[presu.presupuestoMes - presu.consumidoMes]])</td>
+            <td ng-class="{badpresu: (presu.presupuestoMes - presu.consumidoMes) < 0 && (presu.presupuestoMes != 0)}">[[presu.consumidoMes]] (diff: [[presu.presupuestoMes - presu.consumidoMes]])</td>
             <td>[[presu.presupuestoMes]]</td>
-            <td ng-class="{badpresu: (presu.presupuestoAnual - presu.consumidoAnual) < 0 }">[[presu.consumidoAnual]] ([[presu.presupuestoAnual - presu.consumidoAnual]])</td>
+            <td ng-class="{badpresu: (presu.presupuestoAnual - presu.consumidoAnual) < 0 && (presu.presupuestoAnual != 0)}">[[presu.consumidoAnual]] (diff: [[presu.presupuestoAnual - presu.consumidoAnual]])</td>
             <td>[[presu.presupuestoAnual]]</td>
         </tr>
         </tbody>
