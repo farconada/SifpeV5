@@ -13,6 +13,7 @@ class SphinxFinder implements IFinderService {
    }
 
    public function find($query) {
+     $this->sphinx->setLimits(0, 9999);
      $sphinxResults = $this->sphinx->searchEx($query['query'], $this->index);
      $results = [];
      foreach ($sphinxResults['matches'] as $id => $item) {
