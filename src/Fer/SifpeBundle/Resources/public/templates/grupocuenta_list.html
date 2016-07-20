@@ -14,6 +14,15 @@
                             <label for="name">Nombre</label>
                             <input class="form-control" ng-model="grupocuentaEditar.name" type="text" id="name" placeholder="name">
                         </div>
+                        <div class="form-group">
+                            <label for="presupuesto_mes">Presupuesto Mensual</label>
+                            <input class="form-control" ng-model="grupocuentaEditar.presupuesto_mes" type="text" id="presupuesto_mes" placeholder="Presupuesto mensual">
+                        </div>
+                        <div class="form-group">
+                            <label for="presupuesto_anual">Presupuesto Anual</label>
+                            <input class="form-control" ng-model="grupocuentaEditar.presupuesto_anual" type="text" id="presupuesto_anual" placeholder="Presupuesto anual">
+                        </div>
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -37,6 +46,8 @@
         <tr>
             <th class="hidden">#</th>
             <th>Nombre</th>
+            <th>Presupuesto mensual</th>
+            <th>Presupuesto anual</th>
             <th>Acciones</th>
         </tr>
         </thead>
@@ -44,6 +55,8 @@
         <tr ng-repeat="grupocuenta in grupocuentas" ng-dblclick="edit($index)">
             <td class="hidden">[[grupocuenta.id]]</td>
             <td>[[grupocuenta.name]]</td>
+            <td>[[grupocuenta.presupuesto_mes]]</td>
+            <td>[[grupocuenta.presupuesto_anual]]</td>
             <td>
                 <a ng-click="delete($index)" class="glyphicon glyphicon-remove"></a>
                 <a ng-click="edit($index)" class="glyphicon glyphicon-edit"></a>

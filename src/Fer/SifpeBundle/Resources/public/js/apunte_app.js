@@ -36,6 +36,7 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
     $scope.apuntes = [];
     $scope.anios = [];
     $scope.totalMes = 0;
+    $scope.presupuestos = [];
 
     moment.lang('es');
     $('#searchrange').daterangepicker(
@@ -218,6 +219,16 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
             $scope.totalMes += value.cantidad;
         });
         $scope.totalMes = parseFloat($scope.totalMes);
+
+        // recalcular los presupuestos
+        if ($scope.apuntes.length != 0) {
+            var fecha = new Date($scope.apuntes[0].fecha);
+            var url = Routing.generate('fer_sifpe_' + GENERAL_CONFIG.APUNTE_TIPO + '_presupuesto', { anio: fecha.getFullYear(), mes: (fecha.getMonth()+1) });
+            $http.get(url).success(function(data){
+                $scope.presupuestos = data['data'];
+            });
+        }
+
     }, true);
 
     // mira cada vez que se cambia un año o un mes para actualizar el mensual desglosado

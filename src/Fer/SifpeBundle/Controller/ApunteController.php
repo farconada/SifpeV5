@@ -62,6 +62,19 @@ abstract class ApunteController extends AbstractController {
         return $this->renderResponse($items, 200);
     }
 
+    /**
+     * Lista un resumen de los apuntes agrupados por mes en un año
+     *
+     * @param $anio 2013, 2012.....
+     * @param $mes 1, 2....
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function estadoPresupuestosAction($anio, $mes) {
+        $resultado['data'] = $this->entityService->getEstadoPrespuestos($anio, $mes);
+        return $this->renderResponse($resultado, 200);
+
+    }
+
 	/**
 	 * @param $query Query para elastic search
 	 * @param \DateTime $dateIni

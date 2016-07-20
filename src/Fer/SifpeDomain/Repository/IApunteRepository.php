@@ -53,4 +53,13 @@ interface IApunteRepository extends IRepository {
      */
     public function getResumenMes($anio, $mes);
 
+    /**
+     * Estado de los presupuestos en un año y fecha
+     *
+     * @param $anio 2013, 2012, 2011....
+     * @param $mes 1,2,3
+     * @return array
+     */
+    public function getEstadoPrespuestos($anio, $mes);
+
 }
