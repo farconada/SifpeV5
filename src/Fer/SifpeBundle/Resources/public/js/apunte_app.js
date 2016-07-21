@@ -272,5 +272,18 @@ sifpeApp.controller('ApunteCtrl', ['$scope', '$rootScope', '$http', 'GENERAL_CON
         });
     }, true);
 
+    $scope.necesitaRecortar = function(apunte, presupuestoAnual, presupuestoMensual, consumidoAnual) {
+	console.log(apunte, presupuestoAnual, presupuestoMensual, consumidoAnual);
+	if (!apunte)
+		return false;
+	var fechaDate = new Date(apunte.fecha);
+	var mesesQuedan = 12 - (fechaDate.getMonth()+1);
+	if ((presupuestoAnual-consumidoAnual)/mesesQuedan < presupuestoMensual) {
+		return true;
+	}
+	if (presupuestoMensual) 
+		return false;
+    };
+
 }]);
 
