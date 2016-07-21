@@ -38,7 +38,7 @@ class GrupoCuenta implements IEntidad
     /**
      * @var float
      *
-     * @ORM\Column(name="presupuestoMes", type="decimal", precision=10, scale=2, options={"default": 0}))
+     * @ORM\Column(name="presupuestoMes", type="decimal", precision=10, scale=2, options={"default": 0}, nullable=true))
      * @JMS\Type("double")
      */
     protected $presupuestoMes;
@@ -46,7 +46,7 @@ class GrupoCuenta implements IEntidad
     /**
      * @var float
      *
-     * @ORM\Column(name="presupuestoAnual", type="decimal", precision=10, scale=2, options={"default": 0}))
+     * @ORM\Column(name="presupuestoAnual", type="decimal", precision=10, scale=2, options={"default": 0}, nullable=true))
      * @JMS\Type("double")
      */
     protected $presupuestoAnual;
