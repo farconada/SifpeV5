@@ -14,6 +14,11 @@ class SphinxFinder implements IFinderService {
 
    public function find($query) {
      $this->sphinx->setLimits(0, 9999);
+     $fromDate = \DateTime::createFromFormat('Y-m-d', $query['filter']['range']['fecha']['from']);
+     $fromDate->setTime(0,0,0);
+     $toDate = \DateTime::createFromFormat('Y-m-d', $query['filter']['range']['fecha']['to']);
+     $toDate->setTime(0,0,0);
+     $this->sphinx->setFilterBetweenDates('unixdate', $fromDate, $toDate);
      $sphinxResults = $this->sphinx->searchEx($query['query'], $this->index);
      $results = [];
      foreach ($sphinxResults['matches'] as $id => $item) {

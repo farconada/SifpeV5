@@ -55,7 +55,7 @@
             <td>[[presu.nombre]]</td>
             <td ng-class="{badpresu: (presu.presupuestoMes - presu.consumidoMes) < 0 && (presu.presupuestoMes != 0)}">[[presu.consumidoMes]] (diff: [[presu.presupuestoMes - presu.consumidoMes]])</td>
             <td>[[presu.presupuestoMes]]</td>
-            <td ng-class="{badpresu: (presu.presupuestoAnual - presu.consumidoAnual) < 0 && (presu.presupuestoAnual != 0)}">[[presu.consumidoAnual]] (diff: [[presu.presupuestoAnual - presu.consumidoAnual]])</td>
+            <td ng-class="{badpresu: (presu.presupuestoAnual - presu.consumidoAnual) < 0 && (presu.presupuestoAnual != 0)}">[[presu.consumidoAnual]] (diff: [[presu.presupuestoAnual - presu.consumidoAnual]]) <span class="glyphicon" ng-class="{'glyphicon-thumbs-down': necesitaRecortar(apuntes[0], presu.presupuestoAnual, presu.presupuestoMes, presu.consumidoAnual) }"></span></td>
             <td>[[presu.presupuestoAnual]]</td>
         </tr>
         </tbody>
